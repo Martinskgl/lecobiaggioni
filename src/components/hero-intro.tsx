@@ -59,7 +59,7 @@ export function HeroIntro({
         }`}
       >
         <p className="hero-kicker font-display text-lg italic md:text-2xl">{kicker}</p>
-        <h1 className="mt-5 font-display text-[13vw] leading-[0.9] md:text-[7.2rem]">
+        <h1 className="mt-5 font-display text-[13vw] leading-none md:text-[7.2rem]">
           <LetterLine text={line1} />
           <LetterLine text={line2} delay={0.14} />
         </h1>

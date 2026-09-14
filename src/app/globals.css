@@ -116,17 +116,20 @@ img[data-nimg="fill"] {
 .hero-line {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .hero-char-mask {
-  display: inline-block;
+  display: block;
   overflow: hidden;
-  vertical-align: bottom;
+  padding: 0.12em 0.04em 0.28em;
+  margin: 0 -0.02em;
 }
 
 .hero-char {
-  display: inline-block;
-  transform: translateY(110%);
+  display: block;
+  line-height: 1;
+  transform: translateY(118%);
   opacity: 0;
 }
 
