@@ -1,0 +1,20 @@
+---
+description: Commit each slice of work so git history documents how the site evolved
+alwaysApply: true
+---
+
+# Commit as the project evolves
+
+This repo lives at https://github.com/Martinskgl/lecobiaggioni. After a meaningful slice of work, create a git commit and push to `origin/main`. Do not wait to be asked.
+
+- One concern per commit (layout, copy, animation, infra)
+- Message explains **why** the change exists, in 1–2 sentences
+- Never dump unrelated UI, copy, and config into one commit
+- Do not commit `.env`, `.vercel`, or secrets
+- After a site-facing change, deploy to Vercel as well (see deploy-on-finish)
+
+```bash
+git add <files-for-this-slice>
+git commit -m "Why this change exists."
+git push origin main
+```

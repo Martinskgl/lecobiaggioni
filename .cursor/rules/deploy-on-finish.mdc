@@ -1,0 +1,17 @@
+---
+description: After finishing a batch of site work, deploy to Vercel production
+alwaysApply: true
+---
+
+# Deploy on finish
+
+When a task that changes the site is complete (and the user did not ask to keep it local-only), deploy to production without waiting to be asked again.
+
+```bash
+npx vercel --prod --yes --scope administracao-8824s-projects
+```
+
+- Project: `lecobiaggioni` (already linked in `.vercel/`)
+- Public URL: https://lecobiaggioni.vercel.app
+- Always pass `--scope administracao-8824s-projects` — deploying without it fails with "Not authorized"
+- After deploy, give the production URL

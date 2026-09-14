@@ -1,13 +1,19 @@
 # Leco Biaggìoni
 
-Site institucional e landing page do escritório Leco Biaggìoni — planejamento de casamentos no Rio de Janeiro.
+Site do escritório Leco Biaggìoni, no espírito do template [Wedded](https://wedded.framer.website/).
+
+Repositório: https://github.com/Martinskgl/lecobiaggioni  
+Preview: https://lecobiaggioni.vercel.app
+
+## Estado atual
+
+O layout e as animações estão no lugar para o designer trabalhar. Fotos são **placeholders**. Textos visíveis são **lorem ipsum** até o copy final. A copy real do briefing continua em `src/lib/dictionaries.ts` e `src/lib/ui.ts` — para ligá-la de novo, mude `placeholderContent` em `src/lib/site.ts`.
 
 ## Stack
 
-- Next.js (App Router) + TypeScript
-- Tailwind CSS
-- PT / EN / ES
-- Imagens temporárias em [placehold.co](https://placehold.co/)
+- Next.js 16 (App Router) + TypeScript
+- Tailwind CSS v4
+- PT / EN / ES em `/pt`, `/en`, `/es`
 
 ## Desenvolvimento
 
@@ -18,15 +24,6 @@ npm run dev
 
 Abre em `http://localhost:3000` e redireciona para `/pt`.
 
-## Conteúdo
+## Histórico
 
-Copy, paleta e arquitetura seguem o documento `Estrutura_e_Copy_Site_Leco_Biaggioni.docx`.
-
-- Vinho Leco `#69192F`
-- Vinho tinta `#2A0F18`
-- Papel `#F7F0E8`
-- Azul direção `#243B55`
-- Títulos: Bona Nova
-- Corpo: Poppins
-
-Depoimentos e fotos são placeholders até o acervo e as avaliações reais.
+O git documenta a evolução do projeto em commits pequenos. Cada mudança de estrutura, animação ou conteúdo entra como um commit próprio e sobe para o GitHub.
