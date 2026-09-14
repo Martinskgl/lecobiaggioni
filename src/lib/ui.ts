@@ -1,4 +1,5 @@
-import type { Locale } from "@/lib/site";
+import { loremizeStrings } from "@/lib/lorem";
+import { placeholderContent, type Locale } from "@/lib/site";
 
 export type UiCopy = {
   flip: string;
@@ -52,7 +53,7 @@ export type UiCopy = {
   chapters: { title: string; date: string; body: string }[];
 };
 
-export const ui: Record<Locale, UiCopy> = {
+const rawUi: Record<Locale, UiCopy> = {
   pt: {
     flip: "VIRAR",
     maps: "Ver no mapa",
@@ -390,3 +391,5 @@ export const ui: Record<Locale, UiCopy> = {
     ],
   },
 };
+
+export const ui = placeholderContent ? loremizeStrings(rawUi) : rawUi;

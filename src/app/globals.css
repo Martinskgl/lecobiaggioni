@@ -70,16 +70,93 @@ img[data-nimg="fill"] {
   overflow: hidden;
 }
 
-.photo-zoom img {
+.photo-zoom img,
+.photo-zoom .placeholder-fill {
   transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.photo-zoom:hover img {
+.photo-zoom:hover img,
+.photo-zoom:hover .placeholder-fill {
   transform: scale(1.06);
 }
 
-.kenburns img {
+.kenburns img,
+.kenburns .placeholder-fill {
   animation: kenburns 22s ease-out forwards;
+}
+
+.placeholder-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -32deg,
+    transparent 0 18px,
+    rgba(255, 252, 250, 0.07) 18px 19px
+  );
+}
+
+.hero-window {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(14% 32% 14% 32%);
+  transition: clip-path 1.45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media (max-width: 768px) {
+  .hero-window {
+    clip-path: inset(16% 16% 16% 16%);
+  }
+}
+
+.hero-window.is-open {
+  clip-path: inset(0 0 0 0);
+}
+
+.hero-line {
+  display: block;
+}
+
+.hero-char-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.hero-char {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+.hero-copy-in .hero-char {
+  transform: none;
+  opacity: 1;
+  transition:
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.45s ease;
+}
+
+.hero-kicker,
+.hero-date {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.hero-copy-in .hero-kicker {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s ease 0.12s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+}
+
+.hero-copy-in .hero-date {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s ease 0.55s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
 }
 
 @keyframes kenburns {
@@ -207,10 +284,17 @@ img[data-nimg="fill"] {
   .reveal,
   .reveal.is-visible,
   .photo-zoom img,
+  .photo-zoom .placeholder-fill,
   .kenburns img,
-  .flip-inner {
+  .kenburns .placeholder-fill,
+  .flip-inner,
+  .hero-window,
+  .hero-char,
+  .hero-kicker,
+  .hero-date {
     opacity: 1;
     transform: none;
+    clip-path: none;
     transition: none;
     animation: none;
   }

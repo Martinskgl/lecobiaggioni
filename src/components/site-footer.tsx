@@ -29,7 +29,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </div>
       <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 px-6 pb-8 text-[0.72rem] text-wine/55 md:px-10">
-        <p className="font-display text-lg text-wine">Leco Biaggìoni</p>
+        <p className="font-display text-lg text-wine">{brand.name}</p>
         <div className="flex flex-wrap gap-5">
           <a href={brand.instagram} target="_blank" rel="noreferrer">
             {brand.instagramHandle}

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import type { Dictionary } from "@/lib/dictionaries";
-import { localizedPath, type Locale } from "@/lib/site";
+import { brand, localizedPath, type Locale } from "@/lib/site";
 import { ui } from "@/lib/ui";
 
 export function SiteHeader({
@@ -52,7 +52,7 @@ export function SiteHeader({
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-5 md:px-10">
         <Link href={localizedPath(locale)} className="font-display text-[1.65rem] leading-none md:text-[1.85rem]">
-          Leco Biaggìoni
+          {brand.name}
         </Link>
         <button
           type="button"

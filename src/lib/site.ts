@@ -2,6 +2,9 @@ export const locales = ["pt", "en", "es"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "pt";
 
+/** Designer shell: placeholders + lorem until final photos and copy arrive. */
+export const placeholderContent = true;
+
 export const venueSlugs = [
   "xian",
   "cristo-redentor",
@@ -11,8 +14,8 @@ export const venueSlugs = [
 export type VenueSlug = (typeof venueSlugs)[number];
 
 export const site = {
-  name: "Leco Biaggìoni",
-  tagline: "Celebração com direção.",
+  name: placeholderContent ? "Lorem Ipsum" : "Leco Biaggìoni",
+  tagline: placeholderContent ? "Lorem ipsum dolor sit amet." : "Celebração com direção.",
   whatsapp: "5521982752040",
   whatsappDisplay: "+55 21 98275-2040",
   instagram: "https://www.instagram.com/lecobiagioni",

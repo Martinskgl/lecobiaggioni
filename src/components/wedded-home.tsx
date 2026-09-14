@@ -3,30 +3,29 @@ import { BottomNav } from "@/components/bottom-nav";
 import { ContactForm } from "@/components/contact-form";
 import { FaqList } from "@/components/faq-list";
 import { FlipCard } from "@/components/flip-card";
+import { HeroIntro } from "@/components/hero-intro";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
 import { SinceClock } from "@/components/since-clock";
 import type { Dictionary } from "@/lib/dictionaries";
 import { chapterPhotos, photos, venuePhotos } from "@/lib/photos";
-import { brand, localizedPath, venueSlugs, type Locale } from "@/lib/site";
+import { brand, localizedPath, placeholderContent, venueSlugs, type Locale } from "@/lib/site";
 import { ui } from "@/lib/ui";
 
 export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const copy = ui[locale];
+  const line1 = placeholderContent ? "Lorem" : "Leco";
+  const line2 = placeholderContent ? "Ipsum" : "Biaggìoni";
 
   return (
     <div className="bg-cream text-wine">
-      <section className="relative h-[100svh] min-h-[640px] overflow-hidden">
-        <Photo src={photos.hero} alt={brand.name} fillParent priority kenburns position="center 70%" />
-        <div className="absolute inset-0 bg-gradient-to-t from-wine/50 via-wine/10 to-wine/25" />
-        <div className="absolute inset-x-0 bottom-[16%] px-6 text-center text-cream md:bottom-[18%]">
-          <p className="font-display text-lg italic md:text-2xl">{copy.heartLine}</p>
-          <h1 className="mx-auto mt-5 max-w-5xl font-display text-[15vw] leading-[0.88] md:text-[7.4rem]">
-            <span className="block">Leco</span>
-            <span className="block">Biaggìoni</span>
-          </h1>
-        </div>
-      </section>
+      <HeroIntro
+        src={photos.hero}
+        kicker={copy.heartLine}
+        line1={line1}
+        line2={line2}
+        dateLine={`${copy.saveTitle} · ${copy.saveDate}`}
+      />
 
       <section className="px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto grid max-w-[1400px] items-start gap-12 md:grid-cols-2">
