@@ -40,9 +40,9 @@ export function SinceClock({ copy }: { copy: UiCopy }) {
   ];
 
   return (
-    <div>
+    <div className="since-clock">
       <p className="font-script text-center text-2xl text-rose md:text-left">{copy.countdownLabel}</p>
-      <div className="mt-6 grid grid-cols-4 gap-3 text-center md:gap-8">
+      <div className="clock-grid mt-6 grid grid-cols-4 gap-3 text-center md:gap-8">
         {cells.map((cell) => (
           <div key={cell.id}>
             <p className="font-display text-4xl leading-none text-wine md:text-6xl">{cell.n}</p>

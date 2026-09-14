@@ -258,9 +258,41 @@ img[data-nimg="fill"] {
   height: 26.5rem;
 }
 
+.polaroid-flip.polaroid-collect {
+  width: min(38vw, 11.75rem);
+  height: 16.5rem;
+}
+
+@media (min-width: 768px) {
+  .polaroid-flip.polaroid-collect {
+    width: min(20vw, 14.25rem);
+    height: 19.75rem;
+  }
+}
+
 .polaroid-flip .flip-inner {
   min-height: 0;
   height: 100%;
+}
+
+.clock-pin {
+  container-type: inline-size;
+}
+
+@container (max-width: 420px) {
+  .since-clock .font-script {
+    font-size: 1.05rem;
+    text-align: left;
+  }
+
+  .since-clock .clock-grid {
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+  }
+
+  .since-clock .clock-grid .font-display {
+    font-size: 1.55rem;
+  }
 }
 
 .polaroid {
