@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { FaqList } from "@/components/faq-list";
-import { FlipCard } from "@/components/flip-card";
 import { HeroIntro } from "@/components/hero-intro";
 import { Photo } from "@/components/photo";
+import { PolaroidStack } from "@/components/polaroid-stack";
 import { Reveal } from "@/components/reveal";
 import { SinceClock } from "@/components/since-clock";
 import type { Dictionary } from "@/lib/dictionaries";
@@ -37,26 +37,16 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
             <h3 className="font-display text-3xl leading-snug md:text-4xl">{dict.editorial.body}</h3>
           </Reveal>
         </div>
-        <div className="mx-auto mt-20 max-w-[1400px]">
-          <SinceClock copy={copy} />
-        </div>
       </section>
 
-      <section className="px-3 pb-8 md:px-6">
-        <div className="mx-auto grid max-w-[1400px] gap-3 md:grid-cols-2">
-          {copy.chapters.map((chapter, index) => (
-            <Reveal key={chapter.title}>
-              <FlipCard
-                src={chapterPhotos[index]}
-                title={chapter.title}
-                date={chapter.date}
-                body={chapter.body}
-                flipLabel={copy.flip}
-              />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <PolaroidStack
+        clock={<SinceClock copy={copy} />}
+        items={copy.chapters.map((chapter, index) => ({
+          ...chapter,
+          src: chapterPhotos[index],
+        }))}
+        flipLabel={copy.flip}
+      />
 
       <section id="story" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto grid max-w-[1400px] items-center gap-16 lg:grid-cols-2">

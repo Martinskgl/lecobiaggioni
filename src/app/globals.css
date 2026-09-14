@@ -218,6 +218,7 @@ img[data-nimg="fill"] {
 
 .flip {
   perspective: 1400px;
+  transform-style: preserve-3d;
 }
 
 .flip-inner {
@@ -234,7 +235,7 @@ img[data-nimg="fill"] {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .flip:hover .flip-inner {
+  .flip:not(.flip-click):hover .flip-inner {
     transform: rotateY(180deg);
   }
 }
@@ -248,6 +249,18 @@ img[data-nimg="fill"] {
 
 .flip-back {
   transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.polaroid-flip {
+  width: min(70vw, 19.5rem);
+  height: 26.5rem;
+}
+
+.polaroid-flip .flip-inner {
+  min-height: 0;
+  height: 100%;
 }
 
 .polaroid {
