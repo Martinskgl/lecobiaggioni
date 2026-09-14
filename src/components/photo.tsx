@@ -24,6 +24,7 @@ export function Photo({
   zoom,
   kenburns,
   fillParent,
+  quiet,
 }: {
   src: string;
   alt: string;
@@ -34,6 +35,7 @@ export function Photo({
   kenburns?: boolean;
   position?: string;
   fillParent?: boolean;
+  quiet?: boolean;
 }) {
   const [from, to] = tone(src);
 
@@ -49,9 +51,11 @@ export function Photo({
           background: `linear-gradient(145deg, ${from} 0%, ${to} 100%)`,
         }}
       />
-      <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[0.62rem] font-medium tracking-[0.22em] text-cream/70 uppercase">
-        Placeholder
-      </span>
+      {quiet ? null : (
+        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[0.62rem] font-medium tracking-[0.22em] text-cream/70 uppercase">
+          Placeholder
+        </span>
+      )}
     </div>
   );
 }

@@ -50,16 +50,16 @@ export function HeroIntro({
   return (
     <section className="relative h-[100svh] min-h-[640px] overflow-hidden bg-cream">
       <div className={`hero-window ${open ? "is-open" : ""}`}>
-        <Photo src={src} alt="" fillParent kenburns />
-        <div className="absolute inset-0 bg-gradient-to-t from-wine/55 via-wine/10 to-wine/20" />
+        <Photo src={src} alt="" fillParent kenburns quiet />
+        <div className="absolute inset-0 bg-gradient-to-t from-wine/35 via-wine/10 to-wine/20" />
       </div>
       <div
-        className={`absolute inset-x-0 bottom-[14%] px-6 text-center text-cream md:bottom-[16%] ${
+        className={`absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center text-cream ${
           text ? "hero-copy-in" : "hero-copy-wait"
         }`}
       >
         <p className="hero-kicker font-display text-lg italic md:text-2xl">{kicker}</p>
-        <h1 className="mx-auto mt-5 max-w-5xl font-display text-[15vw] leading-[0.88] md:text-[7.4rem]">
+        <h1 className="mt-5 font-display text-[13vw] leading-[0.9] md:text-[7.2rem]">
           <LetterLine text={line1} />
           <LetterLine text={line2} delay={0.14} />
         </h1>

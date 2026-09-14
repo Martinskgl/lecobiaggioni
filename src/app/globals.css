@@ -114,7 +114,8 @@ img[data-nimg="fill"] {
 }
 
 .hero-line {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-char-mask {
@@ -269,11 +270,6 @@ img[data-nimg="fill"] {
 .field-line select:focus,
 .field-line textarea:focus {
   border-bottom-color: var(--wine);
-}
-
-.bottom-nav {
-  backdrop-filter: blur(16px);
-  background: color-mix(in srgb, var(--cream) 88%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

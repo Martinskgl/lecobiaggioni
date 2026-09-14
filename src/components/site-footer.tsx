@@ -11,7 +11,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
   const home = localizedPath(locale);
 
   return (
-    <footer className="bg-cream pb-28 text-wine">
+    <footer className="bg-cream pb-12 text-wine">
       <div className="hairline" />
       <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:items-end md:px-10 md:py-24">
         <div>

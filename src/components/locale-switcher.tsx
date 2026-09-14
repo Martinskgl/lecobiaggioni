@@ -13,8 +13,8 @@ export function LocaleSwitcher({
 }) {
   const pathname = usePathname();
   const rest = pathname.replace(/^\/(pt|en|es)/, "") || "/";
-  const idle = tone === "light" ? "text-paper/55" : "text-ink/45";
-  const active = tone === "light" ? "text-paper" : "text-wine";
+  const idle = tone === "light" ? "text-cream/55" : "text-wine/45";
+  const active = tone === "light" ? "text-cream" : "text-wine";
 
   return (
     <div className="flex items-center gap-2 text-[0.68rem] tracking-[0.18em] uppercase">

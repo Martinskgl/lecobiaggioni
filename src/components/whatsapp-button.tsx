@@ -6,7 +6,7 @@ export function WhatsappButton({ label }: { label: string }) {
       href={`https://wa.me/${brand.whatsapp}`}
       target="_blank"
       rel="noreferrer"
-      className="fixed right-5 bottom-24 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-wine text-cream shadow-[0_12px_40px_rgba(84,39,46,0.28)] transition hover:scale-105 md:bottom-28"
+      className="fixed right-5 bottom-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-wine text-cream shadow-[0_12px_40px_rgba(84,39,46,0.28)] transition hover:scale-105"
       aria-label={label}
     >
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden>

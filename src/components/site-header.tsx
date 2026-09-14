@@ -18,6 +18,7 @@ export function SiteHeader({
   const pathname = usePathname();
   const home = /^\/(pt|en|es)\/?$/.test(pathname);
   const copy = ui[locale];
+  const root = localizedPath(locale);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -35,14 +36,13 @@ export function SiteHeader({
   const light = home && !scrolled && !open;
 
   const links = [
-    { href: localizedPath(locale), label: dict.nav.home },
-    { href: `${localizedPath(locale)}#location`, label: copy.anchors.location },
-    { href: `${localizedPath(locale)}#hotels`, label: copy.anchors.hotels },
-    { href: `${localizedPath(locale)}#theday`, label: copy.anchors.day },
-    { href: `${localizedPath(locale)}#faq`, label: copy.anchors.faq },
-    { href: localizedPath(locale, "/onde-casar"), label: dict.nav.venues },
-    { href: localizedPath(locale, "/quem-sou-eu"), label: dict.nav.about },
+    { href: `${root}#location`, label: copy.anchors.location },
+    { href: `${root}#hotels`, label: copy.anchors.hotels },
+    { href: `${root}#theday`, label: copy.anchors.day },
+    { href: `${root}#faq`, label: copy.anchors.faq },
   ];
+
+  const ctaClass = light ? "btn-cream !px-5 !py-2.5 text-sm" : "btn-wine !px-5 !py-2.5 text-sm";
 
   return (
     <header
@@ -50,13 +50,30 @@ export function SiteHeader({
         light ? "text-cream" : "bg-cream/90 text-wine shadow-[0_1px_0_rgba(84,39,46,0.08)] backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-5 md:px-10">
-        <Link href={localizedPath(locale)} className="font-display text-[1.65rem] leading-none md:text-[1.85rem]">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-5 py-5 md:px-10">
+        <Link href={root} className="font-display text-[1.65rem] leading-none md:text-[1.85rem]">
           {brand.name}
         </Link>
+
+        <nav className="hidden items-center gap-7 lg:flex">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-[0.82rem] tracking-[0.02em] ${light ? "text-cream/88 hover:text-cream" : "text-wine/75 hover:text-wine"}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <LocaleSwitcher locale={locale} tone={light ? "light" : "dark"} />
+          <Link href={`${root}#rsvp`} className={ctaClass}>
+            {dict.nav.cta}
+          </Link>
+        </nav>
+
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center"
+          className="flex h-10 w-10 items-center justify-center lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-label={open ? copy.close : copy.menu}
@@ -71,7 +88,7 @@ export function SiteHeader({
       </div>
 
       {open ? (
-        <div className="absolute inset-x-0 top-full border-t border-wine/10 bg-cream text-wine">
+        <div className="absolute inset-x-0 top-full border-t border-wine/10 bg-cream text-wine lg:hidden">
           <nav className="mx-auto flex max-w-[1400px] flex-col gap-5 px-6 py-10 md:px-10">
             {links.map((link) => (
               <Link
@@ -85,7 +102,7 @@ export function SiteHeader({
             ))}
             <div className="mt-4 flex flex-wrap items-center gap-6">
               <LocaleSwitcher locale={locale} tone="dark" />
-              <Link href={`${localizedPath(locale)}#rsvp`} className="btn-wine" onClick={() => setOpen(false)}>
+              <Link href={`${root}#rsvp`} className="btn-wine" onClick={() => setOpen(false)}>
                 {dict.nav.cta}
               </Link>
             </div>

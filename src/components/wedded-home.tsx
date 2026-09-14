@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BottomNav } from "@/components/bottom-nav";
 import { ContactForm } from "@/components/contact-form";
 import { FaqList } from "@/components/faq-list";
 import { FlipCard } from "@/components/flip-card";
@@ -285,8 +284,6 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
           </div>
         </div>
       </section>
-
-      <BottomNav locale={locale} />
     </div>
   );
 }
