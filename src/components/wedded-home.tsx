@@ -9,21 +9,19 @@ import { Reveal } from "@/components/reveal";
 import { SinceClock } from "@/components/since-clock";
 import type { Dictionary } from "@/lib/dictionaries";
 import { chapterPhotos, photos, venuePhotos } from "@/lib/photos";
-import { brand, localizedPath, placeholderContent, venueSlugs, type Locale } from "@/lib/site";
+import { brand, localizedPath, venueSlugs, type Locale } from "@/lib/site";
 import { ui } from "@/lib/ui";
 
 export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const copy = ui[locale];
-  const line1 = placeholderContent ? "Lorem" : "Leco";
-  const line2 = placeholderContent ? "Ipsum" : "Biaggìoni";
 
   return (
     <div className="bg-cream text-wine">
       <HeroIntro
         src={photos.hero}
         kicker={copy.heartLine}
-        line1={line1}
-        line2={line2}
+        line1="Leco"
+        line2="Biaggìoni"
         dateLine={`${copy.saveTitle} · ${copy.saveDate}`}
       />
 

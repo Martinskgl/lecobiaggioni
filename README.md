@@ -7,7 +7,7 @@ Preview: https://lecobiaggioni.vercel.app
 
 ## Estado atual
 
-O layout e as animações estão no lugar para o designer trabalhar. Fotos são **placeholders**. Textos visíveis são **lorem ipsum** até o copy final. A copy real do briefing continua em `src/lib/dictionaries.ts` e `src/lib/ui.ts` — para ligá-la de novo, mude `placeholderContent` em `src/lib/site.ts`.
+Copy do briefing do Leco está no ar. As fotos ainda são **placeholders** até o designer definir o acervo.
 
 ## Stack
 
