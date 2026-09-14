@@ -45,7 +45,6 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
           ...chapter,
           src: chapterPhotos[index],
         }))}
-        flipLabel={copy.flip}
       />
 
       <section id="story" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-32">

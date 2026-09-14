@@ -4,21 +4,21 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Photo } from "@/components/photo";
 
 const DESKTOP_SLOTS = [
-  { x: 36, y: 46, rotate: -9 },
-  { x: 48, y: 40, rotate: 8 },
-  { x: 59, y: 50, rotate: -6 },
-  { x: 70, y: 38, rotate: 11 },
-  { x: 81, y: 48, rotate: -8 },
-  { x: 91, y: 42, rotate: 5 },
+  { x: 18, y: 58, rotate: -9 },
+  { x: 32, y: 52, rotate: 8 },
+  { x: 46, y: 62, rotate: -6 },
+  { x: 59, y: 50, rotate: 11 },
+  { x: 72, y: 60, rotate: -8 },
+  { x: 84, y: 54, rotate: 5 },
 ] as const;
 
 const MOBILE_SLOTS = [
-  { x: 22, y: 42, rotate: -8 },
-  { x: 38, y: 36, rotate: 9 },
-  { x: 52, y: 46, rotate: -6 },
-  { x: 66, y: 34, rotate: 10 },
-  { x: 79, y: 44, rotate: -7 },
-  { x: 91, y: 38, rotate: 5 },
+  { x: 20, y: 58, rotate: -8 },
+  { x: 34, y: 52, rotate: 9 },
+  { x: 47, y: 64, rotate: -6 },
+  { x: 60, y: 50, rotate: 10 },
+  { x: 72, y: 61, rotate: -7 },
+  { x: 82, y: 55, rotate: 5 },
 ] as const;
 
 export type PolaroidItem = {
@@ -44,50 +44,19 @@ function easeInOut(t: number) {
   return t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
 }
 
-function PolaroidCard({
-  item,
-  flipLabel,
-}: {
-  item: PolaroidItem;
-  flipLabel: string;
-}) {
-  const [flipped, setFlipped] = useState(false);
-
+function PolaroidCard({ item }: { item: PolaroidItem }) {
   return (
-    <button
-      type="button"
-      className={`pointer-events-auto flip flip-click polaroid-flip polaroid-collect ${flipped ? "is-flipped" : ""}`}
-      onClick={() => setFlipped((value) => !value)}
-      aria-label={`${item.title}. ${flipLabel}`}
-    >
-      <div className="flip-inner">
-        <div className="flip-face polaroid overflow-hidden">
-          <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="240px" quiet />
-          <div className="px-1 pt-2 text-left">
-            <h3 className="font-display text-lg leading-none text-wine md:text-xl">{item.title}</h3>
-            <p className="mt-1 font-script text-sm text-rose md:text-base">{item.date}</p>
-          </div>
-          <span className="absolute right-2 top-2 rounded-full bg-cream/90 px-2.5 py-0.5 text-[0.52rem] font-semibold tracking-[0.16em] text-wine uppercase">
-            {flipLabel}
-          </span>
-        </div>
-        <div className="flip-face flip-back flex flex-col justify-end bg-wine p-4 text-left text-cream shadow-[0_18px_50px_rgba(84,39,46,0.16)]">
-          <p className="font-script text-base text-rose">{item.date}</p>
-          <h3 className="mt-1 font-display text-2xl leading-none">{item.title}</h3>
-          <p className="mt-3 text-xs leading-5 text-cream/85 md:text-sm md:leading-6">{item.body}</p>
-        </div>
-      </div>
-    </button>
+    <div className="polaroid polaroid-collect">
+      <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="240px" quiet />
+    </div>
   );
 }
 
 export function PolaroidStack({
   items,
-  flipLabel,
   clock,
 }: {
   items: PolaroidItem[];
-  flipLabel: string;
   clock: ReactNode;
 }) {
   const [pinned, setPinned] = useState(true);
@@ -110,8 +79,7 @@ export function PolaroidStack({
     let frame = 0;
 
     const paint = () => {
-      const stageHeight = window.innerHeight;
-      const travel = root.offsetHeight - stageHeight;
+      const travel = root.offsetHeight - window.innerHeight;
       if (travel <= 0) return;
 
       const progress = clamp(-root.getBoundingClientRect().top / travel, 0, 1);
@@ -120,10 +88,9 @@ export function PolaroidStack({
       const shrink = easeInOut(clamp((progress - 0.14) / 0.22, 0, 1));
 
       if (clockRef.current) {
-        const scale = lerp(1, mobile ? 0.72 : 0.78, shrink);
-        const shiftY = lerp(0, stageHeight * (mobile ? 0.5 : 0.58), shrink);
-        clockRef.current.style.maxWidth = `${lerp(1400, mobile ? 210 : 260, shrink)}px`;
-        clockRef.current.style.transform = `translate3d(0, ${shiftY}px, 0) scale(${scale})`;
+        const scale = lerp(1, mobile ? 0.62 : 0.52, shrink);
+        clockRef.current.style.maxWidth = `${lerp(1400, mobile ? 220 : 280, shrink)}px`;
+        clockRef.current.style.transform = `scale(${scale})`;
       }
 
       const firstAt = 0.26;
@@ -134,12 +101,11 @@ export function PolaroidStack({
         if (!node) return;
         const slot = slots[index % slots.length];
         const local = easeOutCubic(clamp((progress - (firstAt + index * span)) / 0.16, 0, 1));
-        const fromBelow = lerp(mobile ? 46 : 52, 0, local);
+        const fromBelow = lerp(mobile ? 42 : 48, 0, local);
         node.style.left = `${slot.x}%`;
         node.style.top = `${slot.y}%`;
         node.style.opacity = String(local);
         node.style.transform = `translate(-50%, calc(-50% + ${fromBelow}vh)) rotate(${slot.rotate}deg)`;
-        node.style.pointerEvents = local > 0.72 ? "auto" : "none";
       });
     };
 
@@ -165,7 +131,7 @@ export function PolaroidStack({
     return (
       <section className="bg-cream px-6 py-16 md:px-10">
         <div className="mx-auto max-w-[1400px]">{clock}</div>
-        <div className="relative mx-auto mt-16 h-[420px] max-w-[1100px] md:h-[520px]">
+        <div className="relative mx-auto mt-16 h-[420px] w-full max-w-[1100px] overflow-hidden md:h-[520px]">
           {items.map((item, index) => {
             const slot = DESKTOP_SLOTS[index % DESKTOP_SLOTS.length];
             return (
@@ -178,7 +144,7 @@ export function PolaroidStack({
                   transform: `translate(-50%, -50%) rotate(${slot.rotate}deg)`,
                 }}
               >
-                <PolaroidCard item={item} flipLabel={flipLabel} />
+                <PolaroidCard item={item} />
               </div>
             );
           })}
@@ -193,11 +159,11 @@ export function PolaroidStack({
       className="relative bg-cream"
       style={{ height: `${(1.45 + items.length * 0.72) * 100}svh` }}
     >
-      <div className="sticky top-0 h-[100svh] overflow-visible bg-cream">
-        <div className="absolute inset-x-5 top-28 z-10 md:inset-x-10 md:top-36">
+      <div className="sticky top-0 h-[100svh] overflow-hidden bg-cream">
+        <div className="absolute inset-x-5 top-24 z-20 md:inset-x-10 md:top-28">
           <div
             ref={clockRef}
-            className="clock-pin mx-auto w-full max-w-[1400px] origin-top-left will-change-transform"
+            className="clock-pin w-full max-w-[1400px] origin-top-left will-change-transform"
           >
             {clock}
           </div>
@@ -211,17 +177,16 @@ export function PolaroidStack({
               ref={(node) => {
                 cardRefs.current[index] = node;
               }}
-              className="absolute will-change-transform"
+              className="absolute z-[2] will-change-transform"
               style={{
                 left: `${slot.x}%`,
                 top: `${slot.y}%`,
                 zIndex: index + 2,
                 opacity: 0,
-                transform: `translate(-50%, calc(-50% + 52vh)) rotate(${slot.rotate}deg)`,
-                pointerEvents: "none",
+                transform: `translate(-50%, calc(-50% + 48vh)) rotate(${slot.rotate}deg)`,
               }}
             >
-              <PolaroidCard item={item} flipLabel={flipLabel} />
+              <PolaroidCard item={item} />
             </div>
           );
         })}

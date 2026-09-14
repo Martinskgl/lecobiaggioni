@@ -258,15 +258,13 @@ img[data-nimg="fill"] {
   height: 26.5rem;
 }
 
-.polaroid-flip.polaroid-collect {
-  width: min(38vw, 11.75rem);
-  height: 16.5rem;
+.polaroid-collect {
+  width: min(26vw, 9.25rem);
 }
 
 @media (min-width: 768px) {
-  .polaroid-flip.polaroid-collect {
-    width: min(20vw, 14.25rem);
-    height: 19.75rem;
+  .polaroid-collect {
+    width: min(16.5vw, 12.5rem);
   }
 }
 
