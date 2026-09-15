@@ -44,7 +44,7 @@ export function HeroIntro({
   }, []);
 
   return (
-    <section className="relative h-[100svh] min-h-[640px] overflow-hidden bg-wine">
+    <section className="relative h-[100svh] min-h-[640px] overflow-hidden bg-cream">
       <div className={`hero-window ${open ? "is-open" : ""}`}>
         <Photo src={src} alt="" fillParent kenburns quiet />
         <div className="absolute inset-0 bg-gradient-to-t from-wine/35 via-wine/10 to-wine/20" />
