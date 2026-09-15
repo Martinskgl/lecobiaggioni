@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/contact-form";
 import { FaqList } from "@/components/faq-list";
 import { HeroIntro } from "@/components/hero-intro";
 import { Photo } from "@/components/photo";
+import { MethodTimeline } from "@/components/method-timeline";
 import { PolaroidStack } from "@/components/polaroid-stack";
 import { Reveal } from "@/components/reveal";
 import { SinceClock } from "@/components/since-clock";
@@ -184,24 +185,13 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </section>
 
-      <section id="theday" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-32">
-        <div className="mx-auto max-w-[1400px]">
-          <p className="font-script text-2xl text-rose">{copy.dayKicker}</p>
-          <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{dict.method.title}</h2>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{dict.method.cta}</p>
-          <div className="mt-16 grid gap-12">
-            {dict.method.steps.map((step) => (
-              <Reveal key={step.n} className="grid items-start gap-6 border-t border-wine/15 pt-10 md:grid-cols-[160px_1fr]">
-                <p className="font-display text-6xl leading-none md:text-7xl">{step.n}</p>
-                <div>
-                  <h3 className="font-display text-4xl">{step.title}</h3>
-                  <p className="mt-4 max-w-2xl text-base leading-8 text-wine/75">{step.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MethodTimeline
+        kicker={copy.dayKicker}
+        title={dict.method.title}
+        lead={dict.method.cta}
+        steps={dict.method.steps}
+        photos={[photos.vows, photos.table, photos.flowers]}
+      />
 
       <section className="px-6 py-10 md:px-10">
         <div className="mx-auto grid max-w-[1400px] items-center gap-12 md:grid-cols-2">
