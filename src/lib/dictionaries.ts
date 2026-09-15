@@ -191,7 +191,7 @@ const pt: Dictionary = {
     title: "Vocês não precisam saber como organizar um casamento.",
     subtitle:
       "Precisam saber que existe alguém que sabe exatamente o que vem depois.",
-    body: "Um casamento envolve centenas de decisões. Local, fornecedores, orçamento, cronograma, decoração, convidados, cerimônia. Nosso trabalho é transformar toda essa complexidade em um caminho claro — com experiência, presença e alguém cuidando de cada detalhe.",
+    body: ipsumLong,
   },
   since: {
     kicker: "Desde 2004",
@@ -549,7 +549,7 @@ const en: Dictionary = {
   editorial: {
     title: "You do not need to know how to plan a wedding.",
     subtitle: "You need to know someone who already knows what comes next.",
-    body: "A wedding is hundreds of decisions: venue, vendors, budget, timeline, design, guests, ceremony. Our work is to turn that complexity into a clear path — with experience, presence, and someone holding every detail.",
+    body: ipsumLong,
   },
   since: {
     kicker: "Since 2004",
@@ -905,7 +905,7 @@ const es: Dictionary = {
   editorial: {
     title: "No necesitan saber cómo organizar una boda.",
     subtitle: "Necesitan saber que hay alguien que sabe exactamente lo que sigue.",
-    body: "Una boda son cientos de decisiones: lugar, proveedores, presupuesto, cronograma, decoración, invitados, ceremonia. Nuestro trabajo es convertir esa complejidad en un camino claro — con experiencia, presencia y alguien cuidando cada detalle.",
+    body: ipsumLong,
   },
   since: {
     kicker: "Desde 2004",
