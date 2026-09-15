@@ -35,11 +35,12 @@ export function HeroIntro({
       setText(true);
       return;
     }
-    const timer = window.setTimeout(() => {
-      setOpen(true);
-      setText(true);
-    }, 60);
-    return () => window.clearTimeout(timer);
+    const openTimer = window.setTimeout(() => setOpen(true), 60);
+    const textTimer = window.setTimeout(() => setText(true), 560);
+    return () => {
+      window.clearTimeout(openTimer);
+      window.clearTimeout(textTimer);
+    };
   }, []);
 
   return (
@@ -48,11 +49,13 @@ export function HeroIntro({
         <Photo src={src} alt="" fillParent kenburns quiet />
         <div className="absolute inset-0 bg-gradient-to-t from-wine/35 via-wine/10 to-wine/20" />
       </div>
-      <div className={`absolute inset-0 z-10 text-cream ${text ? "hero-copy-in" : "hero-copy-wait"}`}>
-        <p className="hero-kicker absolute left-5 top-[5.75rem] max-w-[22rem] font-display text-[0.95rem] leading-snug md:left-10 md:top-[6.75rem] md:max-w-none md:text-xl">
-          {kicker}
-        </p>
-        <h1 className="absolute inset-x-5 bottom-[14vh] font-display text-[clamp(2.6rem,11.6vw,9.6rem)] leading-none md:inset-x-10 md:bottom-[12vh]">
+      <div
+        className={`absolute inset-x-5 bottom-[14vh] z-10 text-cream md:inset-x-10 md:bottom-[12vh] ${
+          text ? "hero-copy-in" : "hero-copy-wait"
+        }`}
+      >
+        <p className="hero-kicker font-display text-[0.95rem] leading-snug md:text-xl">{kicker}</p>
+        <h1 className="mt-2 font-display text-[clamp(2.6rem,11.6vw,9.6rem)] leading-none md:mt-3">
           <LetterLine text={name} />
         </h1>
       </div>
