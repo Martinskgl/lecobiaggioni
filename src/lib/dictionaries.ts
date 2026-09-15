@@ -1,3 +1,4 @@
+import { ipsum, ipsumLong, ipsumShort } from "@/lib/ipsum";
 import type { Locale, VenueSlug } from "@/lib/site";
 
 export type Dictionary = {
@@ -210,24 +211,24 @@ const pt: Dictionary = {
       {
         n: "01",
         title: "A gente escuta",
-        body: "Tudo começa com uma conversa. Entendemos quem vocês são, o que imaginam para esse dia, suas prioridades, número de convidados, estilo e budget.",
+        body: ipsumLong,
       },
       {
         n: "02",
         title: "A gente organiza",
-        body: "Traduzimos tudo isso em um plano claro. Indicamos caminhos, antecipamos decisões e conectamos vocês aos fornecedores que realmente fazem sentido.",
+        body: ipsum,
       },
       {
         n: "03",
         title: "A gente conduz",
-        body: "Enquanto vocês vivem o processo, nossa equipe cuida para que cada parte esteja no lugar certo, na hora certa.",
+        body: ipsum,
       },
     ],
   },
   included: {
     kicker: "O que está incluído",
     title: "Do planejamento ao grande dia. Uma equipe olhando para o todo.",
-    lead: "Existem diferentes maneiras de começar. Mas o objetivo é sempre o mesmo: fazer com que todas as decisões conversem entre si.",
+    lead: ipsumLong,
     items: [
       "Planejamento",
       "Assessoria",
@@ -249,22 +250,22 @@ const pt: Dictionary = {
     cards: {
       xian: {
         title: "Xian",
-        text: "Casamentos com uma das vistas mais emblemáticas do Rio.",
+        text: ipsumShort,
         action: "Conhecer o Xian",
       },
       "cristo-redentor": {
         title: "Cristo Redentor",
-        text: "Uma cerimônia em um dos lugares mais icônicos do mundo.",
+        text: ipsumShort,
         action: "Casar no Cristo",
       },
       zefira: {
         title: "Zéfira",
-        text: "Arquitetura, natureza e uma atmosfera que transforma a celebração.",
+        text: ipsumShort,
         action: "Conhecer o Zéfira",
       },
       "outros-lugares": {
         title: "Outros destinos",
-        text: "Rio, Brasil ou fora dele.",
+        text: ipsumShort,
         action: "Descobrir outros lugares",
       },
     },
@@ -276,7 +277,7 @@ const pt: Dictionary = {
   hotelsHome: {
     kicker: "Hotéis parceiros",
     title: "A experiência dos seus convidados começa antes da cerimônia.",
-    lead: "Quando familiares e amigos vêm de outras cidades ou países, hospedagem também faz parte do planejamento. Por isso, mantemos relacionamento com hotéis selecionados para facilitar a estadia dos convidados e tornar toda a experiência mais simples.",
+    lead: ipsumLong,
     highlight: "Destaque inicial: Hotel Nacional Rio de Janeiro.",
     cta: "Ver hotéis parceiros",
   },
@@ -386,8 +387,7 @@ const pt: Dictionary = {
     quote: "A experiência dos convidados começa antes da cerimônia.",
     featuredName: "Hotel Nacional Rio de Janeiro",
     featuredPlace: "São Conrado · Rio de Janeiro",
-    featuredText:
-      "Parceiro de destaque para receber famílias e amigos que chegam de outras cidades ou do exterior. Orientamos room blocks e a logística de hospedagem junto ao restante do planejamento.",
+    featuredText: ipsumLong,
     moreTitle: "Novos parceiros",
     cta: "Quero orientação de hospedagem para os convidados",
     meta: "Hotéis parceiros do Leco Biaggìoni para convidados de casamento no Rio.",
@@ -568,24 +568,24 @@ const en: Dictionary = {
       {
         n: "01",
         title: "We listen",
-        body: "It starts with a conversation. Who you are, what you imagine, your priorities, guest count, style and budget.",
+        body: ipsumLong,
       },
       {
         n: "02",
         title: "We organize",
-        body: "We turn that into a clear plan. We anticipate decisions and connect you with vendors who actually fit your wedding.",
+        body: ipsum,
       },
       {
         n: "03",
         title: "We conduct",
-        body: "While you live the process, our team keeps every part in the right place, at the right time.",
+        body: ipsum,
       },
     ],
   },
   included: {
     kicker: "What is included",
     title: "From planning to the day itself. One team watching the whole.",
-    lead: "There are different ways to begin. The aim is always the same: every decision should speak to the others.",
+    lead: ipsumLong,
     items: [
       "Planning",
       "Coordination",
@@ -607,22 +607,22 @@ const en: Dictionary = {
     cards: {
       xian: {
         title: "Xian",
-        text: "Weddings with one of Rio’s most emblematic views.",
+        text: ipsumShort,
         action: "Discover Xian",
       },
       "cristo-redentor": {
         title: "Christ the Redeemer",
-        text: "A ceremony in one of the most iconic places on earth.",
+        text: ipsumShort,
         action: "Marry at Christ",
       },
       zefira: {
         title: "Zéfira",
-        text: "Architecture, nature, and an atmosphere that changes the celebration.",
+        text: ipsumShort,
         action: "Discover Zéfira",
       },
       "outros-lugares": {
         title: "Other destinations",
-        text: "Rio, Brazil, or beyond.",
+        text: ipsumShort,
         action: "Explore other places",
       },
     },
@@ -634,7 +634,7 @@ const en: Dictionary = {
   hotelsHome: {
     kicker: "Partner hotels",
     title: "Your guests’ experience begins before the ceremony.",
-    lead: "When family and friends travel from other cities or countries, lodging is part of the plan. We keep relationships with selected hotels to make their stay simpler.",
+    lead: ipsumLong,
     highlight: "Featured partner: Hotel Nacional Rio de Janeiro.",
     cta: "See partner hotels",
   },
@@ -743,8 +743,7 @@ const en: Dictionary = {
     quote: "Your guests’ experience begins before the ceremony.",
     featuredName: "Hotel Nacional Rio de Janeiro",
     featuredPlace: "São Conrado · Rio de Janeiro",
-    featuredText:
-      "Our featured partner for families and friends arriving from other cities or from abroad. We help with room blocks and lodging logistics as part of the plan.",
+    featuredText: ipsumLong,
     moreTitle: "More partners",
     cta: "I need guest lodging guidance",
     meta: "Partner hotels for Leco Biaggìoni wedding guests in Rio.",
@@ -925,24 +924,24 @@ const es: Dictionary = {
       {
         n: "01",
         title: "Escuchamos",
-        body: "Todo empieza con una conversación. Quiénes son, qué imaginan, prioridades, número de invitados, estilo y presupuesto.",
+        body: ipsumLong,
       },
       {
         n: "02",
         title: "Organizamos",
-        body: "Lo traducimos en un plan claro. Anticipamos decisiones y los conectamos con los proveedores que de verdad tienen sentido.",
+        body: ipsum,
       },
       {
         n: "03",
         title: "Conducimos",
-        body: "Mientras ustedes viven el proceso, el equipo cuida que cada parte esté en el lugar y en la hora correctos.",
+        body: ipsum,
       },
     ],
   },
   included: {
     kicker: "Qué está incluido",
     title: "De la planificación al gran día. Un equipo mirando el conjunto.",
-    lead: "Hay distintas maneras de empezar. El objetivo es siempre el mismo: que todas las decisiones conversen entre sí.",
+    lead: ipsumLong,
     items: [
       "Planificación",
       "Asesoría",
@@ -964,22 +963,22 @@ const es: Dictionary = {
     cards: {
       xian: {
         title: "Xian",
-        text: "Bodas con una de las vistas más emblemáticas de Río.",
+        text: ipsumShort,
         action: "Conocer Xian",
       },
       "cristo-redentor": {
         title: "Cristo Redentor",
-        text: "Una ceremonia en uno de los lugares más icónicos del mundo.",
+        text: ipsumShort,
         action: "Casarse en el Cristo",
       },
       zefira: {
         title: "Zéfira",
-        text: "Arquitectura, naturaleza y una atmósfera que transforma la celebración.",
+        text: ipsumShort,
         action: "Conocer Zéfira",
       },
       "outros-lugares": {
         title: "Otros destinos",
-        text: "Río, Brasil o más allá.",
+        text: ipsumShort,
         action: "Descubrir otros lugares",
       },
     },
@@ -991,7 +990,7 @@ const es: Dictionary = {
   hotelsHome: {
     kicker: "Hoteles socios",
     title: "La experiencia de sus invitados empieza antes de la ceremonia.",
-    lead: "Cuando la familia y los amigos llegan de otras ciudades o países, el hotel también forma parte del plan. Por eso mantenemos relación con hoteles seleccionados.",
+    lead: ipsumLong,
     highlight: "Socio destacado: Hotel Nacional Rio de Janeiro.",
     cta: "Ver hoteles socios",
   },
@@ -1100,8 +1099,7 @@ const es: Dictionary = {
     quote: "La experiencia de los invitados empieza antes de la ceremonia.",
     featuredName: "Hotel Nacional Rio de Janeiro",
     featuredPlace: "São Conrado · Río de Janeiro",
-    featuredText:
-      "Socio destacado para familias y amigos que llegan de otras ciudades o del exterior. Orientamos room blocks y la logística de hospedaje dentro del plan.",
+    featuredText: ipsumLong,
     moreTitle: "Más socios",
     cta: "Quiero orientación de hospedaje para los invitados",
     meta: "Hoteles socios de Leco Biaggìoni para invitados de boda en Río.",

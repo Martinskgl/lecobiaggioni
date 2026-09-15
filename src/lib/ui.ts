@@ -1,3 +1,4 @@
+import { ipsum, ipsumLong } from "@/lib/ipsum";
 import type { Locale } from "@/lib/site";
 
 export type UiCopy = {
@@ -69,8 +70,7 @@ export const ui: Record<Locale, UiCopy> = {
     storyKicker: "A história",
     storyTitle: "Our Story",
     storyLead: "Encontrar a direção certa na hora certa.",
-    storyBody:
-      "As histórias mais bonitas começam em silêncio — um casal, uma cidade, e alguém que já sabe o que vem depois.",
+    storyBody: ipsum,
     storyHow: "Como começou · 2004",
     locationKicker: "Onde casar",
     locationTitle: "A gente se encontra no Rio",
@@ -80,32 +80,31 @@ export const ui: Record<Locale, UiCopy> = {
     travel: [
       {
         title: "De fora do Brasil",
-        body: "Equipe bilíngue e condução local. Vocês planejam de onde estiverem — a gente segura o chão do evento no Rio.",
+        body: ipsum,
       },
       {
         title: "De outro estado",
-        body: "Logística de convidados, hospedagem e fornecedores alinhados para que a viagem vire celebração, não lista de pendências.",
+        body: ipsum,
       },
       {
         title: "Já no Rio",
-        body: "Escuta, plano e presença. Indicamos caminhos, antecipamos decisões e cuidamos para que cada parte esteja no lugar certo.",
+        body: ipsum,
       },
     ],
     hotelExtra: [
       {
         title: "Zona Sul",
-        body: "Copacabana, Ipanema e arredores — para famílias e amigos que querem a cidade à porta.",
+        body: ipsum,
       },
       {
         title: "Santa Teresa & mais",
-        body: "Casas e hotéis com alma, quando o casamento pede um Rio mais íntimo.",
+        body: ipsum,
       },
     ],
     lookingForward: "Estamos prontos para receber vocês.",
     gatheringKicker: "O primeiro encontro",
     gatheringTitle: "Uma conversa para começar",
-    gatheringBody:
-      "Tudo começa com uma conversa. Entendemos quem vocês são, o que imaginam para esse dia, prioridades, convidados, estilo e budget — sem pressa artificial.",
+    gatheringBody: ipsumLong,
     gatheringMeta: [
       { label: "Desde", value: "2004" },
       { label: "Idiomas", value: "PT · EN · ES" },
@@ -113,18 +112,16 @@ export const ui: Record<Locale, UiCopy> = {
     ],
     dayKicker: "O método",
     giftsKicker: "A direção",
-    giftsNote: "Se quiserem ir além, o próximo passo é uma conversa sobre a data.",
+    giftsNote: ipsum,
     detailsKicker: "Formatos",
     packATitle: "Pacote Completo",
-    packABody:
-      "Do planejamento ao grande dia. Uma equipe olhando para o todo — fornecedores, cronograma, identidade, decoração e a experiência dos convidados.",
+    packABody: ipsumLong,
     packBTitle: "Assessoria + Cerimonial",
-    packBBody:
-      "Para quem já tem caminhos escolhidos e precisa de alguém conduzindo o processo e o dia — com a mesma presença, em outro formato.",
+    packBBody: ipsumLong,
     rsvpKicker: "Contato",
     faqKicker: "FAQ",
     footerLine: "Mal podemos esperar para conduzir o dia de vocês.",
-    footerNote: "Deixem os dados e nossa equipe responde para entender o casamento e a agenda daquele período.",
+    footerNote: ipsum,
     anchors: {
       location: "Locais",
       hotels: "Hotéis",
@@ -136,32 +133,32 @@ export const ui: Record<Locale, UiCopy> = {
       {
         title: "O começo",
         date: "2004",
-        body: "Nenhum casamento começa pelo fornecedor. Começa pelo casal — e pela escuta de quem vai conduzir o resto.",
+        body: ipsum,
       },
       {
         title: "Rio",
         date: "Casa",
-        body: "Duas décadas no chão do evento: vista, horário, acesso, gastronomia. O Rio como cenário, nunca como clichê.",
+        body: ipsum,
       },
       {
         title: "A escuta",
         date: "Método",
-        body: "Uma conversa para entender quem vocês são, o que imaginam, o que faz sentido investir e o que vocês querem sentir.",
+        body: ipsum,
       },
       {
         title: "Destination",
         date: "Mundo",
-        body: "Casais que planejam de outro estado ou país. Ter alguém local conduzindo decisões muda tudo.",
+        body: ipsum,
       },
       {
         title: "A direção",
         date: "Presença",
-        body: "Premium pela qualidade da presença, não pela ostentação. Elegância sem excesso. Romance sem clichê.",
+        body: ipsum,
       },
       {
         title: "O dia",
         date: "Vocês",
-        body: "Enquanto vocês vivem, a equipe cuida para que cada parte esteja no lugar certo, na hora certa.",
+        body: ipsum,
       },
     ],
   },
@@ -181,8 +178,7 @@ export const ui: Record<Locale, UiCopy> = {
     storyKicker: "The story",
     storyTitle: "Our Story",
     storyLead: "Meeting the right direction at exactly the right time.",
-    storyBody:
-      "The most beautiful stories begin quietly — two people, one city, and someone who already knows what comes next.",
+    storyBody: ipsum,
     storyHow: "How it began · 2004",
     locationKicker: "Venue",
     locationTitle: "We'll see you in Rio",
@@ -192,32 +188,31 @@ export const ui: Record<Locale, UiCopy> = {
     travel: [
       {
         title: "From abroad",
-        body: "A bilingual local team. You plan from wherever you are — we hold the ground in Rio.",
+        body: ipsum,
       },
       {
         title: "From another city",
-        body: "Guest logistics, hotels and vendors aligned so the trip becomes a celebration, not a to-do list.",
+        body: ipsum,
       },
       {
         title: "Already in Rio",
-        body: "Listening, a clear plan, and presence. We anticipate decisions and keep every part in its place.",
+        body: ipsum,
       },
     ],
     hotelExtra: [
       {
         title: "South Zone",
-        body: "Copacabana, Ipanema and nearby — for family and friends who want the city at the door.",
+        body: ipsum,
       },
       {
         title: "Santa Teresa & more",
-        body: "Houses and hotels with soul, when the wedding asks for a more intimate Rio.",
+        body: ipsum,
       },
     ],
     lookingForward: "We are so looking forward to seeing you.",
     gatheringKicker: "The first meeting",
     gatheringTitle: "A conversation to begin",
-    gatheringBody:
-      "It starts with a conversation. Who you are, what you imagine, priorities, guests, style and budget — without artificial hurry.",
+    gatheringBody: ipsumLong,
     gatheringMeta: [
       { label: "Since", value: "2004" },
       { label: "Languages", value: "PT · EN · ES" },
@@ -225,18 +220,16 @@ export const ui: Record<Locale, UiCopy> = {
     ],
     dayKicker: "The method",
     giftsKicker: "The direction",
-    giftsNote: "If you want to go further, the next step is a conversation about your date.",
+    giftsNote: ipsum,
     detailsKicker: "Formats",
     packATitle: "Full planning",
-    packABody:
-      "From planning to the day. One team looking at the whole — vendors, timeline, identity, design and the guest experience.",
+    packABody: ipsumLong,
     packBTitle: "Coordination + ceremony",
-    packBBody:
-      "For couples who already have a path and need someone conducting the process and the day — same presence, another format.",
+    packBBody: ipsumLong,
     rsvpKicker: "RSVP",
     faqKicker: "FAQ",
     footerLine: "We can't wait to conduct this day with you.",
-    footerNote: "Leave your details. Our team will reply to understand the wedding and that season's diary.",
+    footerNote: ipsum,
     anchors: {
       location: "Location",
       hotels: "Hotels",
@@ -248,32 +241,32 @@ export const ui: Record<Locale, UiCopy> = {
       {
         title: "The beginning",
         date: "2004",
-        body: "A wedding never starts with a vendor. It starts with the couple — and with whoever will conduct the rest.",
+        body: ipsum,
       },
       {
         title: "Rio",
         date: "Home",
-        body: "Two decades on the floor of the event: view, timing, access, food. Rio as a setting, never a postcard cliché.",
+        body: ipsum,
       },
       {
         title: "Listening",
         date: "Method",
-        body: "A conversation to understand who you are, what you imagine, what is worth investing in, and how you want to feel.",
+        body: ipsum,
       },
       {
         title: "Destination",
         date: "World",
-        body: "Couples planning from another state or country. A local team holding the decisions changes everything.",
+        body: ipsum,
       },
       {
         title: "Direction",
         date: "Presence",
-        body: "Premium through the quality of presence, not ostentation. Elegance without excess. Romance without cliché.",
+        body: ipsum,
       },
       {
         title: "The day",
         date: "You",
-        body: "While you live it, the team keeps every part in the right place, at the right time.",
+        body: ipsum,
       },
     ],
   },
@@ -293,8 +286,7 @@ export const ui: Record<Locale, UiCopy> = {
     storyKicker: "La historia",
     storyTitle: "Our Story",
     storyLead: "Encontrar la dirección correcta en el momento exacto.",
-    storyBody:
-      "Las historias más hermosas empiezan en silencio — una pareja, una ciudad, y alguien que ya sabe lo que viene después.",
+    storyBody: ipsum,
     storyHow: "Cómo empezó · 2004",
     locationKicker: "El lugar",
     locationTitle: "Nos vemos en Río",
@@ -304,32 +296,31 @@ export const ui: Record<Locale, UiCopy> = {
     travel: [
       {
         title: "Desde el exterior",
-        body: "Equipo bilingüe y conducción local. Planean desde donde estén — nosotros sostenemos el piso del evento en Río.",
+        body: ipsum,
       },
       {
         title: "Desde otro estado",
-        body: "Logística de invitados, hospedaje y proveedores alineados para que el viaje sea celebración, no una lista.",
+        body: ipsum,
       },
       {
         title: "Ya en Río",
-        body: "Escucha, plan y presencia. Anticipamos decisiones y cuidamos que cada parte esté en su lugar.",
+        body: ipsum,
       },
     ],
     hotelExtra: [
       {
         title: "Zona Sur",
-        body: "Copacabana, Ipanema y alrededores — para familias y amigos que quieren la ciudad a la puerta.",
+        body: ipsum,
       },
       {
         title: "Santa Teresa y más",
-        body: "Casas y hoteles con alma, cuando la boda pide un Río más íntimo.",
+        body: ipsum,
       },
     ],
     lookingForward: "Estamos listos para recibirlos.",
     gatheringKicker: "El primer encuentro",
     gatheringTitle: "Una conversación para empezar",
-    gatheringBody:
-      "Todo empieza con una conversación. Quiénes son, qué imaginan, prioridades, invitados, estilo y presupuesto — sin prisa artificial.",
+    gatheringBody: ipsumLong,
     gatheringMeta: [
       { label: "Desde", value: "2004" },
       { label: "Idiomas", value: "PT · EN · ES" },
@@ -337,18 +328,16 @@ export const ui: Record<Locale, UiCopy> = {
     ],
     dayKicker: "El método",
     giftsKicker: "La dirección",
-    giftsNote: "Si quieren ir más allá, el siguiente paso es una conversación sobre la fecha.",
+    giftsNote: ipsum,
     detailsKicker: "Formatos",
     packATitle: "Paquete completo",
-    packABody:
-      "Del planning al gran día. Un equipo mirando el conjunto — proveedores, cronograma, identidad, decoración y la experiencia de los invitados.",
+    packABody: ipsumLong,
     packBTitle: "Asesoría + ceremonial",
-    packBBody:
-      "Para quienes ya tienen caminos elegidos y necesitan a alguien conduciendo el proceso y el día — la misma presencia, otro formato.",
+    packBBody: ipsumLong,
     rsvpKicker: "Contacto",
     faqKicker: "FAQ",
     footerLine: "No vemos la hora de conducir el día de ustedes.",
-    footerNote: "Dejen sus datos. El equipo responde para entender la boda y la agenda de ese período.",
+    footerNote: ipsum,
     anchors: {
       location: "Lugares",
       hotels: "Hoteles",
@@ -360,32 +349,32 @@ export const ui: Record<Locale, UiCopy> = {
       {
         title: "El comienzo",
         date: "2004",
-        body: "Ninguna boda empieza por el proveedor. Empieza por la pareja — y por quien va a conducir el resto.",
+        body: ipsum,
       },
       {
         title: "Río",
         date: "Casa",
-        body: "Dos décadas en el piso del evento: vista, horario, acceso, gastronomía. Río como escenario, nunca como cliché.",
+        body: ipsum,
       },
       {
         title: "La escucha",
         date: "Método",
-        body: "Una conversación para entender quiénes son, qué imaginan, qué vale invertir y qué quieren sentir.",
+        body: ipsum,
       },
       {
         title: "Destination",
         date: "Mundo",
-        body: "Parejas que planean desde otro estado o país. Tener a alguien local conduciendo las decisiones lo cambia todo.",
+        body: ipsum,
       },
       {
         title: "La dirección",
         date: "Presencia",
-        body: "Premium por la calidad de la presencia, no por la ostentación. Elegancia sin exceso. Romance sin cliché.",
+        body: ipsum,
       },
       {
         title: "El día",
         date: "Ustedes",
-        body: "Mientras ustedes viven, el equipo cuida que cada parte esté en el lugar correcto, a la hora correcta.",
+        body: ipsum,
       },
     ],
   },
