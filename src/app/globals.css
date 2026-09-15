@@ -284,6 +284,25 @@ img[data-nimg="fill"] {
   box-shadow: 0 18px 50px rgba(84, 39, 46, 0.16);
 }
 
+.timeline-fill {
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.timeline-dot {
+  background: var(--cream);
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--wine) 22%, transparent);
+  transition:
+    background 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.timeline-dot.is-reached {
+  background: var(--wine);
+  box-shadow: 0 0 0 1.5px var(--wine);
+}
+
 .field-line input,
 .field-line select,
 .field-line textarea {
@@ -318,7 +337,8 @@ img[data-nimg="fill"] {
   .hero-window,
   .hero-char,
   .hero-kicker,
-  .hero-date {
+  .hero-date,
+  .timeline-fill {
     opacity: 1;
     transform: none;
     clip-path: none;
