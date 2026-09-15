@@ -16,13 +16,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
 
   return (
     <div className="bg-cream text-wine">
-      <HeroIntro
-        src={photos.hero}
-        kicker={copy.heartLine}
-        line1="Leco"
-        line2="Biaggìoni"
-        dateLine={`${copy.saveTitle} · ${copy.saveDate}`}
-      />
+      <HeroIntro src={photos.hero} kicker={copy.heartLine} name={brand.name} />
 
       <section className="px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto grid max-w-[1400px] items-start gap-12 md:grid-cols-2">
