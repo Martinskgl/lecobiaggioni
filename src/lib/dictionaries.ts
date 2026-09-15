@@ -353,7 +353,7 @@ const pt: Dictionary = {
   },
   finalCta: {
     title: "Sua data pode ser o começo da nossa próxima história.",
-    body: "Para manter um acompanhamento próximo em cada casamento, nossa agenda é organizada de acordo com a disponibilidade de cada período. Deixe seus dados e nossa equipe entrará em contato para entender o casamento de vocês e verificar a disponibilidade da data.",
+    body: ipsumLong,
     cta: "Quero consultar minha data",
     micro: "Nossa equipe entrará em contato com você.",
   },
@@ -709,7 +709,7 @@ const en: Dictionary = {
   },
   finalCta: {
     title: "Your date could be the beginning of our next story.",
-    body: "To stay close to every couple, our calendar follows the real availability of each season. Leave your details and we will reach out to understand your wedding and check that date.",
+    body: ipsumLong,
     cta: "I want to check my date",
     micro: "Our team will get in touch with you.",
   },
@@ -1065,7 +1065,7 @@ const es: Dictionary = {
   },
   finalCta: {
     title: "Su fecha puede ser el comienzo de nuestra próxima historia.",
-    body: "Para acompañar de cerca cada boda, la agenda se organiza según la disponibilidad real de cada período. Dejen sus datos y el equipo se pondrá en contacto para entender la celebración y revisar esa fecha.",
+    body: ipsumLong,
     cta: "Quiero consultar mi fecha",
     micro: "Nuestro equipo se pondrá en contacto con ustedes.",
   },
