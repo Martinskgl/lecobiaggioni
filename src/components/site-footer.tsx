@@ -17,7 +17,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         <div>
           <p className="text-[0.7rem] tracking-[0.18em] text-wine/50 uppercase">{copy.countdownLabel}</p>
           <div className="mt-4">
-            <SinceClock copy={copy} />
+            <SinceClock copy={copy} compact />
           </div>
         </div>
         <div className="md:text-right">

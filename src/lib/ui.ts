@@ -14,6 +14,7 @@ export type UiCopy = {
   days: string;
   hours: string;
   minutes: string;
+  seconds: string;
   storyKicker: string;
   storyTitle: string;
   storyLead: string;
@@ -67,6 +68,7 @@ export const ui: Record<Locale, UiCopy> = {
     days: "Dias",
     hours: "Horas",
     minutes: "Minutos",
+    seconds: "Segundos",
     storyKicker: "A história",
     storyTitle: "Our Story",
     storyLead: "Encontrar a direção certa na hora certa.",
@@ -76,18 +78,18 @@ export const ui: Record<Locale, UiCopy> = {
     locationTitle: "A gente se encontra no Rio",
     locationAddress: "Rio de Janeiro, Brasil",
     travelKicker: "Chegando",
-    travelTitle: "Casar no Rio precisa parecer empolgante. Não complicado.",
+    travelTitle: "Viagem & transporte",
     travel: [
       {
-        title: "De fora do Brasil",
+        title: "De avião",
         body: ipsum,
       },
       {
-        title: "De outro estado",
+        title: "De transfer",
         body: ipsum,
       },
       {
-        title: "Já no Rio",
+        title: "De carro",
         body: ipsum,
       },
     ],
@@ -175,6 +177,7 @@ export const ui: Record<Locale, UiCopy> = {
     days: "Days",
     hours: "Hours",
     minutes: "Minutes",
+    seconds: "Seconds",
     storyKicker: "The story",
     storyTitle: "Our Story",
     storyLead: "Meeting the right direction at exactly the right time.",
@@ -184,18 +187,18 @@ export const ui: Record<Locale, UiCopy> = {
     locationTitle: "We'll see you in Rio",
     locationAddress: "Rio de Janeiro, Brazil",
     travelKicker: "Getting here",
-    travelTitle: "Getting married in Rio should feel exciting. Not complicated.",
+    travelTitle: "Travel & Transportation",
     travel: [
       {
-        title: "From abroad",
+        title: "By Air",
         body: ipsum,
       },
       {
-        title: "From another city",
+        title: "By Shuttle",
         body: ipsum,
       },
       {
-        title: "Already in Rio",
+        title: "By Car",
         body: ipsum,
       },
     ],
@@ -283,6 +286,7 @@ export const ui: Record<Locale, UiCopy> = {
     days: "Días",
     hours: "Horas",
     minutes: "Minutos",
+    seconds: "Segundos",
     storyKicker: "La historia",
     storyTitle: "Our Story",
     storyLead: "Encontrar la dirección correcta en el momento exacto.",
@@ -292,18 +296,18 @@ export const ui: Record<Locale, UiCopy> = {
     locationTitle: "Nos vemos en Río",
     locationAddress: "Río de Janeiro, Brasil",
     travelKicker: "Cómo llegar",
-    travelTitle: "Casarse en Río debería emocionar. No complicar.",
+    travelTitle: "Viaje & transporte",
     travel: [
       {
-        title: "Desde el exterior",
+        title: "En avión",
         body: ipsum,
       },
       {
-        title: "Desde otro estado",
+        title: "En transfer",
         body: ipsum,
       },
       {
-        title: "Ya en Río",
+        title: "En auto",
         body: ipsum,
       },
     ],

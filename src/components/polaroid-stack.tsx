@@ -1,24 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Photo } from "@/components/photo";
+import { Reveal } from "@/components/reveal";
 
-const DESKTOP_SLOTS = [
-  { x: 18, y: 58, rotate: -9 },
-  { x: 32, y: 52, rotate: 8 },
-  { x: 46, y: 62, rotate: -6 },
-  { x: 59, y: 50, rotate: 11 },
-  { x: 72, y: 60, rotate: -8 },
-  { x: 84, y: 54, rotate: 5 },
-] as const;
-
-const MOBILE_SLOTS = [
-  { x: 20, y: 58, rotate: -8 },
-  { x: 34, y: 52, rotate: 9 },
-  { x: 47, y: 64, rotate: -6 },
-  { x: 60, y: 50, rotate: 10 },
-  { x: 72, y: 61, rotate: -7 },
-  { x: 82, y: 55, rotate: 5 },
+const STACK = [
+  { x: -18, y: 10, rotate: -8 },
+  { x: 14, y: -6, rotate: 7 },
+  { x: -6, y: 4, rotate: -3 },
+  { x: 10, y: 12, rotate: 5 },
+  { x: -12, y: -8, rotate: -6 },
+  { x: 4, y: 6, rotate: 4 },
 ] as const;
 
 export type PolaroidItem = {
@@ -32,36 +24,27 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
-function lerp(from: number, to: number, t: number) {
-  return from + (to - from) * t;
-}
-
 function easeOutCubic(t: number) {
   return 1 - (1 - t) ** 3;
 }
 
-function easeInOut(t: number) {
-  return t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
-}
-
-function PolaroidCard({ item }: { item: PolaroidItem }) {
-  return (
-    <div className="polaroid polaroid-collect">
-      <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="240px" quiet />
-    </div>
-  );
-}
-
 export function PolaroidStack({
   items,
-  clock,
+  kicker,
+  title,
+  how,
+  lead,
+  body,
 }: {
   items: PolaroidItem[];
-  clock: ReactNode;
+  kicker: string;
+  title: string;
+  how: string;
+  lead: string;
+  body: string;
 }) {
   const [pinned, setPinned] = useState(true);
   const rootRef = useRef<HTMLElement>(null);
-  const clockRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
@@ -72,7 +55,6 @@ export function PolaroidStack({
 
   useEffect(() => {
     if (!pinned) return;
-
     const root = rootRef.current;
     if (!root) return;
 
@@ -81,31 +63,17 @@ export function PolaroidStack({
     const paint = () => {
       const travel = root.offsetHeight - window.innerHeight;
       if (travel <= 0) return;
-
       const progress = clamp(-root.getBoundingClientRect().top / travel, 0, 1);
-      const mobile = window.innerWidth < 768;
-      const slots = mobile ? MOBILE_SLOTS : DESKTOP_SLOTS;
-      const shrink = easeInOut(clamp((progress - 0.14) / 0.22, 0, 1));
-
-      if (clockRef.current) {
-        const scale = lerp(1, mobile ? 0.62 : 0.52, shrink);
-        clockRef.current.style.maxWidth = `${lerp(1400, mobile ? 220 : 280, shrink)}px`;
-        clockRef.current.style.transform = `scale(${scale})`;
-      }
-
-      const firstAt = 0.26;
-      const span = 0.58 / Math.max(items.length, 1);
+      const span = 0.72 / Math.max(items.length, 1);
 
       items.forEach((_, index) => {
         const node = cardRefs.current[index];
         if (!node) return;
-        const slot = slots[index % slots.length];
-        const local = easeOutCubic(clamp((progress - (firstAt + index * span)) / 0.16, 0, 1));
-        const fromBelow = lerp(mobile ? 42 : 48, 0, local);
-        node.style.left = `${slot.x}%`;
-        node.style.top = `${slot.y}%`;
+        const slot = STACK[index % STACK.length];
+        const local = easeOutCubic(clamp((progress - index * span) / 0.18, 0, 1));
+        const rise = (1 - local) * 42;
         node.style.opacity = String(local);
-        node.style.transform = `translate(-50%, calc(-50% + ${fromBelow}vh)) rotate(${slot.rotate}deg)`;
+        node.style.transform = `translate(-50%, calc(-50% + ${rise}vh)) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`;
       });
     };
 
@@ -127,27 +95,38 @@ export function PolaroidStack({
     };
   }, [items.length, pinned]);
 
+  const copy = (
+    <Reveal className="relative z-10 max-w-md">
+      <p className="font-script text-2xl text-rose">{kicker}</p>
+      <h2 className="mt-4 font-display text-5xl leading-[0.9] md:text-7xl">{title}</h2>
+      <p className="mt-6 text-sm tracking-[0.08em] text-wine/55 uppercase">{how}</p>
+      <h3 className="mt-10 font-display text-3xl leading-snug md:text-4xl">{lead}</h3>
+      <p className="mt-6 text-base leading-8 text-wine/75">{body}</p>
+    </Reveal>
+  );
+
   if (!pinned) {
     return (
-      <section className="bg-cream px-6 py-16 md:px-10">
-        <div className="mx-auto max-w-[1400px]">{clock}</div>
-        <div className="relative mx-auto mt-16 h-[420px] w-full max-w-[1100px] overflow-hidden md:h-[520px]">
-          {items.map((item, index) => {
-            const slot = DESKTOP_SLOTS[index % DESKTOP_SLOTS.length];
-            return (
-              <div
-                key={item.title}
-                className="absolute"
-                style={{
-                  left: `${slot.x}%`,
-                  top: `${slot.y}%`,
-                  transform: `translate(-50%, -50%) rotate(${slot.rotate}deg)`,
-                }}
-              >
-                <PolaroidCard item={item} />
-              </div>
-            );
-          })}
+      <section id="story" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32">
+        <div className="page-frame mx-auto grid max-w-[1200px] items-center gap-16 lg:grid-cols-2">
+          {copy}
+          <div className="relative mx-auto h-[420px] w-full max-w-md">
+            {items.slice(0, 4).map((item, index) => {
+              const slot = STACK[index % STACK.length];
+              return (
+                <div
+                  key={item.title}
+                  className="polaroid absolute left-1/2 top-1/2 w-[min(58%,15rem)]"
+                  style={{
+                    transform: `translate(-50%, -50%) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`,
+                    zIndex: index + 1,
+                  }}
+                >
+                  <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="240px" quiet />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
     );
@@ -155,38 +134,32 @@ export function PolaroidStack({
 
   return (
     <section
+      id="story"
       ref={rootRef}
-      className="relative bg-cream"
-      style={{ height: `${(1.45 + items.length * 0.72) * 100}svh` }}
+      className="relative scroll-mt-24 bg-cream"
+      style={{ height: `${(1.2 + items.length * 0.55) * 100}svh` }}
     >
-      <div className="sticky top-0 h-[100svh] overflow-hidden bg-cream">
-        <div className="absolute inset-x-5 top-24 z-20 md:inset-x-10 md:top-28">
-          <div
-            ref={clockRef}
-            className="clock-pin w-full max-w-[1400px] origin-top-left will-change-transform"
-          >
-            {clock}
-          </div>
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
+        <div className="page-frame absolute inset-y-0 left-0 z-10 flex w-full max-w-[520px] items-center px-6 md:px-10 lg:left-[max(0px,calc((100%-1200px)/2))]">
+          {copy}
         </div>
 
         {items.map((item, index) => {
-          const slot = DESKTOP_SLOTS[index % DESKTOP_SLOTS.length];
+          const slot = STACK[index % STACK.length];
           return (
             <div
               key={item.title}
               ref={(node) => {
                 cardRefs.current[index] = node;
               }}
-              className="absolute z-[2] will-change-transform"
+              className="polaroid absolute left-1/2 top-1/2 z-[2] w-[min(42vw,15.5rem)] will-change-transform md:left-[62%] md:w-[min(28vw,17rem)]"
               style={{
-                left: `${slot.x}%`,
-                top: `${slot.y}%`,
                 zIndex: index + 2,
                 opacity: 0,
-                transform: `translate(-50%, calc(-50% + 48vh)) rotate(${slot.rotate}deg)`,
+                transform: `translate(-50%, calc(-50% + 42vh)) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`,
               }}
             >
-              <PolaroidCard item={item} />
+              <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="280px" quiet />
             </div>
           );
         })}

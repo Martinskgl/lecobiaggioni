@@ -4,13 +4,17 @@ import { FaqList } from "@/components/faq-list";
 import { HeroIntro } from "@/components/hero-intro";
 import { Photo } from "@/components/photo";
 import { MethodTimeline } from "@/components/method-timeline";
+import { PhotoCarousel } from "@/components/photo-carousel";
 import { PolaroidStack } from "@/components/polaroid-stack";
 import { Reveal } from "@/components/reveal";
 import { SinceClock } from "@/components/since-clock";
+import { TravelIcons } from "@/components/travel-icons";
 import type { Dictionary } from "@/lib/dictionaries";
 import { chapterPhotos, photos, venuePhotos } from "@/lib/photos";
-import { brand, localizedPath, venueSlugs, type Locale } from "@/lib/site";
+import { brand, localizedPath, type Locale, type VenueSlug } from "@/lib/site";
 import { ui } from "@/lib/ui";
+
+const HOME_VENUES: VenueSlug[] = ["cristo-redentor", "xian", "outros-lugares"];
 
 export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const copy = ui[locale];
@@ -19,107 +23,89 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
     <div className="bg-cream text-wine">
       <HeroIntro src={photos.hero} kicker={copy.heartLine} name={brand.name} />
 
-      <section className="px-6 py-24 md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-[1400px] items-start gap-12 md:grid-cols-2">
-          <Reveal>
-            <p className="font-display text-3xl text-wine/80 md:text-4xl">{brand.name}</p>
-            <h2 className="mt-16 font-display text-6xl leading-[0.9] md:text-8xl">
-              {copy.saveTitle}
-              <span className="mt-3 block text-5xl md:text-7xl">{copy.saveDate}</span>
-            </h2>
-          </Reveal>
-          <Reveal className="md:pt-28">
-            <h3 className="font-display text-3xl leading-snug md:text-4xl">{dict.editorial.body}</h3>
-          </Reveal>
+      <section className="bg-cream px-6 py-24 md:px-10 md:py-28">
+        <div className="page-frame mx-auto max-w-[1200px]">
+          <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16">
+            <Reveal>
+              <p className="font-display text-3xl text-wine/80 md:text-4xl">{brand.name}</p>
+              <h2 className="mt-14 font-display text-6xl leading-[0.9] md:mt-20 md:text-8xl">
+                {copy.saveTitle}
+                <span className="mt-3 block text-5xl md:text-7xl">{copy.saveDate}</span>
+              </h2>
+            </Reveal>
+            <Reveal className="md:pt-28">
+              <h3 className="font-display text-2xl leading-snug md:text-3xl lg:text-4xl">{dict.editorial.body}</h3>
+            </Reveal>
+          </div>
+          <div className="mt-20 md:mt-28">
+            <SinceClock copy={copy} />
+          </div>
         </div>
       </section>
 
       <PolaroidStack
-        clock={<SinceClock copy={copy} />}
+        kicker={copy.storyKicker}
+        title={copy.storyTitle}
+        how={copy.storyHow}
+        lead={copy.storyLead}
+        body={copy.storyBody}
         items={copy.chapters.map((chapter, index) => ({
           ...chapter,
           src: chapterPhotos[index],
         }))}
       />
 
-      <section id="story" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-[1400px] items-center gap-16 lg:grid-cols-2">
-          <Reveal>
-            <p className="font-script text-2xl text-rose">{copy.storyKicker}</p>
-            <h2 className="mt-4 font-display text-6xl leading-[0.9] md:text-8xl">{copy.storyTitle}</h2>
-            <p className="mt-6 text-sm tracking-[0.08em] text-wine/55 uppercase">{copy.storyHow}</p>
-            <h3 className="mt-10 font-display text-3xl leading-snug md:text-4xl">{copy.storyLead}</h3>
-            <p className="mt-6 max-w-md text-base leading-8 text-wine/75">{copy.storyBody}</p>
-            <Link href={localizedPath(locale, "/quem-sou-eu")} className="mt-8 inline-block underline">
-              {dict.aboutHome.cta}
-            </Link>
-          </Reveal>
-          <div className="relative mx-auto h-[560px] w-full max-w-lg md:h-[640px]">
-            <div className="polaroid absolute left-0 top-8 w-[68%] -rotate-6">
-              <Photo src={photos.portrait} alt="" className="aspect-[4/5]" sizes="400px" zoom />
-            </div>
-            <div className="polaroid absolute right-0 bottom-0 w-[62%] rotate-6">
-              <Photo src={photos.hands} alt="" className="aspect-[4/5]" sizes="400px" zoom />
-            </div>
+      <section id="location" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32">
+        <div className="page-frame mx-auto max-w-[900px] text-center">
+          <p className="font-script text-2xl text-rose">{copy.locationKicker}</p>
+          <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">{copy.locationTitle}</h2>
+          <p className="mt-6 text-lg text-wine/75">{copy.locationAddress}</p>
+          <a
+            href="https://maps.google.com/?q=Rio+de+Janeiro"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 inline-flex items-center gap-2 underline"
+          >
+            {copy.maps}
+          </a>
+        </div>
+      </section>
+
+      <PhotoCarousel photos={[photos.rio, photos.christ, photos.garden, photos.terrace]} />
+
+      <TravelIcons kicker={copy.travelKicker} title={copy.travelTitle} items={copy.travel} />
+
+      <section className="scroll-mt-24 bg-cream px-4 py-16 md:px-8 md:py-24">
+        <div className="page-frame mx-auto max-w-[1200px]">
+          <p className="font-script text-2xl text-rose">{dict.venuesHome.kicker}</p>
+          <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">
+            {dict.venuesHome.title}
+          </h2>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{dict.venuesHome.lead}</p>
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {HOME_VENUES.map((slug) => {
+              const card = dict.venuesHome.cards[slug];
+              return (
+                <Link key={slug} href={localizedPath(locale, `/onde-casar/${slug}`)} className="group block">
+                  <Photo
+                    src={venuePhotos[slug]}
+                    alt={card.title}
+                    className="aspect-[4/5]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    zoom
+                  />
+                  <h3 className="mt-5 font-display text-3xl">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-wine/75">{card.text}</p>
+                  <span className="mt-4 inline-block underline">{copy.maps}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section id="location" className="scroll-mt-24">
-        <div className="relative min-h-[80vh]">
-          <Photo src={photos.rio} alt={copy.locationTitle} fillParent kenburns />
-          <div className="absolute inset-0 bg-wine/25" />
-          <div className="absolute inset-x-0 bottom-0 px-6 py-16 text-cream md:px-12">
-            <p className="font-script text-2xl text-rose">{copy.locationKicker}</p>
-            <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{copy.locationTitle}</h2>
-            <p className="mt-4 text-lg">{copy.locationAddress}</p>
-            <a
-              href="https://maps.google.com/?q=Rio+de+Janeiro"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 underline"
-            >
-              {copy.maps}
-            </a>
-          </div>
-        </div>
-        <div className="mx-auto grid max-w-[1400px] gap-4 px-4 py-10 md:grid-cols-4 md:px-8">
-          {venueSlugs.map((slug) => {
-            const card = dict.venuesHome.cards[slug];
-            return (
-              <Link key={slug} href={localizedPath(locale, `/onde-casar/${slug}`)} className="group block">
-                <Photo
-                  src={venuePhotos[slug]}
-                  alt={card.title}
-                  className="aspect-[4/5]"
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  zoom
-                />
-                <h3 className="mt-4 font-display text-3xl">{card.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-wine/70">{card.text}</p>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="px-6 py-20 md:px-10">
-        <Reveal className="mx-auto max-w-[1400px]">
-          <p className="font-script text-2xl text-rose">{copy.travelKicker}</p>
-          <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{copy.travelTitle}</h2>
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
-            {copy.travel.map((item) => (
-              <div key={item.title}>
-                <h3 className="font-display text-3xl">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-wine/75">{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
-      <section id="hotels" className="scroll-mt-24 px-4 py-10 md:px-8">
-        <div className="mx-auto max-w-[1400px]">
+      <section id="hotels" className="scroll-mt-24 bg-cream px-4 py-10 md:px-8">
+        <div className="page-frame mx-auto max-w-[1200px]">
           <p className="font-script text-2xl text-rose">{dict.hotelsHome.kicker}</p>
           <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">
             {dict.hotelsHome.title}
@@ -194,7 +180,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
       />
 
       <section className="px-6 py-10 md:px-10">
-        <div className="mx-auto grid max-w-[1400px] items-center gap-12 md:grid-cols-2">
+        <div className="page-frame mx-auto grid max-w-[1200px] items-center gap-12 md:grid-cols-2">
           <Photo src={photos.flowers} alt="" className="min-h-[60vh]" sizes="50vw" zoom />
           <Reveal>
             <p className="font-script text-2xl text-rose">{copy.giftsKicker}</p>
@@ -206,7 +192,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
       </section>
 
       <section className="px-6 py-24 md:px-10">
-        <div className="mx-auto max-w-[1400px]">
+        <div className="page-frame mx-auto max-w-[1200px]">
           <p className="font-script text-2xl text-rose">{copy.detailsKicker}</p>
           <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{dict.included.title}</h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{dict.included.lead}</p>
@@ -248,7 +234,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
       </section>
 
       <section id="faq" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-32">
-        <div className="mx-auto max-w-[900px]">
+        <div className="page-frame mx-auto max-w-[900px]">
           <p className="font-script text-2xl text-rose">{copy.faqKicker}</p>
           <h2 className="mt-3 font-display text-5xl md:text-7xl">{dict.faq.title}</h2>
           <p className="mt-6 text-base leading-8 text-wine/75">{dict.editorial.subtitle}</p>
