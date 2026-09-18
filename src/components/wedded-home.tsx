@@ -7,7 +7,7 @@ import { MethodTimeline } from "@/components/method-timeline";
 import { PhotoCarousel } from "@/components/photo-carousel";
 import { PolaroidStack } from "@/components/polaroid-stack";
 import { Reveal } from "@/components/reveal";
-import { SinceClock } from "@/components/since-clock";
+import { SaveSince } from "@/components/save-since";
 import { TravelIcons } from "@/components/travel-icons";
 import type { Dictionary } from "@/lib/dictionaries";
 import { chapterPhotos, photos, venuePhotos } from "@/lib/photos";
@@ -23,25 +23,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
     <div className="bg-cream text-wine">
       <HeroIntro src={photos.hero} kicker={copy.heartLine} name={brand.name} />
 
-      <section className="bg-cream px-6 py-24 md:px-10 md:py-28">
-        <div className="page-frame mx-auto max-w-[1200px]">
-          <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16">
-            <Reveal>
-              <p className="font-display text-3xl text-wine/80 md:text-4xl">{brand.name}</p>
-              <h2 className="mt-14 font-display text-6xl leading-[0.9] md:mt-20 md:text-8xl">
-                {copy.saveTitle}
-                <span className="mt-3 block text-5xl md:text-7xl">{copy.saveDate}</span>
-              </h2>
-            </Reveal>
-            <Reveal className="md:pt-28">
-              <h3 className="font-display text-2xl leading-snug md:text-3xl lg:text-4xl">{dict.editorial.body}</h3>
-            </Reveal>
-          </div>
-          <div className="mt-20 md:mt-28">
-            <SinceClock copy={copy} />
-          </div>
-        </div>
-      </section>
+      <SaveSince copy={copy} body={dict.editorial.body} />
 
       <PolaroidStack
         kicker={copy.storyKicker}
@@ -56,7 +38,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
       />
 
       <section id="location" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32">
-        <div className="page-frame mx-auto max-w-[900px] text-center">
+        <div className="page-frame mx-auto max-w-[760px] text-center">
           <p className="font-script text-2xl text-rose">{copy.locationKicker}</p>
           <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">{copy.locationTitle}</h2>
           <p className="mt-6 text-lg text-wine/75">{copy.locationAddress}</p>
@@ -75,8 +57,8 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
 
       <TravelIcons kicker={copy.travelKicker} title={copy.travelTitle} items={copy.travel} />
 
-      <section className="scroll-mt-24 bg-cream px-4 py-16 md:px-8 md:py-24">
-        <div className="page-frame mx-auto max-w-[1200px]">
+      <section className="scroll-mt-24 bg-cream px-6 py-16 md:px-10 md:py-24">
+        <div className="page-frame mx-auto max-w-[1100px]">
           <p className="font-script text-2xl text-rose">{dict.venuesHome.kicker}</p>
           <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">
             {dict.venuesHome.title}
@@ -104,14 +86,14 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </section>
 
-      <section id="hotels" className="scroll-mt-24 bg-cream px-4 py-10 md:px-8">
-        <div className="page-frame mx-auto max-w-[1200px]">
+      <section id="hotels" className="scroll-mt-24 bg-cream px-6 py-10 md:px-10">
+        <div className="page-frame mx-auto max-w-[1100px]">
           <p className="font-script text-2xl text-rose">{dict.hotelsHome.kicker}</p>
           <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">
             {dict.hotelsHome.title}
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{dict.hotelsHome.lead}</p>
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
             {[
               {
                 src: photos.hotel,
@@ -141,6 +123,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
           </div>
         </div>
       </section>
+
 
       <section className="relative mt-10 min-h-[70vh]">
         <Photo src={photos.kiss} alt="" fillParent />

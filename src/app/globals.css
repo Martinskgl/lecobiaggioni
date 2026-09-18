@@ -33,15 +33,29 @@ body {
 }
 
 .page-frame {
-  width: min(100%, 1200px);
+  width: min(100%, 1100px);
 }
 
 .carousel-card {
   background: #fff;
   border: 1px solid color-mix(in srgb, var(--wine) 10%, transparent);
-  border-radius: 1.15rem;
-  box-shadow: 0 18px 40px rgba(84, 39, 46, 0.1);
+  border-radius: 1.25rem;
+  box-shadow: 0 14px 36px rgba(84, 39, 46, 0.1);
   padding: 0.55rem;
+}
+
+.carousel-card > div {
+  border-radius: 0.85rem;
+}
+
+.carousel-scroller {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  touch-action: pan-y;
+}
+
+.carousel-scroller::-webkit-scrollbar {
+  display: none;
 }
 
 h1,

@@ -1,59 +1,59 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useState, type PointerEvent } from "react";
 import { Photo } from "@/components/photo";
 
 export function PhotoCarousel({ photos }: { photos: readonly string[] }) {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, startX: 0, startScroll: 0 });
+  const [grabbing, setGrabbing] = useState(false);
 
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let frame = 0;
-    let x = 0;
-    let paused = false;
-
-    const step = () => {
-      if (!paused) {
-        x -= 0.45;
-        const loopAt = track.scrollWidth / 2;
-        if (-x >= loopAt) x = 0;
-        track.style.transform = `translate3d(${x}px, 0, 0)`;
-      }
-      frame = window.requestAnimationFrame(step);
+  const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    const node = scrollerRef.current;
+    if (!node) return;
+    drag.current = {
+      active: true,
+      startX: event.clientX,
+      startScroll: node.scrollLeft,
     };
+    setGrabbing(true);
+    node.setPointerCapture(event.pointerId);
+  };
 
-    const stop = () => {
-      paused = true;
-    };
-    const start = () => {
-      paused = false;
-    };
+  const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const node = scrollerRef.current;
+    if (!node || !drag.current.active) return;
+    const delta = event.clientX - drag.current.startX;
+    node.scrollLeft = drag.current.startScroll - delta;
+  };
 
-    track.addEventListener("pointerenter", stop);
-    track.addEventListener("pointerleave", start);
-    frame = window.requestAnimationFrame(step);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      track.removeEventListener("pointerenter", stop);
-      track.removeEventListener("pointerleave", start);
-    };
-  }, []);
-
-  const loop = [...photos, ...photos];
+  const endDrag = (event: PointerEvent<HTMLDivElement>) => {
+    const node = scrollerRef.current;
+    if (!node) return;
+    drag.current.active = false;
+    setGrabbing(false);
+    if (node.hasPointerCapture(event.pointerId)) {
+      node.releasePointerCapture(event.pointerId);
+    }
+  };
 
   return (
-    <section className="overflow-hidden bg-cream py-10 md:py-14">
-      <div ref={trackRef} className="flex w-max gap-5 will-change-transform md:gap-7">
-        {loop.map((src, index) => (
+    <section className="bg-cream py-10 md:py-14">
+      <div
+        ref={scrollerRef}
+        className={`carousel-scroller flex gap-5 overflow-x-auto px-6 pb-2 md:gap-6 md:px-10 ${grabbing ? "cursor-grabbing" : "cursor-grab"}`}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onPointerLeave={endDrag}
+      >
+        {photos.map((src, index) => (
           <div
             key={`${src}-${index}`}
-            className="carousel-card w-[min(72vw,22rem)] shrink-0 overflow-hidden md:w-[26rem]"
+            className="carousel-card w-[min(78vw,28rem)] shrink-0 select-none overflow-hidden md:w-[32rem]"
           >
-            <Photo src={src} alt="" className="aspect-[4/3]" sizes="420px" quiet />
+            <Photo src={src} alt="" className="aspect-[4/3] pointer-events-none" sizes="520px" quiet />
           </div>
         ))}
       </div>

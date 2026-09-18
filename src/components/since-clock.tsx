@@ -52,7 +52,7 @@ export function SinceClock({
   return (
     <div className="since-clock">
       <p
-        className={`font-script text-rose ${compact ? "text-center text-xl md:text-left" : "text-center text-2xl md:text-left md:text-3xl"}`}
+        className={`font-script text-rose ${compact ? "text-center text-xl md:text-left" : "text-center text-2xl md:text-3xl"}`}
       >
         {copy.countdownLabel}
       </p>
