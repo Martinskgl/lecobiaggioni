@@ -322,16 +322,20 @@ img[data-nimg="fill"] {
 }
 
 .timeline-dot {
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, var(--wine) 28%, transparent);
   background: var(--cream);
-  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--wine) 22%, transparent);
-  transition:
-    background 0.28s ease,
-    box-shadow 0.28s ease;
+  padding: 0.15rem;
+  transition: color 0.28s ease;
+}
+
+.timeline-dot svg {
+  fill: currentColor;
 }
 
 .timeline-dot.is-reached {
-  background: var(--wine);
-  box-shadow: 0 0 0 1.5px var(--wine);
+  color: var(--wine);
 }
 
 .field-line input,

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { FaqList } from "@/components/faq-list";
+import { GatheringSplit } from "@/components/gathering-split";
 import { HeroIntro } from "@/components/hero-intro";
 import { Photo } from "@/components/photo";
 import { MethodTimeline } from "@/components/method-timeline";
@@ -125,34 +126,14 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </section>
 
-      <section className="relative mt-10 min-h-[70vh]">
-        <Photo src={photos.kiss} alt="" fillParent />
-        <div className="absolute inset-0 bg-wine/30" />
-        <div className="relative flex min-h-[70vh] items-end px-6 py-16 md:px-12">
-          <h2 className="max-w-3xl font-display text-5xl leading-tight text-cream md:text-7xl">
-            {copy.lookingForward}
-          </h2>
-        </div>
-      </section>
-
-      <section className="grid md:grid-cols-2">
-        <Photo src={photos.dinner} alt="" className="min-h-[70vh]" sizes="50vw" />
-        <div className="flex items-center px-6 py-16 md:px-12">
-          <Reveal>
-            <p className="font-script text-2xl text-rose">{copy.gatheringKicker}</p>
-            <h2 className="mt-3 font-display text-5xl leading-[0.95] md:text-6xl">{copy.gatheringTitle}</h2>
-            <p className="mt-6 max-w-md text-base leading-8 text-wine/75">{copy.gatheringBody}</p>
-            <dl className="mt-10 grid gap-6">
-              {copy.gatheringMeta.map((item) => (
-                <div key={item.label}>
-                  <dt className="text-[0.7rem] tracking-[0.16em] text-wine/50 uppercase">{item.label}</dt>
-                  <dd className="mt-1 font-display text-2xl">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-        </div>
-      </section>
+      <GatheringSplit
+        caption={copy.lookingForward}
+        kicker={copy.gatheringKicker}
+        title={copy.gatheringTitle}
+        body={copy.gatheringBody}
+        meta={copy.gatheringMeta}
+        photo={photos.dinner}
+      />
 
       <MethodTimeline
         kicker={copy.dayKicker}
@@ -162,15 +143,15 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         photos={[photos.vows, photos.table, photos.flowers]}
       />
 
-      <section className="px-6 py-10 md:px-10">
-        <div className="page-frame mx-auto grid max-w-[1100px] items-center gap-12 md:grid-cols-2">
-          <Photo src={photos.flowers} alt="" className="min-h-[60vh]" sizes="50vw" zoom />
-          <Reveal>
-            <p className="font-script text-2xl text-rose">{copy.giftsKicker}</p>
-            <h2 className="mt-3 font-display text-5xl leading-tight md:text-6xl">{dict.quote.text}</h2>
-            <p className="mt-6 text-sm tracking-[0.12em] uppercase">{dict.quote.author}</p>
-            <p className="mt-6 text-base leading-8 text-wine/75">{copy.giftsNote}</p>
-          </Reveal>
+      <section className="bg-cream px-6 py-10 md:px-10 md:py-14">
+        <div className="page-frame relative mx-auto min-h-[70vh] max-w-[1100px] overflow-hidden rounded-[1.75rem] md:min-h-[76vh]">
+          <Photo src={photos.flowers} alt="" fillParent quiet />
+          <div className="absolute inset-0 bg-cream/55" />
+          <div className="relative flex min-h-[70vh] flex-col items-center justify-center px-8 py-20 text-center md:min-h-[76vh] md:px-16">
+            <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.giftsKicker}</p>
+            <h2 className="mt-5 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{dict.quote.text}</h2>
+            <p className="mt-8 max-w-xl text-base leading-8 text-wine/75">{copy.giftsNote}</p>
+          </div>
         </div>
       </section>
 

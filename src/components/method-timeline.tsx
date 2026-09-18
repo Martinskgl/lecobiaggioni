@@ -118,8 +118,13 @@ export function MethodTimeline({
                     ref={(node) => {
                       dotRefs.current[index] = node;
                     }}
-                    className="timeline-dot absolute left-4 top-8 z-10 size-2.5 -translate-x-1/2 rounded-full md:left-1/2 md:top-1/2 md:-translate-y-1/2"
-                  />
+                    className="timeline-dot absolute left-4 top-8 z-10 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
+                    aria-hidden
+                  >
+                    <svg viewBox="0 0 24 24" className="size-3.5 md:size-4" aria-hidden>
+                      <path d="M12 20.4S3.6 15.2 3.6 9.4C3.6 6.5 5.8 4.5 8.4 4.5c1.6 0 3 .8 3.6 2 0.6-1.2 2-2 3.6-2 2.6 0 4.8 2 4.8 4.9 0 5.8-8.4 11-8.4 11z" />
+                    </svg>
+                  </span>
                   <div className={`pl-10 md:pl-0 ${photoLeft ? "" : "md:order-2"}`}>{polaroid}</div>
                   <div className={`pl-10 md:pl-0 ${photoLeft ? "" : "md:order-1"}`}>{copy}</div>
                 </Reveal>
