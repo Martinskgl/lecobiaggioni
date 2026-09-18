@@ -38,10 +38,10 @@ export function PhotoCarousel({ photos }: { photos: readonly string[] }) {
   };
 
   return (
-    <section className="bg-cream py-10 md:py-14">
+    <section className="bg-cream py-8 md:py-12">
       <div
         ref={scrollerRef}
-        className={`carousel-scroller flex gap-5 overflow-x-auto px-6 pb-2 md:gap-6 md:px-10 ${grabbing ? "cursor-grabbing" : "cursor-grab"}`}
+        className={`carousel-scroller flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:gap-5 md:px-8 ${grabbing ? "cursor-grabbing" : "cursor-grab"}`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
@@ -51,9 +51,9 @@ export function PhotoCarousel({ photos }: { photos: readonly string[] }) {
         {photos.map((src, index) => (
           <div
             key={`${src}-${index}`}
-            className="carousel-card w-[min(78vw,28rem)] shrink-0 select-none overflow-hidden md:w-[32rem]"
+            className="carousel-card w-[min(90vw,66rem)] shrink-0 snap-center select-none overflow-hidden"
           >
-            <Photo src={src} alt="" className="aspect-[4/3] pointer-events-none" sizes="520px" quiet />
+            <Photo src={src} alt="" className="aspect-[16/10] pointer-events-none md:aspect-[16/9]" sizes="920px" quiet />
           </div>
         ))}
       </div>
