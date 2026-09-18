@@ -36,6 +36,11 @@ body {
   width: min(100%, 1100px);
 }
 
+.site-shell {
+  width: min(100%, 1180px);
+  box-shadow: 0 0 60px rgba(84, 39, 46, 0.04);
+}
+
 .carousel-card {
   background: #fff;
   border: 1px solid color-mix(in srgb, var(--wine) 10%, transparent);

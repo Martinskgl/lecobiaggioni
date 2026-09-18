@@ -20,9 +20,10 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
   const copy = ui[locale];
 
   return (
-    <div className="bg-cream text-wine">
+    <div className="bg-white text-wine">
       <HeroIntro src={photos.hero} kicker={copy.heartLine} name={brand.name} />
 
+      <div className="site-shell mx-auto bg-cream">
       <SaveSince copy={copy} body={dict.editorial.body} />
 
       <PolaroidStack
@@ -124,7 +125,6 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </section>
 
-
       <section className="relative mt-10 min-h-[70vh]">
         <Photo src={photos.kiss} alt="" fillParent />
         <div className="absolute inset-0 bg-wine/30" />
@@ -163,7 +163,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
       />
 
       <section className="px-6 py-10 md:px-10">
-        <div className="page-frame mx-auto grid max-w-[1200px] items-center gap-12 md:grid-cols-2">
+        <div className="page-frame mx-auto grid max-w-[1100px] items-center gap-12 md:grid-cols-2">
           <Photo src={photos.flowers} alt="" className="min-h-[60vh]" sizes="50vw" zoom />
           <Reveal>
             <p className="font-script text-2xl text-rose">{copy.giftsKicker}</p>
@@ -175,7 +175,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
       </section>
 
       <section className="px-6 py-24 md:px-10">
-        <div className="page-frame mx-auto max-w-[1200px]">
+        <div className="page-frame mx-auto max-w-[1100px]">
           <p className="font-script text-2xl text-rose">{copy.detailsKicker}</p>
           <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{dict.included.title}</h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{dict.included.lead}</p>
@@ -226,6 +226,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }

@@ -25,10 +25,8 @@ export default async function LocaleLayout({
     <div className="flex min-h-full flex-col bg-white">
       <HtmlLang locale={locale} />
       <SiteHeader locale={locale} dict={dict} />
-      <main className="mx-auto w-full max-w-[1180px] flex-1 bg-cream shadow-[0_0_60px_rgba(84,39,46,0.04)]">
-        {children}
-      </main>
-      <div className="mx-auto w-full max-w-[1180px] bg-cream">
+      <main className="flex-1 bg-white">{children}</main>
+      <div className="site-shell mx-auto w-full bg-cream">
         <SiteFooter locale={locale} dict={dict} />
       </div>
       <WhatsappButton label={dict.footer.whatsapp} />
