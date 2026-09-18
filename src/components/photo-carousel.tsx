@@ -51,9 +51,9 @@ export function PhotoCarousel({ photos }: { photos: readonly string[] }) {
         {photos.map((src, index) => (
           <div
             key={`${src}-${index}`}
-            className="carousel-card w-[min(90vw,66rem)] shrink-0 snap-center select-none overflow-hidden"
+            className="carousel-card w-[calc(100%-1.5rem)] shrink-0 snap-center select-none overflow-hidden md:w-[calc(100%-2.5rem)]"
           >
-            <Photo src={src} alt="" className="aspect-[16/10] pointer-events-none md:aspect-[16/9]" sizes="920px" quiet />
+            <Photo src={src} alt="" className="aspect-[16/10] pointer-events-none md:aspect-[16/9]" sizes="1100px" quiet />
           </div>
         ))}
       </div>
