@@ -57,6 +57,11 @@ body {
   scrollbar-width: none;
   -ms-overflow-style: none;
   touch-action: pan-y;
+  cursor: grab;
+}
+
+.carousel-scroller:active {
+  cursor: grabbing;
 }
 
 .carousel-scroller::-webkit-scrollbar {
