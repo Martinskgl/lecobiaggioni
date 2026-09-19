@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { FaqList } from "@/components/faq-list";
+import { FormatsDressCode } from "@/components/formats-dress-code";
 import { GatheringSplit } from "@/components/gathering-split";
 import { HeroIntro } from "@/components/hero-intro";
 import { Photo } from "@/components/photo";
@@ -155,25 +156,15 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </section>
 
-      <section className="px-6 py-24 md:px-10">
-        <div className="page-frame mx-auto max-w-[1100px]">
-          <p className="font-script text-2xl text-rose">{copy.detailsKicker}</p>
-          <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{dict.included.title}</h2>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{dict.included.lead}</p>
-          <div className="mt-14 grid gap-8 md:grid-cols-2">
-            <article>
-              <Photo src={photos.suit} alt={copy.packATitle} className="aspect-[4/5]" sizes="50vw" zoom />
-              <h3 className="mt-6 font-display text-4xl">{copy.packATitle}</h3>
-              <p className="mt-4 text-base leading-8 text-wine/75">{copy.packABody}</p>
-            </article>
-            <article>
-              <Photo src={photos.aisle} alt={copy.packBTitle} className="aspect-[4/5]" sizes="50vw" zoom />
-              <h3 className="mt-6 font-display text-4xl">{copy.packBTitle}</h3>
-              <p className="mt-4 text-base leading-8 text-wine/75">{copy.packBBody}</p>
-            </article>
-          </div>
-        </div>
-      </section>
+      <FormatsDressCode
+        kicker={copy.detailsKicker}
+        title={dict.included.title}
+        lead={dict.included.lead}
+        packATitle={copy.packATitle}
+        packABody={copy.packABody}
+        packBTitle={copy.packBTitle}
+        packBBody={copy.packBBody}
+      />
 
       <section id="rsvp" className="scroll-mt-24 grid md:grid-cols-2">
         <Photo src={photos.vows} alt="" className="min-h-[70vh]" sizes="50vw" />
@@ -197,14 +188,14 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
       </section>
 
-      <section id="faq" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-32">
-        <div className="page-frame mx-auto max-w-[900px]">
-          <p className="font-script text-2xl text-rose">{copy.faqKicker}</p>
-          <h2 className="mt-3 font-display text-5xl md:text-7xl">{dict.faq.title}</h2>
-          <p className="mt-6 text-base leading-8 text-wine/75">{dict.editorial.subtitle}</p>
-          <div className="mt-12">
-            <FaqList items={dict.faq.items} />
+      <section id="faq" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32">
+        <div className="page-frame mx-auto grid max-w-[1100px] gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
+          <div className="md:sticky md:top-28 md:self-start">
+            <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.faqKicker}</p>
+            <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-6xl lg:text-7xl">{dict.faq.title}</h2>
+            <p className="mt-6 max-w-md text-base leading-8 text-wine/75">{dict.editorial.subtitle}</p>
           </div>
+          <FaqList items={dict.faq.items} />
         </div>
       </section>
       </div>

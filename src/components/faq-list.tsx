@@ -13,12 +13,12 @@ export function FaqList({ items }: { items: { q: string; a: string }[] }) {
           <div key={item.q}>
             <button
               type="button"
-              className="flex w-full items-start justify-between gap-6 py-6 text-left"
+              className="flex w-full items-start justify-between gap-6 py-5 text-left md:py-6"
               onClick={() => setOpen(active ? null : index)}
               aria-expanded={active}
             >
-              <span className="font-display text-2xl md:text-3xl">{item.q}</span>
-              <span className="mt-1 text-rose">{active ? "–" : "+"}</span>
+              <span className="font-display text-xl leading-snug md:text-2xl">{item.q}</span>
+              <span className="mt-1 shrink-0 text-lg text-rose">{active ? "–" : "+"}</span>
             </button>
             <div
               className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
