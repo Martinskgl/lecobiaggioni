@@ -51,16 +51,19 @@ export function SinceClock({
 
   return (
     <div className="since-clock">
-      <p
-        className={`font-script text-rose ${compact ? "text-center text-xl md:text-left" : "text-center text-2xl md:text-3xl"}`}
-      >
-        {copy.countdownLabel}
-      </p>
       <div
-        className={`clock-grid mt-6 grid grid-cols-5 text-center ${compact ? "gap-2 md:gap-4" : "gap-3 md:gap-6"}`}
+        className={`clock-grid grid grid-cols-5 items-start text-center ${compact ? "gap-1 md:gap-2" : "gap-1 md:gap-3"}`}
       >
-        {cells.map((cell) => (
-          <div key={cell.id}>
+        {cells.map((cell, index) => (
+          <div key={cell.id} className="relative">
+            {index > 0 ? (
+              <span
+                className={`pointer-events-none absolute -left-1 top-[0.15em] text-wine/35 md:-left-2 ${compact ? "text-2xl md:text-3xl" : "text-3xl md:text-5xl lg:text-6xl"}`}
+                aria-hidden
+              >
+                |
+              </span>
+            ) : null}
             <p
               className={`font-display leading-none text-wine ${compact ? "text-3xl md:text-4xl" : "text-4xl md:text-6xl lg:text-7xl"}`}
             >

@@ -81,8 +81,12 @@ export function PolaroidStack({
         const node = cardRefs.current[index];
         if (!node) return;
         const slot = STACK[index % STACK.length];
-        const local = easeOutCubic(clamp((progress - index * span) / 0.18, 0, 1));
-        const rise = (1 - local) * 48;
+        // First card is the cover: visible from the start; others stack in on scroll.
+        const local =
+          index === 0
+            ? 1
+            : easeOutCubic(clamp((progress - index * span) / 0.18, 0, 1));
+        const rise = index === 0 ? 0 : (1 - local) * 48;
         node.style.opacity = String(local);
         node.style.transform = `translate(-50%, calc(-50% + ${rise}vh)) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`;
       });
@@ -109,11 +113,11 @@ export function PolaroidStack({
   const copy = (
     <div className="max-w-md">
       <RingIcon />
-      <p className="mt-5 font-script text-2xl text-rose">{kicker}</p>
-      <h2 className="mt-3 font-display text-5xl leading-[0.9] md:text-7xl">{title}</h2>
-      <p className="mt-5 font-script text-xl text-rose/90">{how}</p>
-      <h3 className="mt-8 font-display text-3xl leading-snug md:text-4xl">{lead}</h3>
-      <p className="mt-5 text-base leading-8 text-wine/75">{body}</p>
+      <p className="mt-4 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p>
+      <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.95] text-wine md:text-6xl">{title}</h2>
+      <p className="mt-3 font-script text-lg text-rose/90 md:text-xl">{how}</p>
+      <h3 className="mt-5 font-display text-2xl leading-snug text-wine md:text-3xl">{lead}</h3>
+      <p className="mt-3 text-[0.95rem] leading-7 text-wine/70">{body}</p>
     </div>
   );
 
@@ -169,8 +173,11 @@ export function PolaroidStack({
                   className="absolute left-1/2 top-1/2 w-[min(58vw,15.5rem)] bg-white p-[0.7rem] pb-3 shadow-[0_18px_50px_rgba(84,39,46,0.16)] will-change-transform md:w-[min(22vw,16.5rem)]"
                   style={{
                     zIndex: index + 2,
-                    opacity: 0,
-                    transform: `translate(-50%, calc(-50% + 48vh)) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`,
+                    opacity: index === 0 ? 1 : 0,
+                    transform:
+                      index === 0
+                        ? `translate(-50%, -50%) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`
+                        : `translate(-50%, calc(-50% + 48vh)) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`,
                   }}
                 >
                   <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="280px" quiet />

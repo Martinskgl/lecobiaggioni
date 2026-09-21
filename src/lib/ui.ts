@@ -34,7 +34,9 @@ export type UiCopy = {
   gatheringMeta: { label: string; value: string }[];
   dayKicker: string;
   giftsKicker: string;
+  giftsTitle: string;
   giftsNote: string;
+  giftsDetails: string[];
   detailsKicker: string;
   packATitle: string;
   packABody: string;
@@ -62,7 +64,7 @@ export const ui: Record<Locale, UiCopy> = {
     close: "Fechar",
     heartLine: "Celebração com direção  ♥  Rio de Janeiro, desde 2004",
     saveTitle: "Desde 2004",
-    saveDate: "Rio · Brasil",
+    saveDate: "Rio | Brasil",
     countdownLabel: "Conduzindo celebrações há",
     years: "Anos",
     days: "Dias",
@@ -113,8 +115,11 @@ export const ui: Record<Locale, UiCopy> = {
       { label: "Agenda:", value: "Limitada de propósito" },
     ],
     dayKicker: "O método",
-    giftsKicker: "A direção",
-    giftsNote: ipsum,
+    giftsKicker: "Wedding Gifts",
+    giftsTitle: "Your presence is truly the greatest gift.",
+    giftsNote:
+      "Having you there is the greatest gift of all. If you'd like to do something extra special, a contribution to our honeymoon adventures would be deeply appreciated.",
+    giftsDetails: ['Bank Transfer: DE1234567890', 'Message: "Honeymoon Fund"'],
     detailsKicker: "Formatos",
     packATitle: "Pacote Completo",
     packABody: ipsumLong,
@@ -171,7 +176,7 @@ export const ui: Record<Locale, UiCopy> = {
     close: "Close",
     heartLine: "Celebration with direction  ♥  Rio de Janeiro, since 2004",
     saveTitle: "Since 2004",
-    saveDate: "Rio · Brazil",
+    saveDate: "Rio | Brazil",
     countdownLabel: "Conducting celebrations for",
     years: "Years",
     days: "Days",
@@ -222,8 +227,11 @@ export const ui: Record<Locale, UiCopy> = {
       { label: "Diary:", value: "Limited on purpose" },
     ],
     dayKicker: "The method",
-    giftsKicker: "The direction",
-    giftsNote: ipsum,
+    giftsKicker: "Wedding Gifts",
+    giftsTitle: "Your presence is truly the greatest gift.",
+    giftsNote:
+      "Having you there is the greatest gift of all. If you'd like to do something extra special, a contribution to our honeymoon adventures would be deeply appreciated.",
+    giftsDetails: ['Bank Transfer: DE1234567890', 'Message: "Honeymoon Fund"'],
     detailsKicker: "Formats",
     packATitle: "Full planning",
     packABody: ipsumLong,
@@ -280,7 +288,7 @@ export const ui: Record<Locale, UiCopy> = {
     close: "Cerrar",
     heartLine: "Celebración con dirección  ♥  Río de Janeiro, desde 2004",
     saveTitle: "Desde 2004",
-    saveDate: "Río · Brasil",
+    saveDate: "Río | Brasil",
     countdownLabel: "Conduciendo celebraciones desde hace",
     years: "Años",
     days: "Días",
@@ -331,8 +339,11 @@ export const ui: Record<Locale, UiCopy> = {
       { label: "Agenda:", value: "Limitada a propósito" },
     ],
     dayKicker: "El método",
-    giftsKicker: "La dirección",
-    giftsNote: ipsum,
+    giftsKicker: "Wedding Gifts",
+    giftsTitle: "Your presence is truly the greatest gift.",
+    giftsNote:
+      "Having you there is the greatest gift of all. If you'd like to do something extra special, a contribution to our honeymoon adventures would be deeply appreciated.",
+    giftsDetails: ['Bank Transfer: DE1234567890', 'Message: "Honeymoon Fund"'],
     detailsKicker: "Formatos",
     packATitle: "Paquete completo",
     packABody: ipsumLong,

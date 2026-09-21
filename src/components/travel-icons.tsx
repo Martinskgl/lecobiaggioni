@@ -51,8 +51,8 @@ export function TravelIcons({
   return (
     <section className="bg-cream px-6 py-24 md:px-10 md:py-32">
       <div className="page-frame mx-auto max-w-[1100px] text-center">
-        <p className="font-script text-2xl text-rose">{kicker}</p>
-        <h2 className="mx-auto mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{title}</h2>
+        <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p>
+        <h2 className="mx-auto mt-4 max-w-3xl font-display text-4xl leading-[0.95] md:text-6xl">{title}</h2>
         <div className="mt-16 grid gap-12 text-left md:grid-cols-3 md:gap-10">
           {items.map((item, index) => {
             const Icon = ICONS[index % ICONS.length];

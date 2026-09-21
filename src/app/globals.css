@@ -44,13 +44,13 @@ body {
 .carousel-card {
   background: #fff;
   border: 1px solid color-mix(in srgb, var(--wine) 8%, transparent);
-  border-radius: 1.5rem;
+  border-radius: 0.45rem;
   box-shadow: 0 18px 44px rgba(84, 39, 46, 0.12);
-  padding: 0.65rem;
+  padding: 0.45rem;
 }
 
 .carousel-card > div {
-  border-radius: 1.05rem;
+  border-radius: 0.28rem;
 }
 
 .carousel-scroller {

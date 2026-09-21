@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { Photo } from "@/components/photo";
 
-const GAP = 20;
-const SIDE_PAD = 20;
+const GAP = 18;
+const SIDE_PEEK = 0.78; // show ~11% of neighbors on each side
 
 export function PhotoCarousel({ photos }: { photos: readonly string[] }) {
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ export function PhotoCarousel({ photos }: { photos: readonly string[] }) {
   const measure = () => {
     const viewport = viewportRef.current;
     if (!viewport || count === 0) return;
-    const next = Math.min(viewport.clientWidth - SIDE_PAD * 2, 1100);
+    const next = Math.min(viewport.clientWidth * SIDE_PEEK, 920);
     slideWidthRef.current = next;
     setSlideWidth(next);
     const pad = (viewport.clientWidth - next) / 2;

@@ -79,7 +79,7 @@ export function MethodTimeline({
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
           <p className="font-script text-2xl text-rose">{kicker}</p>
-          <h2 className="mt-3 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">{title}</h2>
+          <h2 className="mt-3 max-w-3xl font-display text-4xl leading-[0.95] md:text-5xl">{title}</h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{lead}</p>
         </Reveal>
 
@@ -104,8 +104,8 @@ export function MethodTimeline({
               );
               const copy = (
                 <div className={photoLeft ? "md:pl-6" : "md:pr-6 md:text-right"}>
-                  <p className="font-display text-5xl leading-none text-wine/25 md:text-6xl">{step.n}</p>
-                  <h3 className="mt-4 font-display text-4xl leading-none md:text-5xl">{step.title}</h3>
+                  <p className="font-display text-4xl leading-none text-wine/25 md:text-5xl">{step.n}</p>
+                  <h3 className="mt-3 font-display text-3xl leading-none md:text-4xl">{step.title}</h3>
                   <p className={`mt-4 max-w-md text-base leading-8 text-wine/75 ${photoLeft ? "" : "md:ml-auto"}`}>
                     {step.body}
                   </p>
