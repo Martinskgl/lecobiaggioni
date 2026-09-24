@@ -40,8 +40,6 @@ export function FormatsDressCode({
   packABody,
   packBTitle,
   packBBody,
-  packACta,
-  packBCta,
 }: {
   kicker: string;
   title: string;
@@ -50,8 +48,6 @@ export function FormatsDressCode({
   packABody: string;
   packBTitle: string;
   packBBody: string;
-  packACta: string;
-  packBCta: string;
 }) {
   return (
     <section className="bg-cream px-6 py-24 md:px-10 md:py-32">
@@ -86,7 +82,6 @@ export function FormatsDressCode({
             <PackIcon variant="a" />
             <h3 className="mt-5 font-display text-4xl md:text-5xl">{packATitle}</h3>
             <p className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{packABody}</p>
-            <a href="#rsvp" className="mt-6 inline-flex rounded-full bg-wine px-6 py-3 text-sm text-cream">{packACta}</a>
           </Reveal>
 
           <div className="flex items-center justify-center md:hidden" aria-hidden>
@@ -101,7 +96,6 @@ export function FormatsDressCode({
             <PackIcon variant="b" />
             <h3 className="mt-5 font-display text-4xl md:text-5xl">{packBTitle}</h3>
             <p className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{packBBody}</p>
-            <a href="#rsvp" className="mt-6 inline-flex rounded-full bg-wine px-6 py-3 text-sm text-cream">{packBCta}</a>
           </Reveal>
         </div>
       </div>
