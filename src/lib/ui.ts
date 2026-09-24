@@ -144,12 +144,12 @@ export const ui: Record<Locale, UiCopy> = {
       rsvp: "Analisar nosso caso",
     },
     chapters: [
-      { title: "Análise inicial", date: "Análise", body: "Primeiro, precisamos entender o caso de vocês: nacionalidade, residência, estado civil, documentos disponíveis e o tipo de casamento desejado." },
-      { title: "Checklist personalizado", date: "Documentos", body: "Depois da análise inicial, organizamos a lista de documentos, traduções, registros e etapas aplicáveis ao caso." },
-      { title: "Preparação documental", date: "Traduções", body: "Orientamos a preparação do processo e coordenamos traduções juramentadas e outros apoios profissionais quando necessários." },
-      { title: "Coordenação com o cartório", date: "Cartório", body: "Uma equipe local acompanha a comunicação com o cartório responsável, os prazos e cada etapa do processo brasileiro." },
-      { title: "Casamento civil", date: "O sim", body: "Com a habilitação concluída, coordenamos os detalhes locais para a realização do casamento civil no Brasil." },
-      { title: "Celebração no Rio", date: "Rio", body: "O casamento civil pode ser acompanhado de um Elopement Wedding ou de uma celebração criada em torno da história de vocês." },
+{ title: "Primeiro, precisamos entender o caso de vocês.", date: "Análise · O começo", body: "Analisamos nacionalidade, país de residência, estado civil, documentos disponíveis e o tipo de casamento que desejam realizar no Brasil." },
+  { title: "Cada casal começa de um ponto diferente.", date: "Documentos · Checklist", body: "Depois da análise inicial, organizamos uma lista com os documentos, traduções, registros e etapas aplicáveis ao caso." },
+  { title: "Os documentos precisam chegar ao Brasil da forma correta.", date: "Traduções · Preparação", body: "Orientamos a preparação do processo e coordenamos traduções juramentadas e outros apoios profissionais quando necessários." },
+  { title: "Uma equipe local acompanha o processo no Brasil.", date: "Cartório · Coordenação", body: "Coordenamos a comunicação com o cartório responsável, acompanhamos os prazos e mantemos vocês informados sobre cada etapa." },
+  { title: "O momento em que o direito se transforma em história.", date: "O sim · Casamento civil", body: "Com a habilitação concluída, coordenamos os detalhes locais para a realização do casamento civil no Brasil." },
+  { title: "Depois da documentação, vem a parte que vocês vão guardar.", date: "Rio · Celebração", body: "O casamento civil pode ser acompanhado de um Elopement Wedding ou de uma celebração criada em torno da história de vocês." },
     ],
   },
   en: {

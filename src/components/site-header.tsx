@@ -69,7 +69,7 @@ export function SiteHeader({
           ))}
           <LocaleSwitcher locale={locale} tone={light ? "light" : "dark"} />
           <Link href={`${root}#rsvp`} className={ctaClass}>
-            {dict.nav.cta}
+            {locale === "pt" ? "Analisar nosso caso" : locale === "en" ? "Analyze our case" : "Analizar nuestro caso"}
           </Link>
         </nav>
 
@@ -105,7 +105,7 @@ export function SiteHeader({
             <div className="mt-4 flex flex-wrap items-center gap-6">
               <LocaleSwitcher locale={locale} tone="dark" />
               <Link href={`${root}#rsvp`} className="btn-wine" onClick={() => setOpen(false)}>
-                {dict.nav.cta}
+                {locale === "pt" ? "Analisar nosso caso" : locale === "en" ? "Analyze our case" : "Analizar nuestro caso"}
               </Link>
             </div>
           </nav>

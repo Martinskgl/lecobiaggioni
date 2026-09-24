@@ -43,7 +43,7 @@ export function Photo({
     <div
       className={`${fillParent ? "absolute inset-0" : "relative min-h-[12rem]"} overflow-hidden ${zoom ? "photo-zoom" : ""} ${kenburns ? "kenburns" : ""} ${className}`}
       role="img"
-      aria-label={alt || "Placeholder"}
+      aria-label={alt || ""}
     >
       <div
         className="placeholder-fill absolute inset-0"
@@ -51,11 +51,7 @@ export function Photo({
           background: `linear-gradient(145deg, ${from} 0%, ${to} 100%)`,
         }}
       />
-      {quiet ? null : (
-        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[0.62rem] font-medium tracking-[0.22em] text-cream/70 uppercase">
-          Placeholder
-        </span>
-      )}
+      {quiet ? null : null}
     </div>
   );
 }
