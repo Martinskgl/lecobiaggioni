@@ -21,10 +21,14 @@ export function HeroIntro({
   src,
   kicker,
   name,
+  lead,
+  cta,
 }: {
   src: string;
   kicker: string;
   name: string;
+  lead?: string;
+  cta?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState(false);
@@ -58,6 +62,8 @@ export function HeroIntro({
         <h1 className="mt-2 font-display text-[clamp(2.6rem,11.6vw,9.6rem)] leading-none md:mt-3">
           <LetterLine text={name} />
         </h1>
+        {lead ? <p className="mt-5 max-w-xl text-base leading-7 text-cream/90 md:text-lg">{lead}</p> : null}
+        {cta ? <a href="#rsvp" className="btn-cream mt-6 inline-flex">{cta}</a> : null}
       </div>
     </section>
   );
