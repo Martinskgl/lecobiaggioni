@@ -36,9 +36,11 @@ export function SiteHeader({
   const light = home && !scrolled && !open;
 
   const links = [
-    { href: `${root}#location`, label: copy.anchors.location },
-    { href: `${root}#hotels`, label: copy.anchors.hotels },
     { href: `${root}#theday`, label: copy.anchors.day },
+    { href: `${root}#presentation`, label: copy.anchors.location },
+    { href: `${root}#destination`, label: copy.anchors.hotels },
+    { href: `${root}#details`, label: "Pacotes" },
+    { href: `${root}#about`, label: "Sobre o Leco" },
     { href: `${root}#faq`, label: copy.anchors.faq },
   ];
 

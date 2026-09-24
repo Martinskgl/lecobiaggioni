@@ -22,13 +22,14 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
 
   return (
     <div className="bg-white text-wine">
-      <HeroIntro src={photos.hero} kicker={copy.heartLine} name={brand.name} />
+      <HeroIntro src={photos.hero} kicker={dict.hero.line} name={dict.hero.title} lead={dict.hero.lead} cta={dict.hero.cta} />
 
       <div className="site-shell mx-auto bg-cream">
         <SaveSince copy={copy} body={dict.editorial.body} />
 
-        <PolaroidStack
-          kicker={copy.storyKicker}
+        <section id="presentation" className="scroll-mt-24">
+          <PolaroidStack
+          kicker={dict.editorial.title}
           title={copy.storyTitle}
           how={copy.storyHow}
           lead={copy.storyLead}
@@ -37,53 +38,15 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
             ...chapter,
             src: chapterPhotos[index],
           }))}
-        />
-
-        <section id="location" className="scroll-mt-24 bg-cream px-6 py-20 md:px-10 md:py-28">
-          <div className="page-frame mx-auto max-w-[720px] text-center">
-            <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.locationKicker}</p>
-            <h2 className="mt-4 font-display text-4xl leading-[0.95] text-wine md:text-6xl">{copy.locationTitle}</h2>
-            <p className="mt-5 text-base text-wine/70">{copy.locationAddress}</p>
-            <a
-              href="https://maps.google.com/?q=Rio+de+Janeiro"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-wine px-7 py-3 text-sm tracking-wide text-cream transition hover:bg-blush"
-            >
-              {copy.maps}
-            </a>
-          </div>
+          />
         </section>
 
-        <PhotoCarousel photos={[photos.rio, photos.christ, photos.garden, photos.terrace]} />
-
-        <TravelIcons kicker={copy.travelKicker} title={copy.travelTitle} items={copy.travel} />
-
-        <section id="hotels" className="scroll-mt-24 bg-cream px-6 py-16 md:px-10 md:py-20">
-          <div className="page-frame mx-auto max-w-[1100px]">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{dict.venuesHome.kicker}</p>
-              <h2 className="mt-4 font-display text-3xl leading-[1.05] text-wine md:text-5xl">{dict.venuesHome.title}</h2>
-            </div>
-            <div className="mt-12 grid gap-8 md:grid-cols-3">
-              {HOME_VENUES.map((slug) => {
-                const card = dict.venuesHome.cards[slug];
-                return (
-                  <Link key={slug} href={localizedPath(locale, `/onde-casar/${slug}`)} className="group block">
-                    <Photo
-                      src={venuePhotos[slug]}
-                      alt={card.title}
-                      className="aspect-[4/5]"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      zoom
-                    />
-                    <h3 className="mt-5 font-display text-3xl">{card.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-wine/75">{card.text}</p>
-                    <span className="mt-4 inline-block underline">{copy.maps}</span>
-                  </Link>
-                );
-              })}
-            </div>
+        <section id="destination" className="scroll-mt-24 bg-cream px-6 py-20 md:px-10 md:py-28">
+          <div className="page-frame mx-auto max-w-[720px] text-center">
+            <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">Rio de Janeiro</p>
+            <h2 className="mt-4 font-display text-4xl leading-[0.95] text-wine md:text-6xl">{dict.destination.title}</h2>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-wine/75">{dict.destination.body}</p>
+            <a href="#rsvp" className="mt-8 inline-flex rounded-full bg-wine px-7 py-3 text-sm tracking-wide text-cream">{dict.destination.cta}</a>
           </div>
         </section>
 
@@ -104,23 +67,18 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
           photos={[photos.vows, photos.table, photos.flowers]}
         />
 
-        <section className="bg-cream px-6 py-10 md:px-10 md:py-14">
-          <div className="page-frame relative mx-auto min-h-[70vh] max-w-[1100px] overflow-hidden rounded-[0.5rem] md:min-h-[76vh]">
-            <Photo src={photos.flowers} alt="" fillParent quiet />
-            <div className="absolute inset-0 bg-cream/55" />
-            <div className="relative flex min-h-[70vh] flex-col items-center justify-center px-8 py-20 text-center md:min-h-[76vh] md:px-16">
-              <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.giftsKicker}</p>
-              <h2 className="mt-5 max-w-3xl font-display text-4xl leading-[0.95] md:text-6xl">{copy.giftsTitle}</h2>
-              <p className="mt-6 max-w-xl text-base leading-8 text-wine/75">{copy.giftsNote}</p>
-              {copy.giftsDetails.map((line) => (
-                <p key={line} className="mt-3 text-sm font-medium text-wine">
-                  {line}
-                </p>
-              ))}
-            </div>
-          </div>
+        <section id="about" className="scroll-mt-24">
+          <GatheringSplit
+            caption={copy.lookingForward}
+            kicker={copy.gatheringKicker}
+            title={copy.gatheringTitle}
+            body={copy.gatheringBody}
+            meta={copy.gatheringMeta}
+            photo={photos.dinner}
+          />
         </section>
 
+        <section id="details" className="scroll-mt-24">
         <FormatsDressCode
           kicker={copy.detailsKicker}
           title={dict.included.title}
@@ -130,6 +88,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
           packBTitle={copy.packBTitle}
           packBBody={copy.packBBody}
         />
+        </section>
 
         <section id="rsvp" className="scroll-mt-24 grid md:grid-cols-2">
           <Photo src={photos.vows} alt="" className="min-h-[70vh]" sizes="50vw" />
