@@ -338,7 +338,7 @@ const pt: Dictionary = {
     micro: "Nossa equipe entrará em contato para entender o caso e explicar os próximos passos possíveis.",
   },
   form: {
-    name: "Nome",
+    name: "Nome das duas pessoas",
     whatsapp: "WhatsApp",
     email: "E-mail",
     date: "Data ou período desejado",
@@ -692,7 +692,7 @@ const en: Dictionary = {
     title: "Your date could be the beginning of our next story.",
     body: ipsumLong,
     cta: "I want to check my date",
-    micro: "Our team will get in touch with you.",
+    micro: "Our team will contact you to understand your case and explain the possible next steps.",
   },
   form: {
     name: "Both names",
@@ -716,14 +716,14 @@ const en: Dictionary = {
     ],
     message: "Message",
     submit: "Request initial analysis",
-    success: "Our team will contact you to understand your case and explain the possible next steps.",
+    success: "We opened WhatsApp with your message.",
   },
   footer: {
     tagline: "Legal Gay Wedding Brazil by Leco Biaggìoni",
     services: "Civil marriage and celebrations in Rio de Janeiro for same-sex couples from around the world.",
     city: "Rio de Janeiro · Brazil",
     copyright: "© Leco Biaggìoni",
-    whatsapp: "WhatsApp · Email · Instagram",
+    whatsapp: "WhatsApp",
   },
   venuesPage: {
     title: "Where to marry",
@@ -877,9 +877,9 @@ const en: Dictionary = {
 
 const es: Dictionary = {
   meta: {
-    title: "Leco Biaggìoni — Celebración con dirección",
+    title: "Legal Gay Wedding Brazil | Matrimonio civil LGBTQIA+ en Brasil",
     description:
-      "Wedding planner en Río de Janeiro desde 2004. Equipo local bilingüe para destination weddings en Brasil.",
+      "Coordinación de matrimonio civil en Brasil para parejas extranjeras del mismo sexo, con apoyo documental y celebraciones en Rio de Janeiro.",
   },
   nav: {
     home: "Home",
@@ -887,13 +887,13 @@ const es: Dictionary = {
     hotels: "Hoteles socios",
     about: "Quién soy",
     contact: "Contacto",
-    cta: "Consultar mi fecha",
+    cta: "Analizar nuestro caso",
   },
   hero: {
-    title: "La boda es de ustedes. La dirección, déjenla con nosotros.",
-    lead: "Desde la primera conversación hasta el último invitado, conducimos cada elección para que puedan estar presentes en lo que importa.",
-    cta: "Consultar disponibilidad de mi fecha",
-    line: "Planificación · Asesoría · Ceremonial · Decoración",
+    title: "Legal Gay Wedding Brazil",
+    lead: "Matrimonio civil en Brasil para parejas extranjeras del mismo sexo, con orientación sobre el proceso, coordinación local y la posibilidad de celebrar este momento en Rio de Janeiro.",
+    cta: "Entender si podemos casarnos en Brasil",
+    line: "RIO DE JANEIRO · BRASIL",
   },
   editorial: {
     title: "No necesitan saber cómo organizar una boda.",
@@ -1060,18 +1060,30 @@ const es: Dictionary = {
     title: "Su fecha puede ser el comienzo de nuestra próxima historia.",
     body: ipsumLong,
     cta: "Quiero consultar mi fecha",
-    micro: "Nuestro equipo se pondrá en contacto con ustedes.",
+    micro: "Nuestro equipo se pondrá en contacto para entender el caso y explicar los próximos pasos posibles.",
   },
   form: {
-    name: "Nombre",
+    name: "Nombre de las dos personas",
     whatsapp: "WhatsApp",
     email: "E-mail",
-    date: "Fecha prevista",
+    date: "Fecha o período deseado",
     venue: "Lugar deseado",
-    venueOpen: "Todavía no decidimos",
+    venueOpen: "Todavía no sabemos",
     guests: "Número aproximado de invitados",
     city: "Ciudad / país donde viven",
-    submit: "Enviar por WhatsApp",
+    country: "País donde viven",
+    nationality: "Nacionalidad de cada persona",
+    maritalStatus: "Estado civil actual",
+    experience: "Tipo de experiencia",
+    experienceOptions: [
+      "Todavía no sabemos",
+      "Solo matrimonio civil",
+      "Matrimonio civil + Elopement",
+      "Matrimonio civil + celebración con invitados",
+      "Renovación de votos en Rio",
+    ],
+    message: "Mensaje",
+    submit: "Solicitar análisis inicial",
     success: "Abrimos WhatsApp con su mensaje.",
   },
   footer: {

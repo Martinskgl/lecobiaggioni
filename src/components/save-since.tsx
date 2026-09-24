@@ -1,6 +1,4 @@
 import { Reveal } from "@/components/reveal";
-import { brand } from "@/lib/site";
-import type { UiCopy } from "@/lib/ui";
 
 function CoupleMark() {
   return (
@@ -16,20 +14,31 @@ function CoupleMark() {
 }
 
 export function SaveSince({
-  copy,
-  body,
+  kicker,
+  title,
+  paragraphs,
+  note,
 }: {
-  copy: UiCopy;
-  body: string;
+  kicker: string;
+  title: string;
+  paragraphs: string[];
+  note?: string;
 }) {
   return (
     <section className="bg-cream px-6 py-20 md:px-10 md:py-24">
       <div className="page-frame mx-auto max-w-[720px] text-center">
         <Reveal>
           <CoupleMark />
-          <p className="mt-6 font-display text-xl tracking-wide text-wine md:text-2xl">{copy.saveTitle}</p>
-          <h2 className="mt-6 font-display text-[2.6rem] leading-[1.05] text-wine md:text-6xl">{copy.saveDate}</h2>
-          <p className="mx-auto mt-7 max-w-xl text-[0.95rem] leading-7 text-wine/70 md:text-base md:leading-8">{body}</p>
+          <p className="mt-6 font-display text-xl tracking-wide text-wine md:text-2xl">{kicker}</p>
+          <h2 className="mt-6 font-display text-[2.6rem] leading-[1.05] text-wine md:text-6xl">{title}</h2>
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph} className="mx-auto mt-7 max-w-xl text-[0.95rem] leading-7 text-wine/70 md:text-base md:leading-8">
+              {paragraph}
+            </p>
+          ))}
+          {note ? (
+            <p className="mx-auto mt-8 max-w-lg border-t border-wine/15 pt-6 text-[0.82rem] leading-6 text-wine/60 italic">{note}</p>
+          ) : null}
         </Reveal>
       </div>
     </section>

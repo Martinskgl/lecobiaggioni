@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import type { Dictionary } from "@/lib/dictionaries";
 import { brand, localizedPath, type Locale } from "@/lib/site";
+import { homeCopy } from "@/lib/home-copy";
 import { ui } from "@/lib/ui";
 
 export function SiteHeader({
@@ -35,13 +36,14 @@ export function SiteHeader({
 
   const light = home && !scrolled && !open;
 
+  const nav = homeCopy[locale].nav;
   const links = [
-    { href: `${root}#theday`, label: copy.anchors.day },
-    { href: `${root}#presentation`, label: copy.anchors.location },
-    { href: `${root}#destination`, label: copy.anchors.hotels },
-    { href: `${root}#details`, label: "Pacotes" },
-    { href: `${root}#about`, label: "Sobre o Leco" },
-    { href: `${root}#faq`, label: copy.anchors.faq },
+    { href: `${root}#story`, label: nav.howItWorks },
+    { href: `${root}#presentation`, label: nav.civil },
+    { href: `${root}#destination`, label: nav.celebration },
+    { href: `${root}#details`, label: nav.packages },
+    { href: `${root}#about`, label: nav.about },
+    { href: `${root}#faq`, label: nav.faq },
   ];
 
   const ctaClass = light ? "btn-cream !px-5 !py-2.5 text-sm" : "btn-wine !px-5 !py-2.5 text-sm";

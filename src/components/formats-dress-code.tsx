@@ -40,10 +40,16 @@ export function FormatsDressCode({
   packABody,
   packBTitle,
   packBBody,
+  packACta,
+  packBCta,
+  ctaHref = "#rsvp",
 }: {
   kicker: string;
   title: string;
-  lead: string;
+  lead?: string;
+  packACta?: string;
+  packBCta?: string;
+  ctaHref?: string;
   packATitle: string;
   packABody: string;
   packBTitle: string;
@@ -56,7 +62,7 @@ export function FormatsDressCode({
           <DetailsIcon />
           <p className="mt-5 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p>
           <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">{title}</h2>
-          <p className="mt-6 text-base leading-8 text-wine/75">{lead}</p>
+          {lead ? <p className="mt-6 text-base leading-8 text-wine/75">{lead}</p> : null}
           <div className="mt-10 flex items-center justify-center gap-4 md:gap-5">
             {SWATCHES.map((color) => (
               <span
@@ -82,6 +88,11 @@ export function FormatsDressCode({
             <PackIcon variant="a" />
             <h3 className="mt-5 font-display text-4xl md:text-5xl">{packATitle}</h3>
             <p className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{packABody}</p>
+            {packACta ? (
+              <a href={ctaHref} className="btn-wine mt-8 inline-flex">
+                {packACta}
+              </a>
+            ) : null}
           </Reveal>
 
           <div className="flex items-center justify-center md:hidden" aria-hidden>
@@ -96,6 +107,11 @@ export function FormatsDressCode({
             <PackIcon variant="b" />
             <h3 className="mt-5 font-display text-4xl md:text-5xl">{packBTitle}</h3>
             <p className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{packBBody}</p>
+            {packBCta ? (
+              <a href={ctaHref} className="btn-wine mt-8 inline-flex">
+                {packBCta}
+              </a>
+            ) : null}
           </Reveal>
         </div>
       </div>

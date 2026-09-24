@@ -19,7 +19,7 @@ export function MethodTimeline({
 }: {
   kicker: string;
   title: string;
-  lead: string;
+  lead?: string;
   steps: { n: string; title: string; body: string }[];
   photos: readonly string[];
 }) {
@@ -80,7 +80,7 @@ export function MethodTimeline({
         <Reveal>
           <p className="font-script text-2xl text-rose">{kicker}</p>
           <h2 className="mt-3 max-w-3xl font-display text-4xl leading-[0.95] md:text-5xl">{title}</h2>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{lead}</p>
+          {lead ? <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{lead}</p> : null}
         </Reveal>
 
         <div className="relative mt-20">

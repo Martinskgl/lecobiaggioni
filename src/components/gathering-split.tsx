@@ -35,7 +35,7 @@ export function GatheringSplit({
   caption: string;
   kicker: string;
   title: string;
-  body: string;
+  body: string | string[];
   meta: { label: string; value: string }[];
   photo: string;
 }) {
@@ -58,7 +58,11 @@ export function GatheringSplit({
             <CocktailIcon />
             <p className="mt-5 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p>
             <h2 className="mt-3 font-display text-5xl leading-[0.95] md:text-6xl">{title}</h2>
-            <p className="mt-6 max-w-md text-base leading-8 text-wine/75">{body}</p>
+            {(Array.isArray(body) ? body : [body]).map((paragraph) => (
+              <p key={paragraph} className="mt-6 max-w-md text-base leading-8 text-wine/75">
+                {paragraph}
+              </p>
+            ))}
 
             <dl className="mt-10 max-w-md">
               {meta.map((item) => (

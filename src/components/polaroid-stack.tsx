@@ -18,6 +18,7 @@ export type PolaroidItem = {
   title: string;
   date: string;
   body: string;
+  label?: string;
 };
 
 function clamp(value: number, min: number, max: number) {
@@ -50,9 +51,9 @@ export function PolaroidStack({
   items: PolaroidItem[];
   kicker: string;
   title: string;
-  how: string;
-  lead: string;
-  body: string;
+  how?: string;
+  lead?: string;
+  body?: string;
 }) {
   const [pinned, setPinned] = useState(true);
   const rootRef = useRef<HTMLElement>(null);
@@ -115,38 +116,30 @@ export function PolaroidStack({
       <RingIcon />
       <p className="mt-4 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p>
       <h2 className="mt-3 font-display text-4xl font-semibold leading-[0.95] text-wine md:text-6xl">{title}</h2>
-      <p className="mt-3 font-script text-lg text-rose/90 md:text-xl">{how}</p>
-      <h3 className="mt-5 font-display text-2xl leading-snug text-wine md:text-3xl">{lead}</h3>
-      <p className="mt-3 text-[0.95rem] leading-7 text-wine/70">{body}</p>
+      {how ? <p className="mt-3 font-script text-lg text-rose/90 md:text-xl">{how}</p> : null}
+      {lead ? <h3 className="mt-5 font-display text-2xl leading-snug text-wine md:text-3xl">{lead}</h3> : null}
+      {body ? <p className="mt-3 text-[0.95rem] leading-7 text-wine/70">{body}</p> : null}
     </div>
   );
 
   if (!pinned) {
     return (
       <section id="story" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32">
-        <div className="page-frame mx-auto grid max-w-[1100px] items-center gap-14 lg:grid-cols-2 lg:gap-16">
-          <Reveal className="relative mx-auto h-[420px] w-full max-w-md">
-            {items.slice(0, 4).map((item, index) => {
-              const slot = STACK[index % STACK.length];
-              return (
-                <div
-                  key={item.title}
-                  className="absolute left-1/2 top-1/2 w-[min(62%,15rem)] bg-white p-[0.7rem] pb-3 shadow-[0_18px_50px_rgba(84,39,46,0.16)]"
-                  style={{
-                    zIndex: index + 1,
-                    transform: `translate(-50%, -50%) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`,
-                  }}
-                >
-                  <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="240px" quiet />
-                  <div className="mt-2 px-1">
-                    <p className="font-display text-lg leading-none">{item.title}</p>
-                    <p className="mt-1 text-xs text-wine/50">{item.date}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </Reveal>
+        <div className="page-frame mx-auto max-w-[1100px]">
           <Reveal>{copy}</Reveal>
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {items.map((item) => (
+              <div key={item.title} className="bg-white p-[0.7rem] pb-4 shadow-[0_18px_50px_rgba(84,39,46,0.12)]">
+                <Photo src={item.src} alt={item.title} className="aspect-[4/3]" sizes="360px" quiet />
+                <div className="mt-3 px-1">
+                  {item.label ? <p className="text-[0.62rem] font-medium tracking-[0.14em] text-rose uppercase">{item.label}</p> : null}
+                  <p className="mt-1 font-display text-xl leading-tight">{item.title}</p>
+                  <p className="mt-1 text-xs text-wine/50">{item.date}</p>
+                  <p className="mt-2 text-sm leading-6 text-wine/70">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
@@ -161,7 +154,7 @@ export function PolaroidStack({
     >
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         <div className="page-frame relative mx-auto grid h-full max-w-[1100px] items-center px-6 md:grid-cols-2 md:gap-10 md:px-10">
-          <div className="relative h-[70vh] w-full md:h-full">
+          <div className="relative h-[62vh] w-full md:h-full">
             {items.map((item, index) => {
               const slot = STACK[index % STACK.length];
               return (
@@ -180,10 +173,12 @@ export function PolaroidStack({
                         : `translate(-50%, calc(-50% + 48vh)) translate(${slot.x}%, ${slot.y}%) rotate(${slot.rotate}deg)`,
                   }}
                 >
-                  <Photo src={item.src} alt={item.title} className="aspect-[4/5]" sizes="280px" quiet />
+                  <Photo src={item.src} alt={item.title} className="aspect-[4/3] md:aspect-[4/5]" sizes="280px" quiet />
                   <div className="mt-2 px-1">
-                    <p className="font-display text-lg leading-none md:text-xl">{item.title}</p>
+                    {item.label ? <p className="text-[0.6rem] font-medium tracking-[0.14em] text-rose uppercase">{item.label}</p> : null}
+                    <p className="mt-1 font-display text-lg leading-tight md:text-xl">{item.title}</p>
                     <p className="mt-1 text-xs text-wine/50">{item.date}</p>
+                    <p className="mt-2 text-[0.72rem] leading-5 text-wine/70">{item.body}</p>
                   </div>
                 </div>
               );
