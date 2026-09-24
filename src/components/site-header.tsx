@@ -36,9 +36,11 @@ export function SiteHeader({
   const light = home && !scrolled && !open;
 
   const links = [
-    { href: `${root}#location`, label: copy.anchors.location },
-    { href: `${root}#hotels`, label: copy.anchors.hotels },
     { href: `${root}#theday`, label: copy.anchors.day },
+    { href: `${root}#theday`, label: copy.anchors.civil },
+    { href: `${root}#theday`, label: copy.anchors.celebration },
+    { href: `${root}#details`, label: copy.anchors.packages },
+    { href: `${root}#about`, label: copy.anchors.about },
     { href: `${root}#faq`, label: copy.anchors.faq },
   ];
 

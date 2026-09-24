@@ -50,6 +50,10 @@ export type UiCopy = {
     location: string;
     hotels: string;
     day: string;
+    civil: string;
+    celebration: string;
+    packages: string;
+    about: string;
     faq: string;
     rsvp: string;
   };
@@ -73,14 +77,14 @@ export const ui: Record<Locale, UiCopy> = {
     seconds: "Segundos",
     storyKicker: "O caminho",
     storyTitle: "Do primeiro contato ao casamento civil.",
-    storyLead: "Análise · Documentos · Traduções · Cartório · O sim · Rio",
-    storyBody: "Uma equipe local acompanha cada etapa no Brasil, com orientação clara e presença próxima.",
-    storyHow: "Análise inicial · Checklist · Preparação documental · Coordenação com o cartório · Casamento civil · Celebração no Rio",
-    locationKicker: "Onde casar",
-    locationTitle: "A gente se encontra no Rio",
-    locationAddress: "Rio de Janeiro, Brasil",
-    travelKicker: "Chegando",
-    travelTitle: "Viagem & transporte",
+    storyLead: "",
+    storyBody: "",
+    storyHow: "",
+    locationKicker: "Rio de Janeiro",
+    locationTitle: "Casar no Brasil. Celebrar no Rio.",
+    locationAddress: "",
+    travelKicker: "",
+    travelTitle: "",
     travel: [
       {
         title: "De avião",
@@ -132,6 +136,10 @@ export const ui: Record<Locale, UiCopy> = {
       location: "Casamento civil",
       hotels: "Celebração no Rio",
       day: "Como funciona",
+      civil: "Casamento civil",
+      celebration: "Celebração no Rio",
+      packages: "Pacotes",
+      about: "Sobre o Leco",
       faq: "FAQ",
       rsvp: "Analisar nosso caso",
     },
@@ -217,9 +225,13 @@ export const ui: Record<Locale, UiCopy> = {
     footerLine: "We can't wait to conduct this day with you.",
     footerNote: ipsum,
     anchors: {
-      location: "Location",
-      hotels: "Hotels",
-      day: "The day",
+      location: "Civil wedding",
+      hotels: "Rio celebration",
+      day: "How it works",
+      civil: "Civil wedding",
+      celebration: "Rio celebration",
+      packages: "Packages",
+      about: "About Leco",
       faq: "FAQ",
       rsvp: "RSVP",
     },
@@ -329,9 +341,13 @@ export const ui: Record<Locale, UiCopy> = {
     footerLine: "No vemos la hora de conducir el día de ustedes.",
     footerNote: ipsum,
     anchors: {
-      location: "Lugares",
-      hotels: "Hoteles",
-      day: "El día",
+      location: "Boda civil",
+      hotels: "Celebración en Río",
+      day: "Cómo funciona",
+      civil: "Boda civil",
+      celebration: "Celebración en Río",
+      packages: "Paquetes",
+      about: "Sobre Leco",
       faq: "FAQ",
       rsvp: "Contacto",
     },
