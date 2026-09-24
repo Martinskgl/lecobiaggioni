@@ -1,127 +1,60 @@
-import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { FaqList } from "@/components/faq-list";
 import { FormatsDressCode } from "@/components/formats-dress-code";
 import { GatheringSplit } from "@/components/gathering-split";
 import { HeroIntro } from "@/components/hero-intro";
-import { Photo } from "@/components/photo";
 import { MethodTimeline } from "@/components/method-timeline";
-import { PhotoCarousel } from "@/components/photo-carousel";
+import { Photo } from "@/components/photo";
 import { PolaroidStack } from "@/components/polaroid-stack";
 import { SaveSince } from "@/components/save-since";
-import { TravelIcons } from "@/components/travel-icons";
 import type { Dictionary } from "@/lib/dictionaries";
 import { chapterPhotos, photos, venuePhotos } from "@/lib/photos";
-import { brand, localizedPath, type Locale, type VenueSlug } from "@/lib/site";
+import { brand, type Locale } from "@/lib/site";
 import { ui } from "@/lib/ui";
-
-const HOME_VENUES: VenueSlug[] = ["cristo-redentor", "xian", "outros-lugares"];
 
 export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const copy = ui[locale];
+  const cards = [dict.venuesHome.cards.xian, dict.venuesHome.cards["cristo-redentor"], dict.venuesHome.cards.zefira];
+  const stats = [
+    ["20+", locale === "pt" ? "Anos de experiência" : locale === "en" ? "Years of experience" : "Años de experiencia"],
+    ["3", locale === "pt" ? "Idiomas" : locale === "en" ? "Languages" : "Idiomas"],
+    ["1", locale === "pt" ? "Equipe local" : locale === "en" ? "Local team" : "Equipo local"],
+    ["2013", locale === "pt" ? "Marco nacional" : locale === "en" ? "National milestone" : "Hito nacional"],
+    ["1", locale === "pt" ? "Caso de cada vez" : locale === "en" ? "One case at a time" : "Un caso a la vez"],
+  ];
+  const cardImages = [venuePhotos.xian, venuePhotos["cristo-redentor"], venuePhotos.zefira];
 
   return (
     <div className="bg-white text-wine">
       <HeroIntro src={photos.hero} kicker={dict.hero.line} name={dict.hero.title} lead={dict.hero.lead} cta={dict.hero.cta} />
-
       <div className="site-shell mx-auto bg-cream">
-        <SaveSince copy={copy} body={dict.editorial.body} />
+        <section className="grid grid-cols-2 border-b border-wine/10 bg-cream md:grid-cols-5">
+          {stats.map(([value, label]) => <div key={`${value}-${label}`} className="border-r border-wine/10 px-4 py-7 text-center last:border-r-0"><strong className="font-display text-3xl md:text-4xl">{value}</strong><span className="mt-2 block text-[0.65rem] tracking-[0.12em] text-wine/60 uppercase">{label}</span></div>)}
+        </section>
 
         <section id="presentation" className="scroll-mt-24">
-          <PolaroidStack
-          kicker={dict.editorial.title}
-          title={copy.storyTitle}
-          how={copy.storyHow}
-          lead={copy.storyLead}
-          body={copy.storyBody}
-          items={copy.chapters.map((chapter, index) => ({
-            ...chapter,
-            src: chapterPhotos[index],
-          }))}
-          />
+          <SaveSince copy={copy} body={dict.editorial.body} />
+        </section>
+
+        <section id="story" className="scroll-mt-24">
+          <PolaroidStack kicker={copy.storyKicker} title={copy.storyTitle} how="" lead="" body="" items={copy.chapters.map((chapter, index) => ({ ...chapter, src: chapterPhotos[index] }))} />
         </section>
 
         <section id="destination" className="scroll-mt-24 bg-cream px-6 py-20 md:px-10 md:py-28">
-          <div className="page-frame mx-auto max-w-[720px] text-center">
-            <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">Rio de Janeiro</p>
-            <h2 className="mt-4 font-display text-4xl leading-[0.95] text-wine md:text-6xl">{dict.destination.title}</h2>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-wine/75">{dict.destination.body}</p>
-            <a href="#rsvp" className="mt-8 inline-flex rounded-full bg-wine px-7 py-3 text-sm tracking-wide text-cream">{dict.destination.cta}</a>
-          </div>
+          <div className="page-frame mx-auto max-w-[720px] text-center"><p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">Rio de Janeiro</p><h2 className="mt-4 font-display text-4xl leading-[0.95] md:text-6xl">{dict.destination.title}</h2><p className="mx-auto mt-6 max-w-xl text-base leading-8 text-wine/75">{dict.destination.body}</p><a href="#rsvp" className="mt-8 inline-flex rounded-full bg-wine px-7 py-3 text-sm tracking-wide text-cream">{dict.destination.cta}</a></div>
         </section>
 
-        <GatheringSplit
-          caption={copy.lookingForward}
-          kicker={copy.gatheringKicker}
-          title={copy.gatheringTitle}
-          body={copy.gatheringBody}
-          meta={copy.gatheringMeta}
-          photo={photos.dinner}
-        />
+        <GatheringSplit caption={copy.lookingForward} kicker={copy.gatheringKicker} title={copy.gatheringTitle} body={copy.gatheringBody} meta={copy.gatheringMeta} photo={photos.dinner} />
 
-        <MethodTimeline
-          kicker={copy.dayKicker}
-          title={dict.method.title}
-          lead={dict.method.cta}
-          steps={dict.method.steps}
-          photos={[photos.vows, photos.table, photos.flowers]}
-        />
+        <section id="formas" className="scroll-mt-24 bg-white px-6 py-24 md:px-10 md:py-32"><div className="page-frame mx-auto max-w-[1100px]"><div className="mx-auto max-w-2xl text-center"><p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{locale === "pt" ? "Formas de viver esse momento" : locale === "en" ? "Ways to live this moment" : "Formas de vivir este momento"}</p><h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">{locale === "pt" ? "Cada celebração nasce de uma escolha." : locale === "en" ? "Every celebration begins with a choice." : "Cada celebración nace de una elección."}</h2></div><div className="mt-14 grid gap-8 md:grid-cols-3">{cards.map((card, index) => <article key={card.title} className="border border-wine/10 bg-cream p-4"><Photo src={cardImages[index]} alt="" className="aspect-[4/3]" sizes="(min-width: 768px) 33vw, 100vw" /><h3 className="mt-6 font-display text-3xl">{card.title}</h3><p className="mt-3 text-sm leading-7 text-wine/75">{card.text}</p><a href="#rsvp" className="mt-5 inline-block text-sm underline underline-offset-4">{card.action}</a></article>)}</div></div></section>
 
-        <section id="about" className="scroll-mt-24">
-          <GatheringSplit
-            caption={copy.lookingForward}
-            kicker={copy.gatheringKicker}
-            title={copy.gatheringTitle}
-            body={copy.gatheringBody}
-            meta={copy.gatheringMeta}
-            photo={photos.dinner}
-          />
-        </section>
+        <section id="about" className="scroll-mt-24"><GatheringSplit caption={locale === "pt" ? "Aqui, a história de vocês é recebida com respeito." : locale === "en" ? "Here, your story is received with respect." : "Aquí, su historia es recibida con respeto."} kicker={locale === "pt" ? "Quem estará com vocês" : locale === "en" ? "Who will be with you" : "Quién estará con ustedes"} title={locale === "pt" ? "Vocês não precisam explicar por que esse casamento importa." : locale === "en" ? "You do not need to explain why this marriage matters." : "No necesitan explicar por qué este matrimonio importa."} body={locale === "pt" ? "Eu também sou gay e sei o que significa poder viver esse momento com liberdade. Meu trabalho é receber a história de vocês com respeito e transformar o processo brasileiro em um caminho claro, humano e bem conduzido.\n\nDesde 2004, eu e minha equipe realizamos eventos e casamentos no Rio de Janeiro. Hoje, usamos essa experiência para receber casais do Brasil e do mundo." : locale === "en" ? "I am gay too, and I know what it means to live this moment freely. My work is to receive your story with respect and turn the Brazilian process into a clear, human, well-guided path.\n\nSince 2004, my team and I have produced events and weddings in Rio de Janeiro. Today, we use this experience to welcome couples from Brazil and around the world." : "Yo también soy gay y sé lo que significa poder vivir este momento con libertad. Mi trabajo es recibir su historia con respeto y transformar el proceso brasileño en un camino claro, humano y bien acompañado.\n\nDesde 2004, mi equipo y yo realizamos eventos y bodas en Río de Janeiro. Hoy, usamos esta experiencia para recibir parejas de Brasil y del mundo."} meta={[{ label: locale === "pt" ? "Desde" : locale === "en" ? "Since" : "Desde", value: "2004" }, { label: "Idiomas", value: "PT · EN · ES" }, { label: locale === "pt" ? "Base" : locale === "en" ? "Based in" : "Base", value: "Rio de Janeiro" }]} photo={photos.dinner} /></section>
+        <MethodTimeline kicker={copy.dayKicker} title={dict.method.title} lead="" steps={copy.chapters.map((chapter, index) => ({ n: String(index + 1).padStart(2, "0"), title: chapter.title, body: chapter.body }))} photos={[photos.vows, photos.table, photos.flowers]} />
+        <section className="scroll-mt-24"><GatheringSplit caption={copy.giftsKicker} kicker={copy.giftsKicker} title={copy.giftsTitle} body={copy.giftsNote} meta={copy.giftsDetails.map((value) => ({ label: value, value: "" }))} photo={photos.vows} /></section>
 
-        <section id="details" className="scroll-mt-24">
-        <FormatsDressCode
-          kicker={copy.detailsKicker}
-          title={dict.included.title}
-          lead={dict.included.lead}
-          packATitle={copy.packATitle}
-          packABody={copy.packABody}
-          packBTitle={copy.packBTitle}
-          packBBody={copy.packBBody}
-        />
-        </section>
-
-        <section id="rsvp" className="scroll-mt-24 grid md:grid-cols-2">
-          <Photo src={photos.vows} alt="" className="min-h-[70vh]" sizes="50vw" />
-          <div className="flex items-center px-6 py-16 md:px-12">
-            <div className="w-full max-w-md">
-              <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.rsvpKicker}</p>
-              <h2 className="mt-3 font-display text-4xl leading-tight md:text-5xl">{dict.finalCta.title}</h2>
-              <p className="mt-5 text-base leading-8 text-wine/75">{dict.finalCta.body}</p>
-              <div className="mt-6 flex flex-col gap-2 text-sm">
-                <a href={`mailto:${brand.email}`} className="underline">
-                  {brand.email}
-                </a>
-                <a href={`https://wa.me/${brand.whatsapp}`} className="underline">
-                  {brand.whatsappDisplay}
-                </a>
-              </div>
-              <div className="mt-10">
-                <ContactForm dict={dict} />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="faq" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32">
-          <div className="page-frame mx-auto grid max-w-[1100px] gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
-            <div className="md:sticky md:top-28 md:self-start">
-              <p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.faqKicker}</p>
-              <h2 className="mt-4 font-display text-4xl leading-[0.95] md:text-5xl lg:text-6xl">{dict.faq.title}</h2>
-              <p className="mt-6 max-w-md text-base leading-8 text-wine/75">{dict.editorial.subtitle}</p>
-            </div>
-            <FaqList items={dict.faq.items} />
-          </div>
-        </section>
+        <section id="details" className="scroll-mt-24"><FormatsDressCode kicker={copy.detailsKicker} title={dict.included.title} lead="" packATitle={copy.packATitle} packABody={copy.packABody} packBTitle={copy.packBTitle} packBBody={copy.packBBody} packACta={dict.included.cta} packBCta={dict.destination.cta} /></section>
+        <section id="rsvp" className="scroll-mt-24 grid md:grid-cols-2"><Photo src={photos.vows} alt="" className="min-h-[70vh]" sizes="50vw" /><div className="flex items-center px-6 py-16 md:px-12"><div className="w-full max-w-md"><p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.rsvpKicker}</p><h2 className="mt-3 font-display text-4xl leading-tight md:text-5xl">{dict.finalCta.title}</h2><div className="mt-5 space-y-4 text-base leading-8 text-wine/75">{dict.finalCta.body.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="mt-6 flex flex-col gap-2 text-sm"><a href={`mailto:${brand.email}`} className="underline">{brand.email}</a><a href={`https://wa.me/${brand.whatsapp}`} className="underline">{brand.whatsappDisplay}</a></div><div className="mt-10"><ContactForm dict={dict} /></div></div></div></section>
+        <section id="faq" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32"><div className="page-frame mx-auto grid max-w-[1100px] gap-12 md:grid-cols-2 md:gap-16 lg:gap-20"><div className="md:sticky md:top-28 md:self-start"><p className="text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{copy.faqKicker}</p><h2 className="mt-4 font-display text-4xl leading-[0.95] md:text-5xl lg:text-6xl">{dict.faq.title}</h2><p className="mt-6 max-w-md text-base leading-8 text-wine/75">{locale === "pt" ? "As primeiras respostas sobre o casamento civil de casais homoafetivos estrangeiros no Brasil." : locale === "en" ? "The first answers about civil marriage for foreign same-sex couples in Brazil." : "Las primeras respuestas sobre el matrimonio civil de parejas extranjeras del mismo sexo en Brasil."}</p></div><FaqList items={dict.faq.items} /></div></section>
       </div>
     </div>
   );
