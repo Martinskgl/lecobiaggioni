@@ -175,9 +175,9 @@ export type Dictionary = {
 
 const pt: Dictionary = {
   meta: {
-    title: "Leco Biaggìoni — Celebração com direção",
+    title: "Legal Gay Wedding Brazil | Casamento civil LGBTQIA+ no Brasil",
     description:
-      "Planejamento de casamentos no Rio de Janeiro desde 2004. Assessoria, cerimonial e decoração com direção próxima e agenda limitada.",
+      "Coordenação de casamento civil no Brasil para casais homoafetivos estrangeiros, com suporte documental e celebrações no Rio de Janeiro.",
   },
   nav: {
     home: "Home",
@@ -188,16 +188,16 @@ const pt: Dictionary = {
     cta: "Consultar minha data",
   },
   hero: {
-    title: "O casamento é de vocês. A direção, deixa com a gente.",
-    lead: "Do primeiro encontro ao último convidado, conduzimos cada escolha para que vocês possam viver o que realmente importa: estar presentes.",
-    cta: "Consultar disponibilidade da minha data",
-    line: "Planejamento · Assessoria · Cerimonial · Decoração",
+    title: "Legal Gay Wedding Brazil",
+    lead: "Casamento civil no Brasil para casais homoafetivos estrangeiros, com orientação sobre o processo, coordenação local e a possibilidade de celebrar esse momento no Rio de Janeiro.",
+    cta: "Entender se podemos casar no Brasil",
+    line: "Casamento civil · Coordenação local · Celebração no Rio",
   },
   editorial: {
-    title: "Vocês não precisam saber como organizar um casamento.",
+    title: "O casamento de vocês pode acontecer legalmente aqui.",
     subtitle:
-      "Precisam saber que existe alguém que sabe exatamente o que vem depois.",
-    body: ipsumLong,
+      "No Brasil, o casamento civil entre pessoas do mesmo sexo é reconhecido.",
+    body: "Para casais estrangeiros, o processo começa com a análise da nacionalidade, do estado civil e dos documentos disponíveis. Nossa equipe organiza as etapas no Brasil e coordena o contato com cartório, tradução juramentada e suporte jurídico especializado, quando necessário. Cada caso é analisado individualmente. Os documentos, requisitos e prazos variam conforme o casal e o cartório responsável.",
   },
   since: {
     kicker: "Desde 2004",
@@ -210,31 +210,31 @@ const pt: Dictionary = {
     title: "Tudo no tempo certo. Vocês presentes em cada momento.",
   },
   method: {
-    kicker: "Como o Leco trabalha",
-    title: "Um casamento bem conduzido começa antes de qualquer contratação.",
-    cta: "Entender como funciona",
+    kicker: "O método",
+    title: "Um processo sensível precisa de informação clara e presença local.",
+    cta: "A gente analisa · A gente organiza · A gente acompanha",
     steps: [
       {
         n: "01",
-        title: "A gente escuta",
-        body: ipsumLong,
+        title: "A gente analisa",
+        body: "Entendemos a situação do casal antes de indicar documentos, prazos ou serviços. Nenhum caso deve ser tratado como uma fórmula pronta.",
       },
       {
         n: "02",
         title: "A gente organiza",
-        body: ipsum,
+        body: "Transformamos as informações em um caminho com etapas, documentos, traduções, contatos locais e responsabilidades definidas.",
       },
       {
         n: "03",
-        title: "A gente conduz",
-        body: ipsum,
+        title: "A gente acompanha",
+        body: "Coordenamos o processo no Brasil e mantemos vocês informados até a realização do casamento civil e da celebração contratada.",
       },
     ],
   },
   included: {
-    kicker: "O que está incluído",
-    title: "Do planejamento ao grande dia. Uma equipe olhando para o todo.",
-    lead: ipsumLong,
+    kicker: "Formas de viver esse momento",
+    title: "Do processo legal à celebração no Rio.",
+    lead: "Escolham o formato que faz sentido para a história de vocês.",
     items: [
       "Planejamento",
       "Assessoria",
@@ -249,31 +249,15 @@ const pt: Dictionary = {
     cta: "Quero entender qual formato faz sentido para mim",
   },
   venuesHome: {
-    kicker: "Onde fazer meu casamento",
-    title: "O lugar muda tudo. Inclusive a forma de planejar.",
-    lead: "Vista, arquitetura, logística, horário, gastronomia, acesso, estrutura. Cada espaço oferece possibilidades diferentes — e pede decisões diferentes. Conheça alguns dos lugares onde podemos criar o casamento de vocês.",
-    cta: "Ver todos os lugares",
+    kicker: "Destino",
+    title: "Casar no Brasil. Celebrar no Rio.",
+    lead: "Para muitos casais, vir ao Brasil representa a possibilidade do casamento civil. O Rio transforma essa conquista em uma experiência para ser vivida e lembrada.",
+    cta: "Conhecer as possibilidades",
     cards: {
-      xian: {
-        title: "Xian",
-        text: ipsumShort,
-        action: "Conhecer o Xian",
-      },
-      "cristo-redentor": {
-        title: "Cristo Redentor",
-        text: ipsumShort,
-        action: "Casar no Cristo",
-      },
-      zefira: {
-        title: "Zéfira",
-        text: ipsumShort,
-        action: "Conhecer o Zéfira",
-      },
-      "outros-lugares": {
-        title: "Outros destinos",
-        text: ipsumShort,
-        action: "Descobrir outros lugares",
-      },
+      xian: { title: "Casamento civil", text: "Coordenação das etapas necessárias para a realização do casamento civil no Brasil, de acordo com a situação documental do casal.", action: "Entender o processo" },
+      "cristo-redentor": { title: "Civil + Elopement", text: "Casamento civil acompanhado de uma celebração íntima no Rio, com local, cerimônia, fotografia, transporte e fornecedores.", action: "Conhecer a experiência" },
+      zefira: { title: "Civil + Destination Wedding", text: "Casamento civil e celebração com convidados, incluindo planejamento, hospedagem, logística e experiência no destino.", action: "Planejar nossa celebração" },
+      "outros-lugares": { title: "Renovação de votos", text: "Uma celebração criada em torno da história de vocês, com a presença e o cuidado da nossa equipe local.", action: "Conhecer as possibilidades" },
     },
   },
   quote: {
@@ -294,11 +278,11 @@ const pt: Dictionary = {
     cta: "Plan your wedding in Rio",
   },
   aboutHome: {
-    kicker: "Quem é Leco",
-    title: "Experiência suficiente para antecipar. Proximidade suficiente para ouvir.",
-    body: "Leco Biaggìoni está há mais de duas décadas conduzindo celebrações dentro e fora do Rio de Janeiro. Mas experiência, aqui, nunca significou distância. É estar perto para orientar. Ter repertório para recomendar. E ter segurança para saber quando uma ideia funciona — e quando existe um caminho melhor.",
-    stamp: "Leco Biaggìoni · Planejamento de Casamentos · Since 2004",
-    cta: "Conheça minha história",
+    kicker: "Sobre o Leco",
+    title: "Vocês não precisam explicar por que esse casamento importa.",
+    body: "Eu também sou gay e sei o que significa poder viver esse momento com liberdade. Meu trabalho é receber a história de vocês com respeito e transformar o processo brasileiro em um caminho claro, humano e bem conduzido. Desde 2004, eu e minha equipe realizamos eventos e casamentos no Rio de Janeiro.",
+    stamp: "Desde: 2004 · Idiomas: PT · EN · ES · Base: Rio de Janeiro",
+    cta: "Analisar nosso caso",
   },
   testimonials: {
     kicker: "Depoimentos",
