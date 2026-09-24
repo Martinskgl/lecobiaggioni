@@ -348,7 +348,7 @@ const pt: Dictionary = {
     micro: "Nossa equipe entrará em contato com você.",
   },
   form: {
-    name: "Nome das duas pessoas",
+    name: "Nome",
     whatsapp: "WhatsApp",
     email: "E-mail",
     date: "Data prevista",

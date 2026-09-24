@@ -50,10 +50,6 @@ export type UiCopy = {
     location: string;
     hotels: string;
     day: string;
-    civil: string;
-    celebration: string;
-    packages: string;
-    about: string;
     faq: string;
     rsvp: string;
   };
@@ -77,14 +73,14 @@ export const ui: Record<Locale, UiCopy> = {
     seconds: "Segundos",
     storyKicker: "O caminho",
     storyTitle: "Do primeiro contato ao casamento civil.",
-    storyLead: "",
-    storyBody: "",
-    storyHow: "",
-    locationKicker: "Rio de Janeiro",
-    locationTitle: "Casar no Brasil. Celebrar no Rio.",
-    locationAddress: "",
-    travelKicker: "",
-    travelTitle: "",
+    storyLead: "Análise · Documentos · Traduções · Cartório · O sim · Rio",
+    storyBody: "Uma equipe local acompanha cada etapa no Brasil, com orientação clara e presença próxima.",
+    storyHow: "Análise inicial · Checklist · Preparação documental · Coordenação com o cartório · Casamento civil · Celebração no Rio",
+    locationKicker: "Onde casar",
+    locationTitle: "A gente se encontra no Rio",
+    locationAddress: "Rio de Janeiro, Brasil",
+    travelKicker: "Chegando",
+    travelTitle: "Viagem & transporte",
     travel: [
       {
         title: "De avião",
@@ -136,20 +132,16 @@ export const ui: Record<Locale, UiCopy> = {
       location: "Casamento civil",
       hotels: "Celebração no Rio",
       day: "Como funciona",
-      civil: "Casamento civil",
-      celebration: "Celebração no Rio",
-      packages: "Pacotes",
-      about: "Sobre o Leco",
       faq: "FAQ",
       rsvp: "Analisar nosso caso",
     },
     chapters: [
-{ title: "Primeiro, precisamos entender o caso de vocês.", date: "Análise · O começo", body: "Analisamos nacionalidade, país de residência, estado civil, documentos disponíveis e o tipo de casamento que desejam realizar no Brasil." },
-  { title: "Cada casal começa de um ponto diferente.", date: "Documentos · Checklist", body: "Depois da análise inicial, organizamos uma lista com os documentos, traduções, registros e etapas aplicáveis ao caso." },
-  { title: "Os documentos precisam chegar ao Brasil da forma correta.", date: "Traduções · Preparação", body: "Orientamos a preparação do processo e coordenamos traduções juramentadas e outros apoios profissionais quando necessários." },
-  { title: "Uma equipe local acompanha o processo no Brasil.", date: "Cartório · Coordenação", body: "Coordenamos a comunicação com o cartório responsável, acompanhamos os prazos e mantemos vocês informados sobre cada etapa." },
-  { title: "O momento em que o direito se transforma em história.", date: "O sim · Casamento civil", body: "Com a habilitação concluída, coordenamos os detalhes locais para a realização do casamento civil no Brasil." },
-  { title: "Depois da documentação, vem a parte que vocês vão guardar.", date: "Rio · Celebração", body: "O casamento civil pode ser acompanhado de um Elopement Wedding ou de uma celebração criada em torno da história de vocês." },
+      { title: "Análise inicial", date: "Análise", body: "Primeiro, precisamos entender o caso de vocês: nacionalidade, residência, estado civil, documentos disponíveis e o tipo de casamento desejado." },
+      { title: "Checklist personalizado", date: "Documentos", body: "Depois da análise inicial, organizamos a lista de documentos, traduções, registros e etapas aplicáveis ao caso." },
+      { title: "Preparação documental", date: "Traduções", body: "Orientamos a preparação do processo e coordenamos traduções juramentadas e outros apoios profissionais quando necessários." },
+      { title: "Coordenação com o cartório", date: "Cartório", body: "Uma equipe local acompanha a comunicação com o cartório responsável, os prazos e cada etapa do processo brasileiro." },
+      { title: "Casamento civil", date: "O sim", body: "Com a habilitação concluída, coordenamos os detalhes locais para a realização do casamento civil no Brasil." },
+      { title: "Celebração no Rio", date: "Rio", body: "O casamento civil pode ser acompanhado de um Elopement Wedding ou de uma celebração criada em torno da história de vocês." },
     ],
   },
   en: {
@@ -225,13 +217,9 @@ export const ui: Record<Locale, UiCopy> = {
     footerLine: "We can't wait to conduct this day with you.",
     footerNote: ipsum,
     anchors: {
-      location: "Civil wedding",
-      hotels: "Rio celebration",
-      day: "How it works",
-      civil: "Civil wedding",
-      celebration: "Rio celebration",
-      packages: "Packages",
-      about: "About Leco",
+      location: "Location",
+      hotels: "Hotels",
+      day: "The day",
       faq: "FAQ",
       rsvp: "RSVP",
     },
@@ -341,13 +329,9 @@ export const ui: Record<Locale, UiCopy> = {
     footerLine: "No vemos la hora de conducir el día de ustedes.",
     footerNote: ipsum,
     anchors: {
-      location: "Boda civil",
-      hotels: "Celebración en Río",
-      day: "Cómo funciona",
-      civil: "Boda civil",
-      celebration: "Celebración en Río",
-      packages: "Paquetes",
-      about: "Sobre Leco",
+      location: "Lugares",
+      hotels: "Hoteles",
+      day: "El día",
       faq: "FAQ",
       rsvp: "Contacto",
     },

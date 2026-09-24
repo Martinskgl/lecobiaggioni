@@ -36,11 +36,9 @@ export function SiteHeader({
   const light = home && !scrolled && !open;
 
   const links = [
+    { href: `${root}#location`, label: copy.anchors.location },
+    { href: `${root}#hotels`, label: copy.anchors.hotels },
     { href: `${root}#theday`, label: copy.anchors.day },
-    { href: `${root}#theday`, label: copy.anchors.civil },
-    { href: `${root}#theday`, label: copy.anchors.celebration },
-    { href: `${root}#details`, label: copy.anchors.packages },
-    { href: `${root}#about`, label: copy.anchors.about },
     { href: `${root}#faq`, label: copy.anchors.faq },
   ];
 
@@ -69,7 +67,7 @@ export function SiteHeader({
           ))}
           <LocaleSwitcher locale={locale} tone={light ? "light" : "dark"} />
           <Link href={`${root}#rsvp`} className={ctaClass}>
-            {locale === "pt" ? "Analisar nosso caso" : locale === "en" ? "Analyze our case" : "Analizar nuestro caso"}
+            {dict.nav.cta}
           </Link>
         </nav>
 
@@ -105,7 +103,7 @@ export function SiteHeader({
             <div className="mt-4 flex flex-wrap items-center gap-6">
               <LocaleSwitcher locale={locale} tone="dark" />
               <Link href={`${root}#rsvp`} className="btn-wine" onClick={() => setOpen(false)}>
-                {locale === "pt" ? "Analisar nosso caso" : locale === "en" ? "Analyze our case" : "Analizar nuestro caso"}
+                {dict.nav.cta}
               </Link>
             </div>
           </nav>
