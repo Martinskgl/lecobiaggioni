@@ -1,5 +1,4 @@
 import { Reveal } from "@/components/reveal";
-import { SinceClock } from "@/components/since-clock";
 import { brand } from "@/lib/site";
 import type { UiCopy } from "@/lib/ui";
 
@@ -28,21 +27,10 @@ export function SaveSince({
       <div className="page-frame mx-auto max-w-[720px] text-center">
         <Reveal>
           <CoupleMark />
-          <p className="mt-6 font-display text-xl tracking-wide text-wine md:text-2xl">{brand.name}</p>
-          <h2 className="mt-6 font-display text-[2.6rem] leading-[1.05] text-wine md:text-6xl">
-            {copy.saveTitle}
-            <span className="mx-3 font-display text-wine/35" aria-hidden>
-              |
-            </span>
-            <span>{copy.saveDate}</span>
-          </h2>
-          <p className="mx-auto mt-7 max-w-xl text-[0.95rem] leading-7 text-wine/70 md:text-base md:leading-8">
-            {body}
-          </p>
+          <p className="mt-6 font-display text-xl tracking-wide text-wine md:text-2xl">{copy.saveTitle}</p>
+          <h2 className="mt-6 font-display text-[2.6rem] leading-[1.05] text-wine md:text-6xl">{copy.saveDate}</h2>
+          <p className="mx-auto mt-7 max-w-xl text-[0.95rem] leading-7 text-wine/70 md:text-base md:leading-8">{body}</p>
         </Reveal>
-        <div className="mt-14 md:mt-16">
-          <SinceClock copy={copy} />
-        </div>
       </div>
     </section>
   );

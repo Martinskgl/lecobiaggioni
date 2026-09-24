@@ -104,6 +104,12 @@ export type Dictionary = {
     venueOpen: string;
     guests: string;
     city: string;
+    country?: string;
+    nationality?: string;
+    maritalStatus?: string;
+    experience?: string;
+    experienceOptions?: string[];
+    message?: string;
     submit: string;
     success: string;
   };
@@ -363,10 +369,16 @@ const pt: Dictionary = {
     email: "E-mail",
     date: "Data prevista",
     venue: "Local desejado",
-    venueOpen: "Ainda não decidimos",
-    guests: "Número aproximado de convidados",
-    city: "Cidade / país onde mora",
-    submit: "Enviar pelo WhatsApp",
+  venueOpen: "Ainda não decidimos",
+  guests: "Número aproximado de convidados",
+  city: "Cidade / país onde mora",
+  country: "País onde vivem",
+  nationality: "Nacionalidade de cada pessoa",
+  maritalStatus: "Estado civil atual",
+  experience: "Tipo de experiência",
+  experienceOptions: ["Ainda não sabemos", "Apenas casamento civil", "Casamento civil + Elopement", "Casamento civil + celebração com convidados", "Renovação de votos no Rio"],
+  message: "Mensagem",
+  submit: "Solicitar análise inicial",
     success: "Abrimos o WhatsApp com a sua mensagem.",
   },
   footer: {
