@@ -1,3 +1,4 @@
+import { pillClass } from "@/components/destination-cta";
 import { Reveal } from "@/components/reveal";
 
 const SWATCHES = ["#54272e", "#db465d", "#c4a8ad", "#8a5a62"] as const;
@@ -43,13 +44,16 @@ export function FormatsDressCode({
   packACta,
   packBCta,
   ctaHref = "#rsvp",
+  cta,
 }: {
-  kicker: string;
+  kicker?: string;
   title: string;
   lead?: string;
   packACta?: string;
   packBCta?: string;
   ctaHref?: string;
+  /** Botão único abaixo dos dois cards. */
+  cta?: { label: string; href: string };
   packATitle: string;
   packABody: string | string[];
   packBTitle: string;
@@ -60,7 +64,7 @@ export function FormatsDressCode({
       <div className="page-frame mx-auto max-w-[1100px]">
         <Reveal className="mx-auto max-w-2xl text-center">
           <DetailsIcon />
-          <p className="mt-5 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p>
+          {kicker ? <p className="mt-5 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p> : null}
           <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">{title}</h2>
           {lead ? <p className="mt-6 text-base leading-8 text-wine/75">{lead}</p> : null}
           <div className="mt-10 flex items-center justify-center gap-4 md:gap-5">
@@ -118,6 +122,13 @@ export function FormatsDressCode({
             ) : null}
           </Reveal>
         </div>
+        {cta ? (
+          <div className="text-center">
+            <a href={cta.href} className={pillClass}>
+              {cta.label}
+            </a>
+          </div>
+        ) : null}
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { pillClass } from "@/components/destination-cta";
 import { Reveal } from "@/components/reveal";
 
 function CoupleMark() {
@@ -18,11 +19,13 @@ export function SaveSince({
   title,
   paragraphs,
   note,
+  cta,
 }: {
   kicker?: string;
   title: string;
   paragraphs: string[];
   note?: string;
+  cta?: { label: string; href: string };
 }) {
   return (
     <section className="bg-cream px-6 py-20 md:px-10 md:py-24">
@@ -38,6 +41,11 @@ export function SaveSince({
           ))}
           {note ? (
             <p className="mx-auto mt-8 max-w-lg border-t border-wine/15 pt-6 text-[0.82rem] leading-6 text-wine/60 italic">{note}</p>
+          ) : null}
+          {cta ? (
+            <a href={cta.href} className={pillClass}>
+              {cta.label}
+            </a>
           ) : null}
         </Reveal>
       </div>

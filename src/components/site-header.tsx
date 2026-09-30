@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import type { Dictionary } from "@/lib/dictionaries";
-import { brand, localizedPath, pagePath, type Locale } from "@/lib/site";
+import { brand, localizedPath, pageKeyFromSlug, pagePath, type Locale } from "@/lib/site";
 import { homeCopy } from "@/lib/home-copy";
 import { ui } from "@/lib/ui";
 
@@ -16,7 +16,9 @@ export function SiteHeader({
   dict: Dictionary;
 }) {
   const pathname = usePathname();
-  const home = /^\/(pt|en|es)\/?$/.test(pathname);
+  // Home e páginas internas abrem com o hero: header transparente sobre ele.
+  const segments = pathname.split("/").filter(Boolean);
+  const home = segments.length === 1 || (segments.length === 2 && Boolean(pageKeyFromSlug(locale, segments[1])));
   const copy = ui[locale];
   const root = localizedPath(locale);
   const [scrolled, setScrolled] = useState(false);

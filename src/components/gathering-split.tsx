@@ -32,14 +32,17 @@ export function GatheringSplit({
   meta = [],
   photo,
   cta,
+  list,
 }: {
   caption?: string;
-  kicker: string;
+  kicker?: string;
   title: string;
   body: string | string[];
   meta?: { label: string; value: string }[];
   photo: string;
   cta?: { label: string; href: string };
+  /** Rótulo em negrito + lista (mesmo estilo de lista de onde-casar/[slug]). */
+  list?: { label: string; items: string[] };
 }) {
   return (
     <section className="bg-cream px-6 py-20 md:px-10 md:py-28">
@@ -60,13 +63,26 @@ export function GatheringSplit({
 
           <Reveal>
             <CocktailIcon />
-            <p className="mt-5 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p>
+            {kicker ? <p className="mt-5 text-[0.72rem] font-medium tracking-[0.18em] text-wine uppercase">{kicker}</p> : null}
             <h2 className="mt-3 font-display text-5xl leading-[0.95] md:text-6xl">{title}</h2>
             {(Array.isArray(body) ? body : [body]).map((paragraph) => (
               <p key={paragraph} className="mt-6 max-w-md text-base leading-8 text-wine/75">
                 {paragraph}
               </p>
             ))}
+
+            {list ? (
+              <>
+                <p className="mt-6 max-w-md text-base leading-8 text-wine/75">
+                  <strong>{list.label}</strong>
+                </p>
+                <ul className="mt-10 grid gap-3 text-sm leading-7 text-wine/70">
+                  {list.items.map((item) => (
+                    <li key={item}>· {item}</li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
 
             {cta ? (
               <a href={cta.href} className="btn-wine mt-8 inline-flex">

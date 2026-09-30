@@ -1,8 +1,11 @@
 import { ContactForm } from "@/components/contact-form";
-import { FaqList } from "@/components/faq-list";
+import { DestinationCta } from "@/components/destination-cta";
+import { FaqSection } from "@/components/faq-section";
 import { FormatsDressCode } from "@/components/formats-dress-code";
 import { GatheringSplit } from "@/components/gathering-split";
 import { HeroIntro } from "@/components/hero-intro";
+import { HighlightBand } from "@/components/highlight-band";
+import { MemoryCards } from "@/components/memory-cards";
 import { Photo } from "@/components/photo";
 import { MethodTimeline } from "@/components/method-timeline";
 import { PhotoCarousel } from "@/components/photo-carousel";
@@ -15,7 +18,6 @@ import { homeCopy } from "@/lib/home-copy";
 import { chapterPhotos, photos } from "@/lib/photos";
 import { brand, pagePath, type Locale } from "@/lib/site";
 
-const WAYS_PHOTOS = [photos.rio, photos.christ, photos.terrace] as const;
 const SERVICE_ICONS: ServiceIcon[] = ["flower", "heart", "plane", "document"];
 
 export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -70,17 +72,12 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         />
 
         {/* Destino */}
-        <section id="destination" className="scroll-mt-24 bg-cream px-6 py-20 md:px-10 md:py-28">
-          <div className="page-frame mx-auto max-w-[720px] text-center">
-            <h2 className="mt-4 font-display text-4xl leading-[0.95] text-wine md:text-6xl">{copy.destination.title}</h2>
-            {copy.destination.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="mx-auto mt-6 max-w-xl text-base leading-8 text-wine/75">{paragraph}</p>
-            ))}
-            <a href={pagePath(locale, "rio")} className="mt-8 inline-flex rounded-full bg-wine px-7 py-3 text-sm tracking-wide text-cream transition hover:bg-blush">
-              {copy.destination.cta}
-            </a>
-          </div>
-        </section>
+        <DestinationCta
+          id="destination"
+          title={copy.destination.title}
+          paragraphs={copy.destination.paragraphs}
+          cta={{ label: copy.destination.cta, href: pagePath(locale, "rio") }}
+        />
 
         <PhotoCarousel photos={[photos.rio, photos.christ, photos.garden, photos.terrace]} />
 
@@ -88,28 +85,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         <TravelIcons title={copy.planning.title} items={copy.planning.items} />
 
         {/* Galeria: três cartões */}
-        <section id="formas" className="scroll-mt-24 bg-cream px-6 py-16 md:px-10 md:py-20">
-          <div className="page-frame mx-auto max-w-[1100px]">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-display text-3xl leading-[1.05] text-wine md:text-5xl">{copy.ways.title}</h2>
-            </div>
-            <div className="mt-12 grid gap-8 md:grid-cols-3">
-              {copy.ways.cards.map((card, index) => (
-                <a key={card.title} href="#rsvp" className="group block">
-                  <Photo
-                    src={WAYS_PHOTOS[index % WAYS_PHOTOS.length]}
-                    alt={card.title}
-                    className="aspect-[4/5]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    zoom
-                  />
-                  <h3 className="mt-5 font-display text-3xl">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-wine/75">{card.text}</p>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
+        <MemoryCards id="formas" title={copy.ways.title} cards={copy.ways.cards.map((card) => ({ ...card, href: "#rsvp" }))} />
 
         {/* Sobre o Leco */}
         <section id="about" className="scroll-mt-24">
@@ -130,20 +106,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         />
 
         {/* Faixa de destaque */}
-        <section className="bg-cream px-6 py-10 md:px-10 md:py-14">
-          <div className="page-frame relative mx-auto min-h-[70vh] max-w-[1100px] overflow-hidden rounded-[0.5rem] md:min-h-[76vh]">
-            <Photo src={photos.flowers} alt="" fillParent quiet />
-            <div className="absolute inset-0 bg-cream/55" />
-            <div className="relative flex min-h-[70vh] flex-col items-center justify-center px-8 py-20 text-center md:min-h-[76vh] md:px-16">
-              <h2 className="mt-5 max-w-3xl font-display text-4xl leading-[0.95] md:text-6xl">{copy.emotional.title}</h2>
-              {copy.emotional.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="mt-6 max-w-xl text-base leading-8 text-wine/75">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
+        <HighlightBand title={copy.emotional.title} paragraphs={copy.emotional.paragraphs} />
 
         {/* Brazil Wedding Legal: duas possibilidades */}
         <section id="details" className="scroll-mt-24">
@@ -187,14 +150,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="scroll-mt-24 bg-cream px-6 py-24 md:px-10 md:py-32">
-          <div className="page-frame mx-auto grid max-w-[1100px] gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
-            <div className="md:sticky md:top-28 md:self-start">
-              <h2 className="mt-4 font-display text-4xl leading-[0.95] md:text-5xl lg:text-6xl">{copy.faq.title}</h2>
-            </div>
-            <FaqList items={copy.faq.items} />
-          </div>
-        </section>
+        <FaqSection title={copy.faq.title} items={copy.faq.items} />
       </div>
     </div>
   );
