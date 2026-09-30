@@ -29,15 +29,17 @@ export function GatheringSplit({
   kicker,
   title,
   body,
-  meta,
+  meta = [],
   photo,
+  cta,
 }: {
-  caption: string;
+  caption?: string;
   kicker: string;
   title: string;
   body: string | string[];
-  meta: { label: string; value: string }[];
+  meta?: { label: string; value: string }[];
   photo: string;
+  cta?: { label: string; href: string };
 }) {
   return (
     <section className="bg-cream px-6 py-20 md:px-10 md:py-28">
@@ -48,9 +50,11 @@ export function GatheringSplit({
           <Reveal>
             <figure className="mx-auto w-full max-w-md bg-white p-3 pb-8 shadow-[0_18px_50px_rgba(84,39,46,0.12)] md:max-w-none">
               <Photo src={photo} alt="" className="aspect-square" sizes="480px" quiet />
-              <figcaption className="mt-5 px-2 text-center font-display text-2xl leading-snug italic md:text-[1.7rem]">
-                {caption}
-              </figcaption>
+              {caption ? (
+                <figcaption className="mt-5 px-2 text-center font-display text-2xl leading-snug italic md:text-[1.7rem]">
+                  {caption}
+                </figcaption>
+              ) : null}
             </figure>
           </Reveal>
 
@@ -64,6 +68,13 @@ export function GatheringSplit({
               </p>
             ))}
 
+            {cta ? (
+              <a href={cta.href} className="btn-wine mt-8 inline-flex">
+                {cta.label}
+              </a>
+            ) : null}
+
+            {meta.length ? (
             <dl className="mt-10 max-w-md">
               {meta.map((item) => (
                 <div
@@ -75,6 +86,7 @@ export function GatheringSplit({
                 </div>
               ))}
             </dl>
+            ) : null}
           </Reveal>
         </div>
       </div>

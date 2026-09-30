@@ -1,742 +1,831 @@
-import type { Locale } from "@/lib/site";
+import type { Locale, PageKey } from "@/lib/site";
 
 /**
- * Textos da Home (Legal Gay Wedding Brazil).
- * PT: texto aprovado no documento "Home Legal Gay Wedding Brazil".
- * EN / ES: tradução fiel do PT.
+ * Textos da Home (Leco Biaggìoni).
+ * PT: texto do Word "Home 1.docx". `**trecho**` = negrito do Word.
+ * EN / ES: tradução literal do PT.
+ * Elementos sem texto no Word ficam fora deste arquivo e são ocultados nos componentes.
  */
+export type ContactFormCopy = {
+  names: string;
+  email: string;
+  whatsapp: string;
+  country: string;
+  experience: string;
+  experienceOptions: string[];
+  date: string;
+  guests: string;
+  message: string;
+  submit: string;
+  note: string;
+};
+
 export type HomeCopy = {
   nav: {
-    howItWorks: string;
-    civil: string;
-    celebration: string;
-    packages: string;
-    about: string;
-    faq: string;
+    items: { page: PageKey; label: string }[];
+    cta: string;
   };
-  stats: { n: string; label: string }[];
+  hero: {
+    kicker: string;
+    title: string;
+    paragraphs: string[];
+    cta: string;
+    secondary: string;
+  };
+  stats: string[];
   presentation: {
     kicker: string;
     title: string;
     paragraphs: string[];
-    note: string;
   };
-  path: {
-    kicker: string;
+  services: {
+    page: PageKey;
+    name: string;
+    eyebrow: string;
     title: string;
-    chapters: { label: string; nav: string; title: string; body: string }[];
-  };
+    paragraphs: string[];
+    cta: string;
+    note?: string;
+  }[];
   destination: {
-    kicker: string;
     title: string;
-    body: string;
+    paragraphs: string[];
     cta: string;
   };
   planning: {
-    kicker: string;
     title: string;
     items: { title: string; body: string }[];
   };
   ways: {
     title: string;
-    cards: { title: string; text: string; action: string }[];
+    cards: { title: string; text: string }[];
   };
   about: {
-    caption: string;
     kicker: string;
     title: string;
     paragraphs: string[];
-    meta: { label: string; value: string }[];
+    cta: string;
   };
   method: {
-    kicker: string;
     title: string;
     steps: { n: string; title: string; body: string }[];
   };
   emotional: {
-    kicker: string;
     title: string;
     paragraphs: string[];
-    lines: string[];
   };
   formats: {
     kicker: string;
     title: string;
-    packA: { title: string; body: string; cta: string };
-    packB: { title: string; body: string; cta: string };
+    packA: { title: string; paragraphs: string[]; cta: string };
+    packB: { title: string; paragraphs: string[]; cta: string };
   };
   contact: {
-    kicker: string;
     title: string;
     paragraphs: string[];
+    form: ContactFormCopy;
   };
   faq: {
-    kicker: string;
     title: string;
-    lead: string;
     items: { q: string; a: string }[];
   };
   footer: {
     name: string;
     text: string;
     city: string;
+    cta: string;
     languages: string;
-    legal: string;
+    legal?: string;
   };
 };
 
 export const homeCopy: Record<Locale, HomeCopy> = {
   pt: {
     nav: {
-      howItWorks: "Como funciona",
-      civil: "Casamento civil",
-      celebration: "Celebração no Rio",
-      packages: "Pacotes",
-      about: "Sobre o Leco",
-      faq: "FAQ",
+      items: [
+        { page: "elopement", label: "Elopement Wedding" },
+        { page: "sameSex", label: "Casamento Homoafetivo" },
+        { page: "destination", label: "Destination Wedding" },
+        { page: "legal", label: "Brazil Wedding Legal 🌈" },
+      ],
+      cta: "Vamos conversar",
     },
-    stats: [
-      { n: "20+", label: "Anos de experiência" },
-      { n: "3", label: "Idiomas" },
-      { n: "1", label: "Equipe local" },
-      { n: "2013", label: "Marco nacional" },
-      { n: "1", label: "Caso de cada vez" },
-    ],
-    presentation: {
-      kicker: "Casamento civil no Brasil",
-      title: "O casamento de vocês pode acontecer legalmente aqui.",
+    hero: {
+      kicker: "LECO BIAGGÌONI · CASAMENTOS NO RIO DE JANEIRO",
+      title: "O seu amor. O seu jeito. O Rio como cenário.",
       paragraphs: [
-        "No Brasil, o casamento civil entre pessoas do mesmo sexo é reconhecido. Para casais estrangeiros, o processo começa com a análise da nacionalidade, do estado civil e dos documentos disponíveis.",
-        "Nossa equipe organiza as etapas no Brasil e coordena o contato com cartório, tradução juramentada e suporte jurídico especializado, quando necessário.",
+        "Uma cerimônia a dois, uma celebração com quem vocês amam ou o próximo passo para oficializar a união no Brasil.",
+        "Leco Biaggìoni e sua equipe cuidam do planejamento para transformar a história de vocês em uma experiência que faça sentido em cada detalhe.",
       ],
-      note: "Cada caso é analisado individualmente. Os documentos, requisitos e prazos variam conforme o casal e o cartório responsável.",
+      cta: "Vamos planejar nosso casamento",
+      secondary: "Conheça as experiências",
     },
-    path: {
-      kicker: "O caminho",
-      title: "Do primeiro contato ao casamento civil.",
-      chapters: [
-        {
-          label: "01 Análise inicial",
-          nav: "Análise · O começo",
-          title: "Primeiro, precisamos entender o caso de vocês.",
-          body: "Analisamos nacionalidade, país de residência, estado civil, documentos disponíveis e o tipo de casamento que desejam realizar no Brasil.",
-        },
-        {
-          label: "02 Checklist personalizado",
-          nav: "Documentos · Checklist",
-          title: "Cada casal começa de um ponto diferente.",
-          body: "Depois da análise inicial, organizamos uma lista com os documentos, traduções, registros e etapas aplicáveis ao caso.",
-        },
-        {
-          label: "03 Preparação documental",
-          nav: "Traduções · Preparação",
-          title: "Os documentos precisam chegar ao Brasil da forma correta.",
-          body: "Orientamos a preparação do processo e coordenamos traduções juramentadas e outros apoios profissionais quando necessários.",
-        },
-        {
-          label: "04 Coordenação com o cartório",
-          nav: "Cartório · Coordenação",
-          title: "Uma equipe local acompanha o processo no Brasil.",
-          body: "Coordenamos a comunicação com o cartório responsável, acompanhamos os prazos e mantemos vocês informados sobre cada etapa.",
-        },
-        {
-          label: "05 Casamento civil",
-          nav: "O sim · Casamento civil",
-          title: "O momento em que o direito se transforma em história.",
-          body: "Com a habilitação concluída, coordenamos os detalhes locais para a realização do casamento civil no Brasil.",
-        },
-        {
-          label: "06 Celebração no Rio",
-          nav: "Rio · Celebração",
-          title: "Depois da documentação, vem a parte que vocês vão guardar.",
-          body: "O casamento civil pode ser acompanhado de um Elopement Wedding ou de uma celebração criada em torno da história de vocês.",
-        },
+    stats: ["Mais de 20 anos em eventos", "Mais de 10 anos dedicados a casamentos", "Rio de Janeiro"],
+    presentation: {
+      kicker: "HISTÓRIAS DIFERENTES. UM CUIDADO PESSOAL.",
+      title: "O casamento de vocês começa com uma boa conversa.",
+      paragraphs: [
+        "Antes de escolher o cenário, as flores ou a música, queremos conhecer vocês.",
+        "Como imaginam esse dia? Quem precisa estar por perto? O que tornaria esse momento verdadeiramente especial?",
+        "É dessa conversa que nasce o nosso trabalho: reunir as pessoas, os lugares e os detalhes certos para uma celebração com a identidade do casal.",
       ],
     },
+    services: [
+      {
+        page: "elopement",
+        name: "Elopement Wedding",
+        eyebrow: "UM DIA INTEIRO PARA VOCÊS DOIS",
+        title: "A intimidade de um encontro. A emoção de um casamento.",
+        paragraphs: [
+          "Trocar votos diante do mar, celebrar com poucos convidados ou viver esse momento só a dois. O Elopement Wedding abre espaço para uma celebração íntima, no ritmo de vocês.",
+          "Levamos a experiência de quem organiza grandes eventos para cuidar de cada detalhe de um encontro pequeno e cheio de significado.",
+          "Para casar ou renovar os votos no Rio de Janeiro, criamos opções de experiências que combinam cenário, cerimônia e os detalhes que vocês desejam viver.",
+        ],
+        cta: "Descobrir nosso elopement",
+      },
+      {
+        page: "sameSex",
+        name: "Casamento Homoafetivo",
+        eyebrow: "LIBERDADE PARA CELEBRAR QUEM VOCÊS SÃO",
+        title: "Um casamento em que vocês possam ser inteiramente vocês.",
+        paragraphs: [
+          "A história de vocês orienta cada escolha: os votos, a entrada, as pessoas ao redor e a forma de celebrar.",
+          "Nosso trabalho começa na escuta e segue pelo planejamento, pela escolha dos fornecedores e pela condução do dia. Com acolhimento e respeito, criamos espaço para que o casal se reconheça em toda a experiência.",
+          "Uma cerimônia íntima ou uma festa com todos por perto. O formato é de vocês. O cuidado está em cada etapa.",
+        ],
+        cta: "Celebrar nossa história",
+      },
+      {
+        page: "destination",
+        name: "Destination Wedding",
+        eyebrow: "O RIO COMO DESTINO. VOCÊS COMO MOTIVO.",
+        title: "Uma viagem que reúne as pessoas mais importantes da sua vida.",
+        paragraphs: [
+          "Escolher o Rio para casar é convidar quem vocês amam para compartilhar uma experiência que vai além da cerimônia.",
+          "Cuidamos do planejamento do casamento, da programação e dos detalhes que fazem o casal e os convidados se sentirem bem recebidos do início ao fim.",
+          "Desde 2022, Leco vem se dedicando ao universo dos Destination Weddings no Rio, unindo conhecimento local à experiência de mais de duas décadas em eventos.",
+          "Para acompanhar cada projeto de perto, são realizados apenas **10 Destination Weddings por ano**.",
+        ],
+        cta: "Consultar disponibilidade",
+      },
+      {
+        page: "legal",
+        name: "Brazil Wedding Legal 🌈",
+        eyebrow: "SUPORTE PARA CASAIS ESTRANGEIROS",
+        title: "O próximo capítulo da sua história pode começar no Brasil.",
+        paragraphs: [
+          "Se o casamento entre pessoas do mesmo sexo ainda não é permitido no país de vocês, o Brasil pode ser um caminho para oficializar essa união.",
+          "Com base no Rio de Janeiro, nossa equipe oferece suporte na organização da documentação e no acompanhamento das etapas do casamento civil, conforme as exigências aplicáveis a cada casal.",
+          "Vocês têm alguém aqui para ajudar a entender o processo, organizar os próximos passos e acompanhar essa jornada.",
+          "E, se desejarem, o casamento civil pode ganhar uma celebração a dois no Rio.",
+        ],
+        cta: "Entender como casar no Brasil",
+        note: "O casamento depende do cumprimento dos requisitos legais e da análise do cartório. Seu reconhecimento fora do Brasil depende das regras de cada país.",
+      },
+    ],
     destination: {
-      kicker: "Rio de Janeiro",
-      title: "Casar no Brasil. Celebrar no Rio.",
-      body: "Para muitos casais, vir ao Brasil representa a possibilidade do casamento civil. O Rio transforma essa conquista em uma experiência para ser vivida e lembrada.",
-      cta: "Conhecer as possibilidades",
+      title: "Casar no Rio. Lembrar para sempre.",
+      paragraphs: [
+        "O encontro com a cidade, a troca de olhares, as pessoas reunidas e aquele instante em que tudo passa a fazer parte da mesma história.",
+        "Vamos criar espaço para vocês viverem cada um desses momentos.",
+      ],
+      cta: "Imaginar nosso casamento no Rio",
     },
     planning: {
-      kicker: "Para casais que vivem no exterior",
-      title: "Vocês planejam de onde estiverem. Nossa equipe cuida do Brasil.",
+      title: "Vocês planejam de onde estiverem. Nós cuidamos de perto.",
       items: [
         {
-          title: "Análise à distância",
-          body: "A primeira conversa e a análise inicial podem acontecer online, antes de qualquer viagem ou contratação local.",
+          title: "Conhecimento local",
+          body: "Uma equipe no Rio para ajudar a escolher cenários e fornecedores de acordo com o estilo, as prioridades e o investimento de vocês.",
         },
         {
-          title: "Coordenação no Brasil",
-          body: "Mantemos contato com cartório, tradutores e profissionais envolvidos no processo brasileiro.",
+          title: "Planejamento acompanhado",
+          body: "Decisões, etapas e detalhes organizados com o casal, da primeira conversa à celebração.",
         },
         {
-          title: "Viagem e celebração",
-          body: "Quando o casal também deseja celebrar, organizamos hospedagem, transporte, cerimônia, fotografia e experiências no Rio.",
+          title: "Acolhimento em cada contato",
+          body: "Atendimento próximo, com suporte em inglês para casais que estão organizando o casamento de fora do Brasil.",
         },
       ],
     },
     ways: {
-      title: "Formas de viver esse momento",
+      title: "Mais do que imagens bonitas. Memórias de um dia de vocês.",
       cards: [
-        {
-          title: "Casamento civil",
-          text: "Coordenação das etapas necessárias para a realização do casamento civil no Brasil, de acordo com a situação documental do casal.",
-          action: "Entender o processo",
-        },
-        {
-          title: "Civil + Elopement",
-          text: "Casamento civil acompanhado de uma celebração íntima no Rio, com local, cerimônia, fotografia, transporte e fornecedores.",
-          action: "Conhecer a experiência",
-        },
-        {
-          title: "Civil + Destination Wedding",
-          text: "Casamento civil e celebração com convidados, incluindo planejamento, hospedagem, logística e experiência no destino.",
-          action: "Planejar nossa celebração",
-        },
+        { title: "O instante do sim", text: "Os votos, os olhares e a emoção de estar exatamente onde vocês queriam." },
+        { title: "As pessoas por perto", text: "Os abraços e os encontros que dão ainda mais significado à celebração." },
+        { title: "O Rio na memória", text: "Um cenário que passa a fazer parte da história do casal." },
       ],
     },
     about: {
-      caption: "Aqui, a história de vocês é recebida com respeito.",
-      kicker: "Quem estará com vocês",
-      title: "Vocês não precisam explicar por que esse casamento importa.",
+      kicker: "CONHEÇA LECO BIAGGÌONI",
+      title: "Experiência para cuidar. Sensibilidade para ouvir.",
       paragraphs: [
-        "Eu também sou gay e sei o que significa poder viver esse momento com liberdade. Meu trabalho é receber a história de vocês com respeito e transformar o processo brasileiro em um caminho claro, humano e bem conduzido.",
-        "Desde 2004, eu e minha equipe realizamos eventos e casamentos no Rio de Janeiro. Hoje, usamos essa experiência para receber casais do Brasil e do mundo.",
+        "\"Em 2004, abri minha primeira empresa. Desde então, passei por muitos eventos, conheci histórias diferentes e aprendi que os detalhes só fazem sentido quando representam as pessoas.",
+        "Há mais de 10 anos, os casamentos se tornaram o centro do meu trabalho.",
+        "Hoje, reúno essa experiência para fazer o que mais me dá prazer: criar encontros, realizar sonhos e proporcionar momentos especiais.",
+        "Quero conhecer a história de vocês e descobrir, junto com o meu time, como podemos fazer parte dela.\"",
       ],
-      meta: [
-        { label: "Desde:", value: "2004" },
-        { label: "Idiomas:", value: "PT · EN · ES" },
-        { label: "Base:", value: "Rio de Janeiro" },
-      ],
+      cta: "Conversar com o Leco",
     },
     method: {
-      kicker: "O método",
-      title: "Um processo sensível precisa de informação clara e presença local.",
+      title: "Da primeira ideia ao dia de vocês.",
       steps: [
         {
           n: "01",
-          title: "A gente analisa",
-          body: "Entendemos a situação do casal antes de indicar documentos, prazos ou serviços. Nenhum caso deve ser tratado como uma fórmula pronta.",
+          title: "Vocês contam",
+          body: "Conversamos sobre a história do casal, o formato desejado, a previsão de data e o que é prioridade para vocês.",
         },
         {
           n: "02",
-          title: "A gente organiza",
-          body: "Transformamos as informações em um caminho com etapas, documentos, traduções, contatos locais e responsabilidades definidas.",
+          title: "Nós planejamos juntos",
+          body: "Apresentamos uma proposta e organizamos as escolhas, os fornecedores e as etapas necessárias. Quando há casamento civil, o planejamento também considera a documentação e as exigências do processo.",
         },
         {
           n: "03",
-          title: "A gente acompanha",
-          body: "Coordenamos o processo no Brasil e mantemos vocês informados até a realização do casamento civil e da celebração contratada.",
+          title: "Vocês vivem",
+          body: "Com os detalhes coordenados pela equipe, chega o momento de estar presente, trocar os votos e aproveitar a celebração.",
         },
       ],
     },
     emotional: {
-      kicker: "O direito de dizer sim",
-      title: "O casamento civil pode ser o começo de uma experiência inesquecível.",
-      paragraphs: [
-        "Vocês podem vir ao Brasil para oficializar a união e também viver esse momento em um dos cenários mais marcantes do Rio de Janeiro.",
-        "A celebração pode ser íntima, apenas para o casal, ou incluir as pessoas que fizeram parte dessa história.",
-      ],
-      lines: ["CASAMENTO CIVIL · ELOPEMENT WEDDING", "RIO DE JANEIRO · DESTINATION WEDDING"],
+      title: "O cenário pode ser extraordinário. O que torna esse dia único são vocês.",
+      paragraphs: ["Um casamento pensado para a sua história, com espaço para a emoção acontecer."],
     },
     formats: {
-      kicker: "Como podemos ajudar",
-      title: "Do processo legal à celebração no Rio.",
+      kicker: "DO CASAMENTO CIVIL À CELEBRAÇÃO",
+      title: "Como vocês querem viver esse momento?",
       packA: {
-        title: "Legal Gay Wedding Brazil",
-        body: "Para casais que desejam realizar o casamento civil no Brasil. O serviço começa com uma análise inicial e pode incluir organização documental, coordenação com cartório, traduções e apoio profissional especializado.",
-        cta: "Analisar nosso caso",
+        title: "Brazil Wedding Legal 🌈",
+        paragraphs: [
+          "Para casais estrangeiros que procuram apoio para organizar o casamento civil no Brasil.",
+          "Suporte com a documentação, interlocução com o cartório e acompanhamento das etapas, de acordo com as necessidades do casal.",
+        ],
+        cta: "Conversar sobre o casamento civil",
       },
       packB: {
-        title: "Legal Wedding + Rio Experience",
-        body: "Para casais que desejam unir o casamento civil a uma experiência no Rio. Além da coordenação legal, planejamos cerimônia, local, fotografia, beleza, transporte, flores e celebração.",
-        cta: "Criar nossa experiência",
+        title: "Brazil Wedding Legal + Elopement",
+        paragraphs: [
+          "Para quem deseja unir o casamento civil a uma celebração íntima no Rio de Janeiro.",
+          "Além do suporte ao processo civil, planejamos uma experiência a dois, com cenário, cerimônia e serviços escolhidos com vocês.",
+        ],
+        cta: "Planejar o civil e a celebração",
       },
     },
     contact: {
-      kicker: "Análise inicial",
       title: "Contem um pouco sobre vocês.",
       paragraphs: [
-        "Para orientar o primeiro passo, precisamos entender onde vocês vivem, a nacionalidade e o estado civil de cada pessoa, os documentos disponíveis e quando imaginam vir ao Brasil.",
-        "Esta conversa inicial também ajuda a identificar se vocês desejam apenas o casamento civil ou uma experiência completa no Rio.",
+        "Talvez vocês já tenham uma data. Talvez tenham apenas a vontade de começar.",
+        "Queremos saber o que estão imaginando e como podemos ajudar a transformar essa ideia em um plano.",
       ],
+      form: {
+        names: "Nomes do casal",
+        email: "E-mail",
+        whatsapp: "WhatsApp com código do país",
+        country: "País onde vivem",
+        experience: "Qual experiência procuram?",
+        experienceOptions: [
+          "Elopement Wedding",
+          "Casamento Homoafetivo",
+          "Destination Wedding",
+          "Brazil Wedding Legal",
+          "Ainda estamos descobrindo",
+        ],
+        date: "Data ou período desejado",
+        guests: "Número estimado de convidados",
+        message: "Contem como imaginam esse momento",
+        submit: "Vamos conversar sobre nosso casamento",
+        note: "Usaremos os dados informados para responder ao contato e conversar sobre o planejamento de vocês.",
+      },
     },
     faq: {
-      kicker: "FAQ",
       title: "Antes de começar",
-      lead: "As primeiras respostas sobre o casamento civil de casais homoafetivos estrangeiros no Brasil.",
       items: [
         {
-          q: "O casamento entre pessoas do mesmo sexo é permitido no Brasil?",
-          a: "Sim. A Resolução nº 175/2013 do Conselho Nacional de Justiça determina que as autoridades competentes não podem recusar a habilitação ou a celebração do casamento civil entre pessoas do mesmo sexo.",
+          q: "Podemos organizar o casamento morando fora do Brasil?",
+          a: "Sim. O planejamento pode começar à distância, com nossa equipe no Rio acompanhando as decisões e a organização local. Se houver casamento civil, as etapas presenciais e os prazos serão verificados conforme o caso.",
         },
         {
-          q: "Dois estrangeiros podem se casar no Brasil?",
-          a: "A possibilidade e os requisitos precisam ser analisados de acordo com a nacionalidade, o estado civil, o país de emissão dos documentos e o cartório responsável. A análise inicial serve para entender se o processo pode ser realizado e quais serão os próximos passos.",
+          q: "O Elopement Wedding é apenas para o casal?",
+          a: "O foco é uma celebração íntima. Pode ser um momento só de vocês ou incluir poucas pessoas próximas, conforme a experiência escolhida. Também é uma possibilidade para renovar os votos.",
         },
         {
-          q: "Nosso casamento será reconhecido no país onde moramos?",
-          a: "O casamento produz efeitos no Brasil. O reconhecimento em outro país depende da legislação daquele país e deve ser confirmado com orientação jurídica local. O serviço não promete reconhecimento automático fora do Brasil.",
+          q: "Um casamento homoafetivo pode ser um Elopement ou Destination Wedding?",
+          a: "Sim. Vocês podem escolher uma cerimônia a dois, uma celebração com convidados ou uma experiência de casamento no Rio para quem vem de fora.",
         },
         {
-          q: "Quais documentos serão necessários?",
-          a: "A lista varia conforme o casal. Pode envolver certidões civis, documentos de identidade, comprovações de estado civil, apostilamento ou legalização e tradução juramentada. O checklist só deve ser definido depois da análise inicial.",
+          q: "Somos estrangeiros. Podemos nos casar civilmente no Brasil?",
+          a: "Estrangeiros podem se casar no Brasil, desde que cumpram os requisitos aplicáveis. A documentação e as condições do processo precisam ser verificadas com o cartório considerando a situação de cada pessoa.",
         },
         {
-          q: "Podemos realizar uma celebração além do casamento civil?",
-          a: "Sim. Podemos combinar a coordenação do processo civil com um Elopement Wedding, uma cerimônia simbólica ou uma celebração com convidados no Rio de Janeiro.",
+          q: "O Brasil permite o casamento entre pessoas do mesmo sexo?",
+          a: "Sim. Os cartórios brasileiros não podem recusar a habilitação ou a celebração do casamento por se tratar de um casal do mesmo sexo. Os demais requisitos legais continuam sendo necessários.",
         },
         {
-          q: "Todo o planejamento pode ser feito à distância?",
-          a: "Grande parte do processo pode ser coordenada online. A necessidade de presença no Brasil, os prazos e os atos presenciais são explicados depois da análise do caso e da confirmação pelo cartório responsável.",
+          q: "O casamento será reconhecido no nosso país?",
+          a: "Não automaticamente. O reconhecimento e os efeitos do casamento no exterior dependem das leis de cada país. Essa questão deve ser confirmada com orientação jurídica no local onde vocês pretendem utilizar a certidão.",
+        },
+        {
+          q: "Quanto tempo leva o processo civil?",
+          a: "O prazo depende da documentação, das providências necessárias e do cartório. Por isso, o primeiro passo é conhecer o caso de vocês e verificar as exigências antes de definir a programação da viagem.",
+        },
+        {
+          q: "Precisamos contratar uma festa junto com o suporte ao casamento civil?",
+          a: "Não. Vocês podem procurar o Brazil Wedding Legal para o suporte ao processo civil ou combinar esse serviço com uma celebração.",
         },
       ],
     },
     footer: {
-      name: "Legal Gay Wedding Brazil by Leco Biaggìoni",
-      text: "Casamento civil e celebrações no Rio de Janeiro para casais homoafetivos do mundo inteiro.",
+      name: "Leco Biaggìoni",
+      text: "O seu amor. O seu jeito. O Rio como cenário.",
       city: "Rio de Janeiro · Brasil",
+      cta: "Vamos conversar",
       languages: "Português · English · Español",
-      legal:
-        "Documentos, requisitos, prazos e elegibilidade variam conforme o casal e o cartório responsável. O reconhecimento do casamento fora do Brasil depende da legislação de cada país. Informações específicas devem ser confirmadas com o cartório e com profissionais jurídicos habilitados.",
     },
   },
 
   en: {
     nav: {
-      howItWorks: "How it works",
-      civil: "Civil marriage",
-      celebration: "Celebration in Rio",
-      packages: "Packages",
-      about: "About Leco",
-      faq: "FAQ",
+      items: [
+        { page: "elopement", label: "Elopement Wedding" },
+        { page: "sameSex", label: "Same-Sex Wedding" },
+        { page: "destination", label: "Destination Wedding" },
+        { page: "legal", label: "Brazil Wedding Legal 🌈" },
+      ],
+      cta: "Let's talk",
     },
-    stats: [
-      { n: "20+", label: "Years of experience" },
-      { n: "3", label: "Languages" },
-      { n: "1", label: "Local team" },
-      { n: "2013", label: "National milestone" },
-      { n: "1", label: "Case at a time" },
-    ],
-    presentation: {
-      kicker: "Civil marriage in Brazil",
-      title: "Your marriage can legally happen here.",
+    hero: {
+      kicker: "LECO BIAGGÌONI · WEDDINGS IN RIO DE JANEIRO",
+      title: "Your love. Your way. Rio as the setting.",
       paragraphs: [
-        "Civil marriage between people of the same sex is recognized in Brazil. For foreign couples, the process begins by reviewing nationality, marital status and the documents available.",
-        "Our team organizes the stages in Brazil and coordinates contact with the registry office, certified translation and specialized legal support when necessary.",
+        "A ceremony for two, a celebration with the people you love or the next step to make your union official in Brazil.",
+        "Leco Biaggìoni and the team take care of the planning to turn your story into an experience that makes sense in every detail.",
       ],
-      note: "Each case is reviewed individually. Documents, requirements and timelines vary according to the couple and the responsible registry office.",
+      cta: "Let's plan our wedding",
+      secondary: "Discover the experiences",
     },
-    path: {
-      kicker: "The path",
-      title: "From first contact to civil marriage.",
-      chapters: [
-        {
-          label: "01 Initial analysis",
-          nav: "Analysis · The beginning",
-          title: "First, we need to understand your case.",
-          body: "We review nationality, country of residence, marital status, available documents and the type of marriage you wish to have in Brazil.",
-        },
-        {
-          label: "02 Personalized checklist",
-          nav: "Documents · Checklist",
-          title: "Every couple starts from a different point.",
-          body: "After the initial analysis, we organize a list of the documents, translations, registrations and steps that apply to your case.",
-        },
-        {
-          label: "03 Document preparation",
-          nav: "Translations · Preparation",
-          title: "Documents need to arrive in Brazil in the right form.",
-          body: "We guide the preparation of the process and coordinate certified translations and other professional support when needed.",
-        },
-        {
-          label: "04 Coordination with the registry office",
-          nav: "Registry office · Coordination",
-          title: "A local team follows the process in Brazil.",
-          body: "We coordinate communication with the responsible registry office, keep track of deadlines and keep you informed at every step.",
-        },
-        {
-          label: "05 Civil marriage",
-          nav: "The yes · Civil marriage",
-          title: "The moment a right becomes a story.",
-          body: "Once the marriage qualification process (habilitação) is complete, we coordinate the local details for the civil marriage to take place in Brazil.",
-        },
-        {
-          label: "06 Celebration in Rio",
-          nav: "Rio · Celebration",
-          title: "After the paperwork comes the part you will keep.",
-          body: "The civil marriage can be accompanied by an Elopement Wedding or a celebration created around your story.",
-        },
+    stats: ["More than 20 years in events", "More than 10 years dedicated to weddings", "Rio de Janeiro"],
+    presentation: {
+      kicker: "DIFFERENT STORIES. A PERSONAL CARE.",
+      title: "Your wedding begins with a good conversation.",
+      paragraphs: [
+        "Before choosing the setting, the flowers or the music, we want to get to know you.",
+        "How do you imagine this day? Who needs to be close by? What would make this moment truly special?",
+        "It is from this conversation that our work is born: bringing together the right people, places and details for a celebration with the couple's identity.",
       ],
     },
+    services: [
+      {
+        page: "elopement",
+        name: "Elopement Wedding",
+        eyebrow: "A WHOLE DAY FOR THE TWO OF YOU",
+        title: "The intimacy of an encounter. The emotion of a wedding.",
+        paragraphs: [
+          "Exchanging vows facing the sea, celebrating with a few guests or living this moment just the two of you. The Elopement Wedding opens space for an intimate celebration, at your own pace.",
+          "We bring the experience of those who organize large events to take care of every detail of a small encounter full of meaning.",
+          "To marry or renew your vows in Rio de Janeiro, we create experience options that combine setting, ceremony and the details you wish to live.",
+        ],
+        cta: "Discover our elopement",
+      },
+      {
+        page: "sameSex",
+        name: "Same-Sex Wedding",
+        eyebrow: "FREEDOM TO CELEBRATE WHO YOU ARE",
+        title: "A wedding in which you can be entirely yourselves.",
+        paragraphs: [
+          "Your story guides every choice: the vows, the entrance, the people around you and the way to celebrate.",
+          "Our work begins with listening and continues through the planning, the choice of suppliers and the running of the day. With warmth and respect, we create space for the couple to recognize themselves in the whole experience.",
+          "An intimate ceremony or a party with everyone close by. The format is yours. The care is in every stage.",
+        ],
+        cta: "Celebrate our story",
+      },
+      {
+        page: "destination",
+        name: "Destination Wedding",
+        eyebrow: "RIO AS THE DESTINATION. YOU AS THE REASON.",
+        title: "A trip that brings together the most important people in your life.",
+        paragraphs: [
+          "Choosing Rio to marry is inviting those you love to share an experience that goes beyond the ceremony.",
+          "We take care of the wedding planning, the schedule and the details that make the couple and the guests feel welcomed from beginning to end.",
+          "Since 2022, Leco has been dedicated to the universe of Destination Weddings in Rio, combining local knowledge with the experience of more than two decades in events.",
+          "To follow each project closely, only **10 Destination Weddings per year** are held.",
+        ],
+        cta: "Check availability",
+      },
+      {
+        page: "legal",
+        name: "Brazil Wedding Legal 🌈",
+        eyebrow: "SUPPORT FOR FOREIGN COUPLES",
+        title: "The next chapter of your story can begin in Brazil.",
+        paragraphs: [
+          "If marriage between people of the same sex is not yet allowed in your country, Brazil can be a way to make this union official.",
+          "Based in Rio de Janeiro, our team offers support in organizing the documentation and in following the stages of the civil marriage, according to the requirements applicable to each couple.",
+          "You have someone here to help you understand the process, organize the next steps and accompany this journey.",
+          "And, if you wish, the civil marriage can gain a celebration for two in Rio.",
+        ],
+        cta: "Understand how to marry in Brazil",
+        note: "The marriage depends on meeting the legal requirements and on the registry office's review. Its recognition outside Brazil depends on the rules of each country.",
+      },
+    ],
     destination: {
-      kicker: "Rio de Janeiro",
-      title: "Getting married in Brazil. Celebrating in Rio.",
-      body: "For many couples, coming to Brazil represents the possibility of civil marriage. Rio turns that achievement into an experience to be lived and remembered.",
-      cta: "Explore the possibilities",
+      title: "Marry in Rio. Remember forever.",
+      paragraphs: [
+        "The encounter with the city, the exchange of glances, the people gathered and that instant when everything becomes part of the same story.",
+        "Let's create space for you to live each of these moments.",
+      ],
+      cta: "Imagine our wedding in Rio",
     },
     planning: {
-      kicker: "For couples living abroad",
-      title: "You plan from wherever you are. Our team takes care of Brazil.",
+      title: "You plan from wherever you are. We take care up close.",
       items: [
         {
-          title: "Remote analysis",
-          body: "The first conversation and the initial analysis can happen online, before any travel or local hiring.",
+          title: "Local knowledge",
+          body: "A team in Rio to help choose settings and suppliers according to your style, priorities and investment.",
         },
         {
-          title: "Coordination in Brazil",
-          body: "We stay in contact with the registry office, translators and the professionals involved in the Brazilian process.",
+          title: "Accompanied planning",
+          body: "Decisions, stages and details organized with the couple, from the first conversation to the celebration.",
         },
         {
-          title: "Travel and celebration",
-          body: "When the couple also wishes to celebrate, we organize accommodation, transportation, ceremony, photography and experiences in Rio.",
+          title: "Warmth in every contact",
+          body: "Close service, with support in English for couples who are organizing their wedding from outside Brazil.",
         },
       ],
     },
     ways: {
-      title: "Ways to live this moment",
+      title: "More than beautiful images. Memories of a day of your own.",
       cards: [
-        {
-          title: "Civil marriage",
-          text: "Coordination of the steps needed for the civil marriage to take place in Brazil, according to the couple’s documentation.",
-          action: "Understand the process",
-        },
-        {
-          title: "Civil + Elopement",
-          text: "Civil marriage accompanied by an intimate celebration in Rio, with venue, ceremony, photography, transportation and vendors.",
-          action: "Discover the experience",
-        },
-        {
-          title: "Civil + Destination Wedding",
-          text: "Civil marriage and a celebration with guests, including planning, accommodation, logistics and the destination experience.",
-          action: "Plan our celebration",
-        },
+        { title: "The instant of the yes", text: "The vows, the glances and the emotion of being exactly where you wanted." },
+        { title: "The people close by", text: "The hugs and the encounters that give even more meaning to the celebration." },
+        { title: "Rio in memory", text: "A setting that becomes part of the couple's story." },
       ],
     },
     about: {
-      caption: "Here, your story is received with respect.",
-      kicker: "Who will be with you",
-      title: "You do not have to explain why this marriage matters.",
+      kicker: "MEET LECO BIAGGÌONI",
+      title: "Experience to take care. Sensitivity to listen.",
       paragraphs: [
-        "I am gay too, and I know what it means to be able to live this moment freely. My work is to receive your story with respect and turn the Brazilian process into a clear, human and well-conducted path.",
-        "Since 2004, my team and I have produced events and weddings in Rio de Janeiro. Today, we use that experience to welcome couples from Brazil and around the world.",
+        "\"In 2004, I opened my first company. Since then, I have been through many events, met different stories and learned that details only make sense when they represent the people.",
+        "For more than 10 years, weddings have become the center of my work.",
+        "Today, I bring this experience together to do what gives me the most pleasure: creating encounters, making dreams come true and providing special moments.",
+        "I want to get to know your story and discover, together with my team, how we can be part of it.\"",
       ],
-      meta: [
-        { label: "Since:", value: "2004" },
-        { label: "Languages:", value: "PT · EN · ES" },
-        { label: "Base:", value: "Rio de Janeiro" },
-      ],
+      cta: "Talk to Leco",
     },
     method: {
-      kicker: "The method",
-      title: "A sensitive process needs clear information and a local presence.",
+      title: "From the first idea to your day.",
       steps: [
         {
           n: "01",
-          title: "We analyze",
-          body: "We understand the couple’s situation before recommending documents, timelines or services. No case should be treated as a ready-made formula.",
+          title: "You tell us",
+          body: "We talk about the couple's story, the desired format, the expected date and what is a priority for you.",
         },
         {
           n: "02",
-          title: "We organize",
-          body: "We turn the information into a path with defined stages, documents, translations, local contacts and responsibilities.",
+          title: "We plan together",
+          body: "We present a proposal and organize the choices, the suppliers and the necessary stages. When there is a civil marriage, the planning also considers the documentation and the requirements of the process.",
         },
         {
           n: "03",
-          title: "We accompany",
-          body: "We coordinate the process in Brazil and keep you informed until the civil marriage and the contracted celebration take place.",
+          title: "You live it",
+          body: "With the details coordinated by the team, the moment comes to be present, exchange vows and enjoy the celebration.",
         },
       ],
     },
     emotional: {
-      kicker: "The right to say yes",
-      title: "Civil marriage can be the beginning of an unforgettable experience.",
-      paragraphs: [
-        "You can come to Brazil to make your union official and also live this moment in one of the most striking settings in Rio de Janeiro.",
-        "The celebration can be intimate, just for the two of you, or include the people who have been part of this story.",
-      ],
-      lines: ["CIVIL MARRIAGE · ELOPEMENT WEDDING", "RIO DE JANEIRO · DESTINATION WEDDING"],
+      title: "The setting can be extraordinary. What makes this day unique is you.",
+      paragraphs: ["A wedding designed for your story, with space for emotion to happen."],
     },
     formats: {
-      kicker: "How we can help",
-      title: "From the legal process to a celebration in Rio.",
+      kicker: "FROM CIVIL MARRIAGE TO CELEBRATION",
+      title: "How do you want to live this moment?",
       packA: {
-        title: "Legal Gay Wedding Brazil",
-        body: "For couples who wish to have a civil marriage in Brazil. The service begins with an initial analysis and may include document organization, coordination with the registry office, translations and specialized professional support.",
-        cta: "Analyze our case",
+        title: "Brazil Wedding Legal 🌈",
+        paragraphs: [
+          "For foreign couples looking for support to organize their civil marriage in Brazil.",
+          "Support with the documentation, liaison with the registry office and follow-up of the stages, according to the couple's needs.",
+        ],
+        cta: "Talk about the civil marriage",
       },
       packB: {
-        title: "Legal Wedding + Rio Experience",
-        body: "For couples who wish to combine civil marriage with an experience in Rio. In addition to legal coordination, we plan the ceremony, venue, photography, beauty, transportation, flowers and celebration.",
-        cta: "Create our experience",
+        title: "Brazil Wedding Legal + Elopement",
+        paragraphs: [
+          "For those who wish to combine the civil marriage with an intimate celebration in Rio de Janeiro.",
+          "In addition to support with the civil process, we plan an experience for two, with setting, ceremony and services chosen with you.",
+        ],
+        cta: "Plan the civil marriage and the celebration",
       },
     },
     contact: {
-      kicker: "Initial analysis",
       title: "Tell us a little about yourselves.",
       paragraphs: [
-        "To guide the first step, we need to understand where you live, each person’s nationality and marital status, the documents available and when you imagine coming to Brazil.",
-        "This initial conversation also helps identify whether you want only the civil marriage or a complete experience in Rio.",
+        "Perhaps you already have a date. Perhaps you only have the wish to begin.",
+        "We want to know what you are imagining and how we can help turn this idea into a plan.",
       ],
+      form: {
+        names: "Names of the couple",
+        email: "E-mail",
+        whatsapp: "WhatsApp with country code",
+        country: "Country where you live",
+        experience: "Which experience are you looking for?",
+        experienceOptions: [
+          "Elopement Wedding",
+          "Same-Sex Wedding",
+          "Destination Wedding",
+          "Brazil Wedding Legal",
+          "We are still discovering",
+        ],
+        date: "Desired date or period",
+        guests: "Estimated number of guests",
+        message: "Tell us how you imagine this moment",
+        submit: "Let's talk about our wedding",
+        note: "We will use the information provided to reply to your contact and talk about your planning.",
+      },
     },
     faq: {
-      kicker: "FAQ",
-      title: "Before we begin",
-      lead: "The first answers about civil marriage for foreign same-sex couples in Brazil.",
+      title: "Before starting",
       items: [
         {
-          q: "Is same-sex marriage allowed in Brazil?",
-          a: "Yes. Resolution No. 175/2013 of the National Council of Justice (Conselho Nacional de Justiça) determines that competent authorities may not refuse the marriage qualification (habilitação) or the celebration of civil marriage between people of the same sex.",
+          q: "Can we organize the wedding while living outside Brazil?",
+          a: "Yes. The planning can begin remotely, with our team in Rio following the decisions and the local organization. If there is a civil marriage, the in-person stages and the timelines will be checked according to the case.",
         },
         {
-          q: "Can two foreign nationals marry in Brazil?",
-          a: "The possibility and the requirements need to be reviewed according to nationality, marital status, the country where the documents were issued and the responsible registry office. The initial analysis helps determine whether the process can take place and what the next steps will be.",
+          q: "Is the Elopement Wedding only for the couple?",
+          a: "The focus is an intimate celebration. It can be a moment just for you or include a few close people, according to the chosen experience. It is also a possibility for renewing vows.",
         },
         {
-          q: "Will our marriage be recognized in the country where we live?",
-          a: "The marriage produces legal effects in Brazil. Recognition in another country depends on that country’s laws and should be confirmed with local legal guidance. The service does not promise automatic recognition outside Brazil.",
+          q: "Can a same-sex wedding be an Elopement or Destination Wedding?",
+          a: "Yes. You can choose a ceremony for two, a celebration with guests or a wedding experience in Rio for those coming from abroad.",
         },
         {
-          q: "Which documents will be needed?",
-          a: "The list varies according to the couple. It may involve civil certificates, identity documents, proof of marital status, apostille or legalization, and certified translation. The checklist should only be defined after the initial analysis.",
+          q: "We are foreigners. Can we have a civil marriage in Brazil?",
+          a: "Foreigners can marry in Brazil, provided they meet the applicable requirements. The documentation and the conditions of the process need to be checked with the registry office considering the situation of each person.",
         },
         {
-          q: "Can we have a celebration in addition to the civil marriage?",
-          a: "Yes. We can combine coordination of the civil process with an Elopement Wedding, a symbolic ceremony or a celebration with guests in Rio de Janeiro.",
+          q: "Does Brazil allow marriage between people of the same sex?",
+          a: "Yes. Brazilian registry offices cannot refuse the qualification or the celebration of the marriage because it is a same-sex couple. The other legal requirements remain necessary.",
         },
         {
-          q: "Can all the planning be done remotely?",
-          a: "Much of the process can be coordinated online. The need to be present in Brazil, the timelines and the in-person acts are explained after the case analysis and confirmation by the responsible registry office.",
+          q: "Will the marriage be recognized in our country?",
+          a: "Not automatically. The recognition and the effects of the marriage abroad depend on the laws of each country. This question should be confirmed with legal advice in the place where you intend to use the certificate.",
+        },
+        {
+          q: "How long does the civil process take?",
+          a: "The timeline depends on the documentation, the necessary arrangements and the registry office. That is why the first step is to get to know your case and check the requirements before defining the travel schedule.",
+        },
+        {
+          q: "Do we need to hire a party together with the civil marriage support?",
+          a: "No. You can come to Brazil Wedding Legal for support with the civil process or combine this service with a celebration.",
         },
       ],
     },
     footer: {
-      name: "Legal Gay Wedding Brazil by Leco Biaggìoni",
-      text: "Civil marriage and celebrations in Rio de Janeiro for same-sex couples from all over the world.",
+      name: "Leco Biaggìoni",
+      text: "Your love. Your way. Rio as the setting.",
       city: "Rio de Janeiro · Brazil",
+      cta: "Let's talk",
       languages: "Português · English · Español",
-      legal:
-        "Documents, requirements, timelines and eligibility vary according to the couple and the responsible registry office. Recognition of the marriage outside Brazil depends on the laws of each country. Specific information must be confirmed with the registry office and with qualified legal professionals.",
     },
   },
 
   es: {
     nav: {
-      howItWorks: "Cómo funciona",
-      civil: "Matrimonio civil",
-      celebration: "Celebración en Rio",
-      packages: "Paquetes",
-      about: "Sobre Leco",
-      faq: "FAQ",
+      items: [
+        { page: "elopement", label: "Elopement Wedding" },
+        { page: "sameSex", label: "Boda Homoafectiva" },
+        { page: "destination", label: "Destination Wedding" },
+        { page: "legal", label: "Brazil Wedding Legal 🌈" },
+      ],
+      cta: "Hablemos",
     },
-    stats: [
-      { n: "20+", label: "Años de experiencia" },
-      { n: "3", label: "Idiomas" },
-      { n: "1", label: "Equipo local" },
-      { n: "2013", label: "Hito nacional" },
-      { n: "1", label: "Caso a la vez" },
-    ],
-    presentation: {
-      kicker: "Matrimonio civil en Brasil",
-      title: "El matrimonio de ustedes puede realizarse legalmente aquí.",
+    hero: {
+      kicker: "LECO BIAGGÌONI · BODAS EN RÍO DE JANEIRO",
+      title: "Su amor. Su manera. Río como escenario.",
       paragraphs: [
-        "En Brasil, el matrimonio civil entre personas del mismo sexo está reconocido. Para parejas extranjeras, el proceso comienza con el análisis de la nacionalidad, del estado civil y de los documentos disponibles.",
-        "Nuestro equipo organiza las etapas en Brasil y coordina el contacto con el registro civil (cartório), la traducción jurada y el apoyo jurídico especializado, cuando es necesario.",
+        "Una ceremonia para dos, una celebración con quienes ustedes aman o el próximo paso para oficializar la unión en Brasil.",
+        "Leco Biaggìoni y su equipo cuidan de la planificación para transformar la historia de ustedes en una experiencia que tenga sentido en cada detalle.",
       ],
-      note: "Cada caso se analiza individualmente. Los documentos, requisitos y plazos varían según la pareja y el registro civil responsable.",
+      cta: "Planifiquemos nuestra boda",
+      secondary: "Conozcan las experiencias",
     },
-    path: {
-      kicker: "El camino",
-      title: "Del primer contacto al matrimonio civil.",
-      chapters: [
-        {
-          label: "01 Análisis inicial",
-          nav: "Análisis · El comienzo",
-          title: "Primero, necesitamos entender el caso de ustedes.",
-          body: "Analizamos la nacionalidad, el país de residencia, el estado civil, los documentos disponibles y el tipo de matrimonio que desean realizar en Brasil.",
-        },
-        {
-          label: "02 Checklist personalizado",
-          nav: "Documentos · Checklist",
-          title: "Cada pareja parte de un punto diferente.",
-          body: "Después del análisis inicial, organizamos una lista con los documentos, traducciones, registros y etapas aplicables al caso.",
-        },
-        {
-          label: "03 Preparación documental",
-          nav: "Traducciones · Preparación",
-          title: "Los documentos necesitan llegar a Brasil de la forma correcta.",
-          body: "Orientamos la preparación del proceso y coordinamos traducciones juradas y otros apoyos profesionales cuando son necesarios.",
-        },
-        {
-          label: "04 Coordinación con el registro civil",
-          nav: "Registro civil · Coordinación",
-          title: "Un equipo local acompaña el proceso en Brasil.",
-          body: "Coordinamos la comunicación con el registro civil responsable, hacemos el seguimiento de los plazos y los mantenemos informados sobre cada etapa.",
-        },
-        {
-          label: "05 Matrimonio civil",
-          nav: "El sí · Matrimonio civil",
-          title: "El momento en que el derecho se transforma en historia.",
-          body: "Con la habilitación concluida, coordinamos los detalles locales para la realización del matrimonio civil en Brasil.",
-        },
-        {
-          label: "06 Celebración en Rio",
-          nav: "Rio · Celebración",
-          title: "Después de la documentación, llega la parte que van a guardar.",
-          body: "El matrimonio civil puede ir acompañado de un Elopement Wedding o de una celebración creada en torno a la historia de ustedes.",
-        },
+    stats: ["Más de 20 años en eventos", "Más de 10 años dedicados a bodas", "Río de Janeiro"],
+    presentation: {
+      kicker: "HISTORIAS DIFERENTES. UN CUIDADO PERSONAL.",
+      title: "La boda de ustedes comienza con una buena conversación.",
+      paragraphs: [
+        "Antes de elegir el escenario, las flores o la música, queremos conocerlos.",
+        "¿Cómo imaginan ese día? ¿Quién necesita estar cerca? ¿Qué haría ese momento verdaderamente especial?",
+        "Es de esa conversación que nace nuestro trabajo: reunir a las personas, los lugares y los detalles correctos para una celebración con la identidad de la pareja.",
       ],
     },
+    services: [
+      {
+        page: "elopement",
+        name: "Elopement Wedding",
+        eyebrow: "UN DÍA ENTERO PARA USTEDES DOS",
+        title: "La intimidad de un encuentro. La emoción de una boda.",
+        paragraphs: [
+          "Intercambiar votos frente al mar, celebrar con pocos invitados o vivir ese momento solo los dos. El Elopement Wedding abre espacio para una celebración íntima, al ritmo de ustedes.",
+          "Llevamos la experiencia de quien organiza grandes eventos para cuidar cada detalle de un encuentro pequeño y lleno de significado.",
+          "Para casarse o renovar los votos en Río de Janeiro, creamos opciones de experiencias que combinan escenario, ceremonia y los detalles que ustedes desean vivir.",
+        ],
+        cta: "Descubrir nuestro elopement",
+      },
+      {
+        page: "sameSex",
+        name: "Boda Homoafectiva",
+        eyebrow: "LIBERTAD PARA CELEBRAR QUIENES USTEDES SON",
+        title: "Una boda en la que ustedes puedan ser enteramente ustedes.",
+        paragraphs: [
+          "La historia de ustedes orienta cada elección: los votos, la entrada, las personas alrededor y la forma de celebrar.",
+          "Nuestro trabajo comienza en la escucha y sigue por la planificación, por la elección de los proveedores y por la conducción del día. Con acogida y respeto, creamos espacio para que la pareja se reconozca en toda la experiencia.",
+          "Una ceremonia íntima o una fiesta con todos cerca. El formato es de ustedes. El cuidado está en cada etapa.",
+        ],
+        cta: "Celebrar nuestra historia",
+      },
+      {
+        page: "destination",
+        name: "Destination Wedding",
+        eyebrow: "RÍO COMO DESTINO. USTEDES COMO MOTIVO.",
+        title: "Un viaje que reúne a las personas más importantes de su vida.",
+        paragraphs: [
+          "Elegir Río para casarse es invitar a quienes ustedes aman a compartir una experiencia que va más allá de la ceremonia.",
+          "Cuidamos de la planificación de la boda, de la programación y de los detalles que hacen que la pareja y los invitados se sientan bien recibidos de principio a fin.",
+          "Desde 2022, Leco se viene dedicando al universo de los Destination Weddings en Río, uniendo conocimiento local a la experiencia de más de dos décadas en eventos.",
+          "Para acompañar cada proyecto de cerca, se realizan solo **10 Destination Weddings por año**.",
+        ],
+        cta: "Consultar disponibilidad",
+      },
+      {
+        page: "legal",
+        name: "Brazil Wedding Legal 🌈",
+        eyebrow: "APOYO PARA PAREJAS EXTRANJERAS",
+        title: "El próximo capítulo de su historia puede comenzar en Brasil.",
+        paragraphs: [
+          "Si el matrimonio entre personas del mismo sexo aún no está permitido en el país de ustedes, Brasil puede ser un camino para oficializar esa unión.",
+          "Con base en Río de Janeiro, nuestro equipo ofrece apoyo en la organización de la documentación y en el acompañamiento de las etapas del matrimonio civil, conforme a las exigencias aplicables a cada pareja.",
+          "Ustedes tienen a alguien aquí para ayudar a entender el proceso, organizar los próximos pasos y acompañar ese recorrido.",
+          "Y, si lo desean, el matrimonio civil puede ganar una celebración para dos en Río.",
+        ],
+        cta: "Entender cómo casarse en Brasil",
+        note: "El matrimonio depende del cumplimiento de los requisitos legales y del análisis del registro civil. Su reconocimiento fuera de Brasil depende de las reglas de cada país.",
+      },
+    ],
     destination: {
-      kicker: "Rio de Janeiro",
-      title: "Casarse en Brasil. Celebrar en Rio.",
-      body: "Para muchas parejas, venir a Brasil representa la posibilidad del matrimonio civil. Rio transforma esa conquista en una experiencia para ser vivida y recordada.",
-      cta: "Conocer las posibilidades",
+      title: "Casarse en Río. Recordar para siempre.",
+      paragraphs: [
+        "El encuentro con la ciudad, el intercambio de miradas, las personas reunidas y aquel instante en que todo pasa a formar parte de la misma historia.",
+        "Vamos a crear espacio para que ustedes vivan cada uno de esos momentos.",
+      ],
+      cta: "Imaginar nuestra boda en Río",
     },
     planning: {
-      kicker: "Para parejas que viven en el exterior",
-      title: "Ustedes planifican desde donde estén. Nuestro equipo se ocupa de Brasil.",
+      title: "Ustedes planifican desde donde estén. Nosotros cuidamos de cerca.",
       items: [
         {
-          title: "Análisis a distancia",
-          body: "La primera conversación y el análisis inicial pueden realizarse en línea, antes de cualquier viaje o contratación local.",
+          title: "Conocimiento local",
+          body: "Un equipo en Río para ayudar a elegir escenarios y proveedores de acuerdo con el estilo, las prioridades y la inversión de ustedes.",
         },
         {
-          title: "Coordinación en Brasil",
-          body: "Mantenemos contacto con el registro civil, los traductores y los profesionales involucrados en el proceso brasileño.",
+          title: "Planificación acompañada",
+          body: "Decisiones, etapas y detalles organizados con la pareja, de la primera conversación a la celebración.",
         },
         {
-          title: "Viaje y celebración",
-          body: "Cuando la pareja también desea celebrar, organizamos alojamiento, transporte, ceremonia, fotografía y experiencias en Rio.",
+          title: "Acogida en cada contacto",
+          body: "Atención cercana, con apoyo en inglés para parejas que están organizando la boda desde fuera de Brasil.",
         },
       ],
     },
     ways: {
-      title: "Formas de vivir este momento",
+      title: "Más que imágenes bonitas. Memorias de un día de ustedes.",
       cards: [
-        {
-          title: "Matrimonio civil",
-          text: "Coordinación de las etapas necesarias para la realización del matrimonio civil en Brasil, de acuerdo con la situación documental de la pareja.",
-          action: "Entender el proceso",
-        },
-        {
-          title: "Civil + Elopement",
-          text: "Matrimonio civil acompañado de una celebración íntima en Rio, con lugar, ceremonia, fotografía, transporte y proveedores.",
-          action: "Conocer la experiencia",
-        },
-        {
-          title: "Civil + Destination Wedding",
-          text: "Matrimonio civil y celebración con invitados, incluyendo planificación, alojamiento, logística y experiencia en el destino.",
-          action: "Planear nuestra celebración",
-        },
+        { title: "El instante del sí", text: "Los votos, las miradas y la emoción de estar exactamente donde ustedes querían." },
+        { title: "Las personas cerca", text: "Los abrazos y los encuentros que dan aún más significado a la celebración." },
+        { title: "Río en la memoria", text: "Un escenario que pasa a formar parte de la historia de la pareja." },
       ],
     },
     about: {
-      caption: "Aquí, la historia de ustedes es recibida con respeto.",
-      kicker: "Quién estará con ustedes",
-      title: "No necesitan explicar por qué este matrimonio importa.",
+      kicker: "CONOZCAN A LECO BIAGGÌONI",
+      title: "Experiencia para cuidar. Sensibilidad para escuchar.",
       paragraphs: [
-        "Yo también soy gay y sé lo que significa poder vivir este momento con libertad. Mi trabajo es recibir la historia de ustedes con respeto y transformar el proceso brasileño en un camino claro, humano y bien conducido.",
-        "Desde 2004, mi equipo y yo realizamos eventos y bodas en Rio de Janeiro. Hoy usamos esa experiencia para recibir a parejas de Brasil y del mundo.",
+        "\"En 2004, abrí mi primera empresa. Desde entonces, pasé por muchos eventos, conocí historias diferentes y aprendí que los detalles solo tienen sentido cuando representan a las personas.",
+        "Hace más de 10 años, las bodas se convirtieron en el centro de mi trabajo.",
+        "Hoy, reúno esa experiencia para hacer lo que más placer me da: crear encuentros, realizar sueños y proporcionar momentos especiales.",
+        "Quiero conocer la historia de ustedes y descubrir, junto con mi equipo, cómo podemos formar parte de ella.\"",
       ],
-      meta: [
-        { label: "Desde:", value: "2004" },
-        { label: "Idiomas:", value: "PT · EN · ES" },
-        { label: "Base:", value: "Rio de Janeiro" },
-      ],
+      cta: "Conversar con Leco",
     },
     method: {
-      kicker: "El método",
-      title: "Un proceso sensible necesita información clara y presencia local.",
+      title: "De la primera idea al día de ustedes.",
       steps: [
         {
           n: "01",
-          title: "Analizamos",
-          body: "Entendemos la situación de la pareja antes de indicar documentos, plazos o servicios. Ningún caso debe tratarse como una fórmula lista.",
+          title: "Ustedes cuentan",
+          body: "Conversamos sobre la historia de la pareja, el formato deseado, la previsión de fecha y lo que es prioridad para ustedes.",
         },
         {
           n: "02",
-          title: "Organizamos",
-          body: "Transformamos la información en un camino con etapas, documentos, traducciones, contactos locales y responsabilidades definidas.",
+          title: "Nosotros planificamos juntos",
+          body: "Presentamos una propuesta y organizamos las elecciones, los proveedores y las etapas necesarias. Cuando hay matrimonio civil, la planificación también considera la documentación y las exigencias del proceso.",
         },
         {
           n: "03",
-          title: "Acompañamos",
-          body: "Coordinamos el proceso en Brasil y los mantenemos informados hasta la realización del matrimonio civil y de la celebración contratada.",
+          title: "Ustedes viven",
+          body: "Con los detalles coordinados por el equipo, llega el momento de estar presentes, intercambiar los votos y disfrutar de la celebración.",
         },
       ],
     },
     emotional: {
-      kicker: "El derecho a decir sí",
-      title: "El matrimonio civil puede ser el comienzo de una experiencia inolvidable.",
-      paragraphs: [
-        "Pueden venir a Brasil para oficializar la unión y también vivir este momento en uno de los escenarios más marcantes de Rio de Janeiro.",
-        "La celebración puede ser íntima, solo para la pareja, o incluir a las personas que formaron parte de esta historia.",
-      ],
-      lines: ["MATRIMONIO CIVIL · ELOPEMENT WEDDING", "RIO DE JANEIRO · DESTINATION WEDDING"],
+      title: "El escenario puede ser extraordinario. Lo que hace único este día son ustedes.",
+      paragraphs: ["Una boda pensada para su historia, con espacio para que la emoción suceda."],
     },
     formats: {
-      kicker: "Cómo podemos ayudar",
-      title: "Del proceso legal a la celebración en Rio.",
+      kicker: "DEL MATRIMONIO CIVIL A LA CELEBRACIÓN",
+      title: "¿Cómo quieren vivir este momento?",
       packA: {
-        title: "Legal Gay Wedding Brazil",
-        body: "Para parejas que desean realizar el matrimonio civil en Brasil. El servicio comienza con un análisis inicial y puede incluir organización documental, coordinación con el registro civil, traducciones y apoyo profesional especializado.",
-        cta: "Analizar nuestro caso",
+        title: "Brazil Wedding Legal 🌈",
+        paragraphs: [
+          "Para parejas extranjeras que buscan apoyo para organizar el matrimonio civil en Brasil.",
+          "Apoyo con la documentación, interlocución con el registro civil y acompañamiento de las etapas, de acuerdo con las necesidades de la pareja.",
+        ],
+        cta: "Conversar sobre el matrimonio civil",
       },
       packB: {
-        title: "Legal Wedding + Rio Experience",
-        body: "Para parejas que desean unir el matrimonio civil a una experiencia en Rio. Además de la coordinación legal, planificamos ceremonia, lugar, fotografía, belleza, transporte, flores y celebración.",
-        cta: "Crear nuestra experiencia",
+        title: "Brazil Wedding Legal + Elopement",
+        paragraphs: [
+          "Para quienes desean unir el matrimonio civil a una celebración íntima en Río de Janeiro.",
+          "Además del apoyo al proceso civil, planificamos una experiencia para dos, con escenario, ceremonia y servicios elegidos con ustedes.",
+        ],
+        cta: "Planificar el civil y la celebración",
       },
     },
     contact: {
-      kicker: "Análisis inicial",
       title: "Cuéntennos un poco sobre ustedes.",
       paragraphs: [
-        "Para orientar el primer paso, necesitamos entender dónde viven, la nacionalidad y el estado civil de cada persona, los documentos disponibles y cuándo imaginan venir a Brasil.",
-        "Esta conversación inicial también ayuda a identificar si desean solo el matrimonio civil o una experiencia completa en Rio.",
+        "Tal vez ustedes ya tengan una fecha. Tal vez tengan solo las ganas de comenzar.",
+        "Queremos saber qué están imaginando y cómo podemos ayudar a transformar esa idea en un plan.",
       ],
+      form: {
+        names: "Nombres de la pareja",
+        email: "E-mail",
+        whatsapp: "WhatsApp con código del país",
+        country: "País donde viven",
+        experience: "¿Qué experiencia buscan?",
+        experienceOptions: [
+          "Elopement Wedding",
+          "Boda Homoafectiva",
+          "Destination Wedding",
+          "Brazil Wedding Legal",
+          "Aún estamos descubriendo",
+        ],
+        date: "Fecha o período deseado",
+        guests: "Número estimado de invitados",
+        message: "Cuéntennos cómo imaginan este momento",
+        submit: "Conversemos sobre nuestra boda",
+        note: "Usaremos los datos informados para responder al contacto y conversar sobre la planificación de ustedes.",
+      },
     },
     faq: {
-      kicker: "FAQ",
       title: "Antes de comenzar",
-      lead: "Las primeras respuestas sobre el matrimonio civil de parejas extranjeras del mismo sexo en Brasil.",
       items: [
         {
-          q: "¿El matrimonio entre personas del mismo sexo está permitido en Brasil?",
-          a: "Sí. La Resolución nº 175/2013 del Consejo Nacional de Justicia (Conselho Nacional de Justiça) determina que las autoridades competentes no pueden rechazar la habilitación ni la celebración del matrimonio civil entre personas del mismo sexo.",
+          q: "¿Podemos organizar la boda viviendo fuera de Brasil?",
+          a: "Sí. La planificación puede comenzar a distancia, con nuestro equipo en Río acompañando las decisiones y la organización local. Si hay matrimonio civil, las etapas presenciales y los plazos se verificarán según el caso.",
         },
         {
-          q: "¿Dos extranjeros pueden casarse en Brasil?",
-          a: "La posibilidad y los requisitos deben analizarse de acuerdo con la nacionalidad, el estado civil, el país de emisión de los documentos y el registro civil responsable. El análisis inicial sirve para entender si el proceso puede realizarse y cuáles serán los próximos pasos.",
+          q: "¿El Elopement Wedding es solo para la pareja?",
+          a: "El foco es una celebración íntima. Puede ser un momento solo de ustedes o incluir a pocas personas cercanas, según la experiencia elegida. También es una posibilidad para renovar los votos.",
         },
         {
-          q: "¿Nuestro matrimonio será reconocido en el país donde vivimos?",
-          a: "El matrimonio produce efectos en Brasil. El reconocimiento en otro país depende de la legislación de ese país y debe confirmarse con orientación jurídica local. El servicio no promete reconocimiento automático fuera de Brasil.",
+          q: "¿Una boda homoafectiva puede ser un Elopement o Destination Wedding?",
+          a: "Sí. Ustedes pueden elegir una ceremonia para dos, una celebración con invitados o una experiencia de boda en Río para quienes vienen de fuera.",
         },
         {
-          q: "¿Qué documentos serán necesarios?",
-          a: "La lista varía según la pareja. Puede incluir certificados civiles, documentos de identidad, comprobantes de estado civil, apostilla o legalización y traducción jurada. El checklist solo debe definirse después del análisis inicial.",
+          q: "Somos extranjeros. ¿Podemos casarnos civilmente en Brasil?",
+          a: "Los extranjeros pueden casarse en Brasil, siempre que cumplan los requisitos aplicables. La documentación y las condiciones del proceso necesitan verificarse con el registro civil considerando la situación de cada persona.",
         },
         {
-          q: "¿Podemos realizar una celebración además del matrimonio civil?",
-          a: "Sí. Podemos combinar la coordinación del proceso civil con un Elopement Wedding, una ceremonia simbólica o una celebración con invitados en Rio de Janeiro.",
+          q: "¿Brasil permite el matrimonio entre personas del mismo sexo?",
+          a: "Sí. Los registros civiles brasileños no pueden rechazar la habilitación o la celebración del matrimonio por tratarse de una pareja del mismo sexo. Los demás requisitos legales siguen siendo necesarios.",
         },
         {
-          q: "¿Toda la planificación puede hacerse a distancia?",
-          a: "Gran parte del proceso puede coordinarse en línea. La necesidad de presencia en Brasil, los plazos y los actos presenciales se explican después del análisis del caso y de la confirmación por el registro civil responsable.",
+          q: "¿El matrimonio será reconocido en nuestro país?",
+          a: "No automáticamente. El reconocimiento y los efectos del matrimonio en el exterior dependen de las leyes de cada país. Esta cuestión debe confirmarse con orientación jurídica en el lugar donde ustedes pretenden utilizar el certificado.",
+        },
+        {
+          q: "¿Cuánto tiempo lleva el proceso civil?",
+          a: "El plazo depende de la documentación, de las gestiones necesarias y del registro civil. Por eso, el primer paso es conocer el caso de ustedes y verificar las exigencias antes de definir la programación del viaje.",
+        },
+        {
+          q: "¿Necesitamos contratar una fiesta junto con el apoyo al matrimonio civil?",
+          a: "No. Ustedes pueden buscar el Brazil Wedding Legal para el apoyo al proceso civil o combinar este servicio con una celebración.",
         },
       ],
     },
     footer: {
-      name: "Legal Gay Wedding Brazil by Leco Biaggìoni",
-      text: "Matrimonio civil y celebraciones en Rio de Janeiro para parejas del mismo sexo de todo el mundo.",
-      city: "Rio de Janeiro · Brasil",
+      name: "Leco Biaggìoni",
+      text: "Su amor. Su manera. Río como escenario.",
+      city: "Río de Janeiro · Brasil",
+      cta: "Hablemos",
       languages: "Português · English · Español",
-      legal:
-        "Los documentos, requisitos, plazos y elegibilidad varían según la pareja y el registro civil responsable. El reconocimiento del matrimonio fuera de Brasil depende de la legislación de cada país. La información específica debe confirmarse con el registro civil y con profesionales jurídicos habilitados.",
     },
   },
 };

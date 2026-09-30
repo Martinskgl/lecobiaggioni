@@ -17,7 +17,7 @@ export function MethodTimeline({
   steps,
   photos,
 }: {
-  kicker: string;
+  kicker?: string;
   title: string;
   lead?: string;
   steps: { n: string; title: string; body: string }[];
@@ -78,7 +78,7 @@ export function MethodTimeline({
     <section id="theday" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <p className="font-script text-2xl text-rose">{kicker}</p>
+          {kicker ? <p className="font-script text-2xl text-rose">{kicker}</p> : null}
           <h2 className="mt-3 max-w-3xl font-display text-4xl leading-[0.95] md:text-5xl">{title}</h2>
           {lead ? <p className="mt-6 max-w-2xl text-base leading-8 text-wine/75">{lead}</p> : null}
         </Reveal>

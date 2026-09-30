@@ -1,3 +1,4 @@
+import { homeCopy } from "@/lib/home-copy";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { Photo } from "@/components/photo";
@@ -42,7 +43,7 @@ export default async function ContactPage({
               </a>
             </div>
             <div className="mt-12">
-              <ContactForm dict={dict} />
+              <ContactForm dict={dict} form={homeCopy[localeFromParam(locale)].contact.form} />
             </div>
           </div>
         </div>

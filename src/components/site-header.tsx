@@ -5,13 +5,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import type { Dictionary } from "@/lib/dictionaries";
-import { brand, localizedPath, type Locale } from "@/lib/site";
+import { brand, localizedPath, pagePath, type Locale } from "@/lib/site";
 import { homeCopy } from "@/lib/home-copy";
 import { ui } from "@/lib/ui";
 
 export function SiteHeader({
   locale,
-  dict,
 }: {
   locale: Locale;
   dict: Dictionary;
@@ -37,14 +36,7 @@ export function SiteHeader({
   const light = home && !scrolled && !open;
 
   const nav = homeCopy[locale].nav;
-  const links = [
-    { href: `${root}#story`, label: nav.howItWorks },
-    { href: `${root}#presentation`, label: nav.civil },
-    { href: `${root}#destination`, label: nav.celebration },
-    { href: `${root}#details`, label: nav.packages },
-    { href: `${root}#about`, label: nav.about },
-    { href: `${root}#faq`, label: nav.faq },
-  ];
+  const links = nav.items.map((item) => ({ href: pagePath(locale, item.page), label: item.label }));
 
   const ctaClass = light ? "btn-cream !px-5 !py-2.5 text-sm" : "btn-wine !px-5 !py-2.5 text-sm";
 
@@ -71,7 +63,7 @@ export function SiteHeader({
           ))}
           <LocaleSwitcher locale={locale} tone={light ? "light" : "dark"} />
           <Link href={`${root}#rsvp`} className={ctaClass}>
-            {dict.nav.cta}
+            {nav.cta}
           </Link>
         </nav>
 
@@ -107,7 +99,7 @@ export function SiteHeader({
             <div className="mt-4 flex flex-wrap items-center gap-6">
               <LocaleSwitcher locale={locale} tone="dark" />
               <Link href={`${root}#rsvp`} className="btn-wine" onClick={() => setOpen(false)}>
-                {dict.nav.cta}
+                {nav.cta}
               </Link>
             </div>
           </nav>

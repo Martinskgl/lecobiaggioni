@@ -51,9 +51,9 @@ export function FormatsDressCode({
   packBCta?: string;
   ctaHref?: string;
   packATitle: string;
-  packABody: string;
+  packABody: string | string[];
   packBTitle: string;
-  packBBody: string;
+  packBBody: string | string[];
 }) {
   return (
     <section className="bg-cream px-6 py-24 md:px-10 md:py-32">
@@ -87,7 +87,9 @@ export function FormatsDressCode({
           <Reveal className="px-2 text-center md:px-12">
             <PackIcon variant="a" />
             <h3 className="mt-5 font-display text-4xl md:text-5xl">{packATitle}</h3>
-            <p className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{packABody}</p>
+            {(Array.isArray(packABody) ? packABody : [packABody]).map((paragraph) => (
+              <p key={paragraph} className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{paragraph}</p>
+            ))}
             {packACta ? (
               <a href={ctaHref} className="btn-wine mt-8 inline-flex">
                 {packACta}
@@ -106,7 +108,9 @@ export function FormatsDressCode({
           <Reveal className="px-2 text-center md:px-12">
             <PackIcon variant="b" />
             <h3 className="mt-5 font-display text-4xl md:text-5xl">{packBTitle}</h3>
-            <p className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{packBBody}</p>
+            {(Array.isArray(packBBody) ? packBBody : [packBBody]).map((paragraph) => (
+              <p key={paragraph} className="mx-auto mt-5 max-w-sm text-base leading-8 text-wine/75">{paragraph}</p>
+            ))}
             {packBCta ? (
               <a href={ctaHref} className="btn-wine mt-8 inline-flex">
                 {packBCta}

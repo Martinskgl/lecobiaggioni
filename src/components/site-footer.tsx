@@ -1,9 +1,10 @@
 import type { Dictionary } from "@/lib/dictionaries";
 import { homeCopy } from "@/lib/home-copy";
-import { brand, type Locale } from "@/lib/site";
+import { brand, localizedPath, pagePath, type Locale } from "@/lib/site";
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const copy = homeCopy[locale].footer;
+  const nav = homeCopy[locale].nav;
 
   return (
     <footer className="bg-cream pb-12 text-wine">
@@ -12,6 +13,13 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         <div>
           <p className="font-display text-lg text-wine">{copy.name}</p>
           <p className="mt-3 max-w-md leading-6">{copy.text}</p>
+          <div className="mt-3 flex flex-wrap gap-5">
+            {nav.items.map((item) => (
+              <a key={item.page} href={pagePath(locale, item.page)}>
+                {item.label}
+              </a>
+            ))}
+          </div>
         </div>
         <div className="flex flex-col gap-2 md:items-end md:text-right">
           <p>{copy.city}</p>
@@ -28,10 +36,15 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
             <span>{brand.whatsappDisplay}</span>
             <span>{brand.email}</span>
           </div>
+          <div>
+            <a href={`${localizedPath(locale)}#rsvp`} className="btn-wine !px-5 !py-2.5 text-sm">
+              {copy.cta}
+            </a>
+          </div>
         </div>
       </div>
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <p className="max-w-4xl text-[0.68rem] leading-5 text-wine/45">{copy.legal}</p>
+        {copy.legal ? <p className="max-w-4xl text-[0.68rem] leading-5 text-wine/45">{copy.legal}</p> : null}
         <p className="mt-4 text-[0.72rem] text-wine/55">{dict.footer.copyright}</p>
       </div>
     </footer>

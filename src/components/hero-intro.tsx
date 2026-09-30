@@ -4,13 +4,23 @@ import { useEffect, useState } from "react";
 import { Photo } from "@/components/photo";
 
 function LetterLine({ text }: { text: string }) {
+  // Letters are grouped per word so long titles wrap between words, never mid-word.
+  let index = 0;
+  const words = text.split(" ");
   return (
-    <span className="hero-line">
-      {Array.from(text).map((char, index) => (
-        <span className="hero-char-mask" key={`${char}-${index}`}>
-          <span className="hero-char" style={{ transitionDelay: `${index * 0.032}s` }}>
-            {char === " " ? "\u00A0" : char}
-          </span>
+    <span className="hero-line flex-wrap">
+      {words.map((word, wordIndex) => (
+        <span className="flex" key={`${word}-${wordIndex}`}>
+          {Array.from(wordIndex < words.length - 1 ? `${word} ` : word).map((char) => {
+            const delay = index++ * 0.032;
+            return (
+              <span className="hero-char-mask" key={`${char}-${index}`}>
+                <span className="hero-char" style={{ transitionDelay: `${delay}s` }}>
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              </span>
+            );
+          })}
         </span>
       ))}
     </span>
@@ -23,12 +33,16 @@ export function HeroIntro({
   name,
   lead,
   cta,
+  ctaHref = "#rsvp",
+  secondary,
 }: {
   src: string;
   kicker: string;
   name: string;
-  lead?: string;
+  lead?: string | string[];
   cta?: string;
+  ctaHref?: string;
+  secondary?: { label: string; href: string };
 }) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState(false);
@@ -59,11 +73,16 @@ export function HeroIntro({
         }`}
       >
         <p className="hero-kicker font-display text-[0.95rem] leading-snug md:text-xl">{kicker}</p>
-        <h1 className="mt-2 font-display text-[clamp(2.6rem,11.6vw,9.6rem)] leading-none md:mt-3">
+        <h1 className="mt-2 font-display text-[clamp(2.4rem,5vw,5.2rem)] leading-none md:mt-3">
           <LetterLine text={name} />
         </h1>
-        {lead ? <p className="mt-5 max-w-xl text-base leading-7 text-cream/90 md:text-lg">{lead}</p> : null}
-        {cta ? <a href="#rsvp" className="btn-cream mt-6 inline-flex">{cta}</a> : null}
+        {(Array.isArray(lead) ? lead : lead ? [lead] : []).map((paragraph) => (
+          <p key={paragraph} className="mt-5 max-w-xl text-base leading-7 text-cream/90 md:text-lg">{paragraph}</p>
+        ))}
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+          {cta ? <a href={ctaHref} className="btn-cream inline-flex">{cta}</a> : null}
+          {secondary ? <a href={secondary.href} className="inline-block underline">{secondary.label}</a> : null}
+        </div>
       </div>
     </section>
   );

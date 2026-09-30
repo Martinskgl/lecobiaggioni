@@ -19,7 +19,7 @@ export function SaveSince({
   paragraphs,
   note,
 }: {
-  kicker: string;
+  kicker?: string;
   title: string;
   paragraphs: string[];
   note?: string;
@@ -29,7 +29,7 @@ export function SaveSince({
       <div className="page-frame mx-auto max-w-[720px] text-center">
         <Reveal>
           <CoupleMark />
-          <p className="mt-6 font-display text-xl tracking-wide text-wine md:text-2xl">{kicker}</p>
+          {kicker ? <p className="mt-6 font-display text-xl tracking-wide text-wine md:text-2xl">{kicker}</p> : null}
           <h2 className="mt-6 font-display text-[2.6rem] leading-[1.05] text-wine md:text-6xl">{title}</h2>
           {paragraphs.map((paragraph) => (
             <p key={paragraph} className="mx-auto mt-7 max-w-xl text-[0.95rem] leading-7 text-wine/70 md:text-base md:leading-8">

@@ -1,3 +1,4 @@
+import { homeCopy } from "@/lib/home-copy";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactForm } from "@/components/contact-form";
@@ -78,7 +79,7 @@ export default async function VenuePage({
         <h2 className="font-display text-4xl">{page.ctaTitle}</h2>
         <p className="mt-4 text-base leading-8 text-wine/75">{page.ctaBody}</p>
         <div className="mt-10">
-          <ContactForm dict={dict} venueDefault={dict.venuesHome.cards[slug].title} />
+          <ContactForm dict={dict} form={homeCopy[locale].contact.form} venueDefault={dict.venuesHome.cards[slug].title} />
         </div>
       </section>
     </article>
