@@ -103,10 +103,10 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   pt: {
     nav: {
       items: [
-        { page: "elopement", label: "Elopement Wedding" },
         { page: "sameSex", label: "Casamento Homoafetivo" },
+        { page: "legal", label: "Brazil Legal Wedding 🌈" },
+        { page: "elopement", label: "Elopement Wedding" },
         { page: "destination", label: "Destination Wedding" },
-        { page: "legal", label: "Brazil Wedding Legal 🌈" },
       ],
       cta: "Vamos conversar",
     },
@@ -170,7 +170,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       {
         page: "legal",
-        name: "Brazil Wedding Legal 🌈",
+        name: "Brazil Legal Wedding 🌈",
         eyebrow: "SUPORTE PARA CASAIS ESTRANGEIROS",
         title: "O próximo capítulo da sua história pode começar no Brasil.",
         paragraphs: [
@@ -255,7 +255,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       kicker: "DO CASAMENTO CIVIL À CELEBRAÇÃO",
       title: "Como vocês querem viver esse momento?",
       packA: {
-        title: "Brazil Wedding Legal 🌈",
+        title: "Brazil Legal Wedding 🌈",
         paragraphs: [
           "Para casais estrangeiros que procuram apoio para organizar o casamento civil no Brasil.",
           "Suporte com a documentação, interlocução com o cartório e acompanhamento das etapas, de acordo com as necessidades do casal.",
@@ -263,7 +263,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         cta: "Conversar sobre o casamento civil",
       },
       packB: {
-        title: "Brazil Wedding Legal + Elopement",
+        title: "Brazil Legal Wedding + Elopement",
         paragraphs: [
           "Para quem deseja unir o casamento civil a uma celebração íntima no Rio de Janeiro.",
           "Além do suporte ao processo civil, planejamos uma experiência a dois, com cenário, cerimônia e serviços escolhidos com vocês.",
@@ -287,7 +287,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           "Elopement Wedding",
           "Casamento Homoafetivo",
           "Destination Wedding",
-          "Brazil Wedding Legal",
+          "Brazil Legal Wedding",
           "Ainda estamos descobrindo",
         ],
         date: "Data ou período desejado",
@@ -330,7 +330,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           q: "Precisamos contratar uma festa junto com o suporte ao casamento civil?",
-          a: "Não. Vocês podem procurar o Brazil Wedding Legal para o suporte ao processo civil ou combinar esse serviço com uma celebração.",
+          a: "Não. Vocês podem procurar o Brazil Legal Wedding para o suporte ao processo civil ou combinar esse serviço com uma celebração.",
         },
       ],
     },
@@ -346,10 +346,10 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   en: {
     nav: {
       items: [
-        { page: "elopement", label: "Elopement Wedding" },
         { page: "sameSex", label: "Same-Sex Wedding" },
+        { page: "legal", label: "Brazil Legal Wedding 🌈" },
+        { page: "elopement", label: "Elopement Wedding" },
         { page: "destination", label: "Destination Wedding" },
-        { page: "legal", label: "Brazil Wedding Legal 🌈" },
       ],
       cta: "Let's talk",
     },
@@ -413,7 +413,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       {
         page: "legal",
-        name: "Brazil Wedding Legal 🌈",
+        name: "Brazil Legal Wedding 🌈",
         eyebrow: "SUPPORT FOR FOREIGN COUPLES",
         title: "The next chapter of your story can begin in Brazil.",
         paragraphs: [
@@ -498,7 +498,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       kicker: "FROM CIVIL MARRIAGE TO CELEBRATION",
       title: "How do you want to live this moment?",
       packA: {
-        title: "Brazil Wedding Legal 🌈",
+        title: "Brazil Legal Wedding 🌈",
         paragraphs: [
           "For foreign couples looking for support to organize their civil marriage in Brazil.",
           "Support with the documentation, liaison with the registry office and follow-up of the stages, according to the couple's needs.",
@@ -506,7 +506,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         cta: "Talk about the civil marriage",
       },
       packB: {
-        title: "Brazil Wedding Legal + Elopement",
+        title: "Brazil Legal Wedding + Elopement",
         paragraphs: [
           "For those who wish to combine the civil marriage with an intimate celebration in Rio de Janeiro.",
           "In addition to support with the civil process, we plan an experience for two, with setting, ceremony and services chosen with you.",
@@ -530,7 +530,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           "Elopement Wedding",
           "Same-Sex Wedding",
           "Destination Wedding",
-          "Brazil Wedding Legal",
+          "Brazil Legal Wedding",
           "We are still discovering",
         ],
         date: "Desired date or period",
@@ -573,7 +573,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           q: "Do we need to hire a party together with the civil marriage support?",
-          a: "No. You can come to Brazil Wedding Legal for support with the civil process or combine this service with a celebration.",
+          a: "No. You can come to Brazil Legal Wedding for support with the civil process or combine this service with a celebration.",
         },
       ],
     },
@@ -589,10 +589,10 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   es: {
     nav: {
       items: [
-        { page: "elopement", label: "Elopement Wedding" },
         { page: "sameSex", label: "Boda Homoafectiva" },
+        { page: "legal", label: "Brazil Legal Wedding 🌈" },
+        { page: "elopement", label: "Elopement Wedding" },
         { page: "destination", label: "Destination Wedding" },
-        { page: "legal", label: "Brazil Wedding Legal 🌈" },
       ],
       cta: "Hablemos",
     },
@@ -656,7 +656,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       {
         page: "legal",
-        name: "Brazil Wedding Legal 🌈",
+        name: "Brazil Legal Wedding 🌈",
         eyebrow: "APOYO PARA PAREJAS EXTRANJERAS",
         title: "El próximo capítulo de su historia puede comenzar en Brasil.",
         paragraphs: [
@@ -741,7 +741,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       kicker: "DEL MATRIMONIO CIVIL A LA CELEBRACIÓN",
       title: "¿Cómo quieren vivir este momento?",
       packA: {
-        title: "Brazil Wedding Legal 🌈",
+        title: "Brazil Legal Wedding 🌈",
         paragraphs: [
           "Para parejas extranjeras que buscan apoyo para organizar el matrimonio civil en Brasil.",
           "Apoyo con la documentación, interlocución con el registro civil y acompañamiento de las etapas, de acuerdo con las necesidades de la pareja.",
@@ -749,7 +749,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         cta: "Conversar sobre el matrimonio civil",
       },
       packB: {
-        title: "Brazil Wedding Legal + Elopement",
+        title: "Brazil Legal Wedding + Elopement",
         paragraphs: [
           "Para quienes desean unir el matrimonio civil a una celebración íntima en Río de Janeiro.",
           "Además del apoyo al proceso civil, planificamos una experiencia para dos, con escenario, ceremonia y servicios elegidos con ustedes.",
@@ -773,7 +773,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           "Elopement Wedding",
           "Boda Homoafectiva",
           "Destination Wedding",
-          "Brazil Wedding Legal",
+          "Brazil Legal Wedding",
           "Aún estamos descubriendo",
         ],
         date: "Fecha o período deseado",
@@ -816,7 +816,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           q: "¿Necesitamos contratar una fiesta junto con el apoyo al matrimonio civil?",
-          a: "No. Ustedes pueden buscar el Brazil Wedding Legal para el apoyo al proceso civil o combinar este servicio con una celebración.",
+          a: "No. Ustedes pueden buscar el Brazil Legal Wedding para el apoyo al proceso civil o combinar este servicio con una celebración.",
         },
       ],
     },

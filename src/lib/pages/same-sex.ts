@@ -65,10 +65,10 @@ export const sameSex: Record<Locale, PageCopy> = {
         type: "destination",
         title: "Vocês também querem oficializar a união no Brasil?",
         paragraphs: [
-          "O Brazil Wedding Legal oferece suporte a casais estrangeiros na organização e no acompanhamento do processo civil, inclusive quando o casamento entre pessoas do mesmo sexo não é permitido no país de origem.",
+          "O Brazil Legal Wedding oferece suporte a casais estrangeiros na organização e no acompanhamento do processo civil, inclusive quando o casamento entre pessoas do mesmo sexo não é permitido no país de origem.",
           "Os requisitos são verificados conforme o caso. O reconhecimento da união em outro país depende da legislação local.",
         ],
-        cta: { label: "Conhecer o Brazil Wedding Legal", href: "page:legal" },
+        cta: { label: "Conhecer o Brazil Legal Wedding", href: "page:legal" },
       },
       {
         type: "faq",
@@ -161,10 +161,10 @@ export const sameSex: Record<Locale, PageCopy> = {
         type: "destination",
         title: "Do you also want to make the union official in Brazil?",
         paragraphs: [
-          "Brazil Wedding Legal offers support to foreign couples in organizing and following the civil process, including when marriage between people of the same sex is not allowed in the country of origin.",
+          "Brazil Legal Wedding offers support to foreign couples in organizing and following the civil process, including when marriage between people of the same sex is not allowed in the country of origin.",
           "The requirements are checked according to the case. The recognition of the union in another country depends on the local legislation.",
         ],
-        cta: { label: "Discover Brazil Wedding Legal", href: "page:legal" },
+        cta: { label: "Discover Brazil Legal Wedding", href: "page:legal" },
       },
       {
         type: "faq",
@@ -257,10 +257,10 @@ export const sameSex: Record<Locale, PageCopy> = {
         type: "destination",
         title: "¿Ustedes también quieren oficializar la unión en Brasil?",
         paragraphs: [
-          "El Brazil Wedding Legal ofrece apoyo a parejas extranjeras en la organización y en el acompañamiento del proceso civil, incluso cuando el matrimonio entre personas del mismo sexo no está permitido en el país de origen.",
+          "El Brazil Legal Wedding ofrece apoyo a parejas extranjeras en la organización y en el acompañamiento del proceso civil, incluso cuando el matrimonio entre personas del mismo sexo no está permitido en el país de origen.",
           "Los requisitos se verifican según el caso. El reconocimiento de la unión en otro país depende de la legislación local.",
         ],
-        cta: { label: "Conocer el Brazil Wedding Legal", href: "page:legal" },
+        cta: { label: "Conocer el Brazil Legal Wedding", href: "page:legal" },
       },
       {
         type: "faq",

@@ -62,7 +62,7 @@ export type PageSection =
   | { type: "faq"; id?: string; title: string; items: { q: string; a: string }[] };
 
 export type PageCopy = {
-  hero: { kicker: string; title: string; paragraphs: string[]; cta: Cta; secondary: Cta };
+  hero: { kicker: string; title: string; subtitle?: string; paragraphs: string[]; cta: Cta; secondary: Cta };
   sections: PageSection[];
 };
 

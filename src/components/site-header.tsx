@@ -49,7 +49,17 @@ export function SiteHeader({
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-5 py-5 md:px-10">
-        <Link href={root} className="font-display text-[1.65rem] leading-none md:text-[1.85rem]">
+        <Link
+          href={root}
+          onClick={(event) => {
+            // Já na Home: o Link não navega, então volta ao topo.
+            if (pathname === root) {
+              event.preventDefault();
+              window.history.replaceState(null, "", root);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="font-display text-[1.65rem] leading-none md:text-[1.85rem]">
           {brand.name}
         </Link>
 

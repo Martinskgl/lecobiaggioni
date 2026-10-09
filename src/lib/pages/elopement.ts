@@ -92,7 +92,7 @@ export const elopement: Record<Locale, PageCopy> = {
           },
           {
             q: "O Elopement inclui casamento civil?",
-            a: "A experiência de celebração e o processo civil são serviços diferentes. Se vocês também desejam se casar civilmente no Brasil, podemos combinar o Elopement com o Brazil Wedding Legal.",
+            a: "A experiência de celebração e o processo civil são serviços diferentes. Se vocês também desejam se casar civilmente no Brasil, podemos combinar o Elopement com o Brazil Legal Wedding.",
           },
         ],
       },
@@ -196,7 +196,7 @@ export const elopement: Record<Locale, PageCopy> = {
           },
           {
             q: "Does the Elopement include civil marriage?",
-            a: "The celebration experience and the civil process are different services. If you also wish to have a civil marriage in Brazil, we can combine the Elopement with Brazil Wedding Legal.",
+            a: "The celebration experience and the civil process are different services. If you also wish to have a civil marriage in Brazil, we can combine the Elopement with Brazil Legal Wedding.",
           },
         ],
       },
@@ -300,7 +300,7 @@ export const elopement: Record<Locale, PageCopy> = {
           },
           {
             q: "¿El Elopement incluye matrimonio civil?",
-            a: "La experiencia de celebración y el proceso civil son servicios diferentes. Si ustedes también desean casarse civilmente en Brasil, podemos combinar el Elopement con el Brazil Wedding Legal.",
+            a: "La experiencia de celebración y el proceso civil son servicios diferentes. Si ustedes también desean casarse civilmente en Brasil, podemos combinar el Elopement con el Brazil Legal Wedding.",
           },
         ],
       },

@@ -31,6 +31,7 @@ export function HeroIntro({
   src,
   kicker,
   name,
+  subtitle,
   lead,
   cta,
   ctaHref = "#rsvp",
@@ -39,6 +40,7 @@ export function HeroIntro({
   src: string;
   kicker: string;
   name: string;
+  subtitle?: string;
   lead?: string | string[];
   cta?: string;
   ctaHref?: string;
@@ -76,6 +78,9 @@ export function HeroIntro({
         <h1 className="mt-2 font-display text-[clamp(2.4rem,5vw,5.2rem)] leading-none md:mt-3">
           <LetterLine text={name} />
         </h1>
+        {subtitle ? (
+          <p className="mt-3 font-display text-[clamp(1.5rem,2.6vw,2.6rem)] leading-tight md:mt-4">{subtitle}</p>
+        ) : null}
         {(Array.isArray(lead) ? lead : lead ? [lead] : []).map((paragraph) => (
           <p key={paragraph} className="mt-5 max-w-xl text-base leading-7 text-cream/90 md:text-lg">{paragraph}</p>
         ))}

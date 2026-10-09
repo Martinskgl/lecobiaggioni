@@ -18,6 +18,8 @@ import { homeCopy } from "@/lib/home-copy";
 import { chapterPhotos, photos } from "@/lib/photos";
 import { brand, pagePath, type Locale } from "@/lib/site";
 
+const contactMosaic = [photos.vows, photos.kiss, photos.flowers, photos.rio] as const;
+
 const SERVICE_ICONS: ServiceIcon[] = ["flower", "heart", "plane", "document"];
 
 export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -125,7 +127,18 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
 
         {/* Contato */}
         <section id="rsvp" className="scroll-mt-24 grid md:grid-cols-2">
-          <Photo src={photos.vows} alt="" className="min-h-[70vh]" sizes="50vw" />
+          {/* Mosaico de fotos */}
+          <div className="grid min-h-[70vh] grid-cols-2 grid-rows-3 gap-1.5">
+            {contactMosaic.map((src, index) => (
+              <Photo
+                key={`${src}-${index}`}
+                src={src}
+                alt=""
+                className={`!min-h-0 ${index === 0 ? "row-span-2" : ""} ${index === 3 ? "col-span-2" : ""}`}
+                sizes="25vw"
+              />
+            ))}
+          </div>
           <div className="flex items-center px-6 py-16 md:px-12">
             <div className="w-full max-w-md">
               <h2 className="mt-3 font-display text-4xl leading-tight md:text-5xl">{copy.contact.title}</h2>

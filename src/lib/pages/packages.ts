@@ -97,7 +97,7 @@ export const packages: Record<Locale, PageCopy> = {
         title: "A celebração e o casamento civil podem fazer parte da mesma viagem.",
         paragraphs: [
           "Essential, Signature e Luxury Experience contemplam a celebração de Elopement Wedding.",
-          "Para casais estrangeiros que também desejam se casar civilmente no Brasil, o Brazil Wedding Legal pode ser contratado separadamente.",
+          "Para casais estrangeiros que também desejam se casar civilmente no Brasil, o Brazil Legal Wedding pode ser contratado separadamente.",
           "A coordenação do processo civil, taxas de cartório, traduções, documentos e serviços jurídicos não integram automaticamente os pacotes de celebração.",
         ],
         cta: { label: "Combinar nossa experiência com o casamento civil", href: "page:legal" },
@@ -242,7 +242,7 @@ export const packages: Record<Locale, PageCopy> = {
         title: "The celebration and the civil marriage can be part of the same trip.",
         paragraphs: [
           "Essential, Signature and Luxury Experience include the Elopement Wedding celebration.",
-          "For foreign couples who also wish to have a civil marriage in Brazil, Brazil Wedding Legal can be contracted separately.",
+          "For foreign couples who also wish to have a civil marriage in Brazil, Brazil Legal Wedding can be contracted separately.",
           "The coordination of the civil process, registry office fees, translations, documents and legal services are not automatically part of the celebration packages.",
         ],
         cta: { label: "Combine our experience with the civil marriage", href: "page:legal" },
@@ -387,7 +387,7 @@ export const packages: Record<Locale, PageCopy> = {
         title: "La celebración y el matrimonio civil pueden formar parte del mismo viaje.",
         paragraphs: [
           "Essential, Signature y Luxury Experience incluyen la celebración de Elopement Wedding.",
-          "Para parejas extranjeras que también desean casarse civilmente en Brasil, el Brazil Wedding Legal puede contratarse por separado.",
+          "Para parejas extranjeras que también desean casarse civilmente en Brasil, el Brazil Legal Wedding puede contratarse por separado.",
           "La coordinación del proceso civil, las tasas del registro civil, las traducciones, los documentos y los servicios jurídicos no integran automáticamente los paquetes de celebración.",
         ],
         cta: { label: "Combinar nuestra experiencia con el matrimonio civil", href: "page:legal" },

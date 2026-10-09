@@ -128,6 +128,7 @@ export function InnerPage({ locale, copy }: { locale: Locale; copy: PageCopy }) 
         src={photos.hero}
         kicker={copy.hero.kicker}
         name={copy.hero.title}
+        subtitle={copy.hero.subtitle}
         lead={copy.hero.paragraphs}
         cta={copy.hero.cta.label}
         ctaHref={resolveHref(locale, copy.hero.cta.href)}

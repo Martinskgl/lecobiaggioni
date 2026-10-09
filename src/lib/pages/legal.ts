@@ -5,8 +5,9 @@ import type { Locale } from "@/lib/site";
 export const legal: Record<Locale, PageCopy> = {
   pt: {
     hero: {
-      kicker: "BRAZIL WEDDING LEGAL 🌈",
-      title: "O próximo capítulo da sua história pode ser oficializado no Brasil.",
+      kicker: "BRAZIL LEGAL WEDDING 🌈",
+      title: "Get Legally Married in Rio",
+      subtitle: "O próximo capítulo… no Brasil!",
       paragraphs: [
         "Suporte para casais estrangeiros que desejam organizar seu casamento civil no Brasil, com acompanhamento local no Rio de Janeiro.",
         "Se o casamento entre pessoas do mesmo sexo ainda não é permitido no país de vocês, vamos entender o caso e orientar os próximos passos para verificar essa possibilidade aqui.",
@@ -20,7 +21,7 @@ export const legal: Record<Locale, PageCopy> = {
         title: "Uma equipe aqui para ajudar vocês a organizar o processo.",
         paragraphs: [
           "Planejar um casamento civil em outro país envolve documentos, exigências locais e decisões que precisam acontecer na ordem certa.",
-          "O Brazil Wedding Legal conecta essas etapas: entender a situação do casal, organizar as providências documentais e acompanhar o contato com os profissionais e órgãos envolvidos.",
+          "O Brazil Legal Wedding conecta essas etapas: entender a situação do casal, organizar as providências documentais e acompanhar o contato com os profissionais e órgãos envolvidos.",
           "Vocês recebem orientação sobre o que precisa ser preparado e quais pontos ainda dependem de confirmação.",
         ],
       },
@@ -125,8 +126,9 @@ export const legal: Record<Locale, PageCopy> = {
 
   en: {
     hero: {
-      kicker: "BRAZIL WEDDING LEGAL 🌈",
-      title: "The next chapter of your story can be made official in Brazil.",
+      kicker: "BRAZIL LEGAL WEDDING 🌈",
+      title: "Get Legally Married in Rio",
+      subtitle: "The next chapter… in Brazil!",
       paragraphs: [
         "Support for foreign couples who wish to organize their civil marriage in Brazil, with local follow-up in Rio de Janeiro.",
         "If marriage between people of the same sex is not yet allowed in your country, let's understand the case and guide the next steps to check this possibility here.",
@@ -140,7 +142,7 @@ export const legal: Record<Locale, PageCopy> = {
         title: "A team here to help you organize the process.",
         paragraphs: [
           "Planning a civil marriage in another country involves documents, local requirements and decisions that need to happen in the right order.",
-          "Brazil Wedding Legal connects these stages: understanding the couple's situation, organizing the documentary arrangements and following the contact with the professionals and bodies involved.",
+          "Brazil Legal Wedding connects these stages: understanding the couple's situation, organizing the documentary arrangements and following the contact with the professionals and bodies involved.",
           "You receive guidance on what needs to be prepared and which points still depend on confirmation.",
         ],
       },
@@ -243,8 +245,9 @@ export const legal: Record<Locale, PageCopy> = {
 
   es: {
     hero: {
-      kicker: "BRAZIL WEDDING LEGAL 🌈",
-      title: "El próximo capítulo de su historia puede oficializarse en Brasil.",
+      kicker: "BRAZIL LEGAL WEDDING 🌈",
+      title: "Get Legally Married in Rio",
+      subtitle: "El próximo capítulo… ¡en Brasil!",
       paragraphs: [
         "Apoyo para parejas extranjeras que desean organizar su matrimonio civil en Brasil, con acompañamiento local en Río de Janeiro.",
         "Si el matrimonio entre personas del mismo sexo aún no está permitido en el país de ustedes, vamos a entender el caso y orientar los próximos pasos para verificar esa posibilidad aquí.",
@@ -258,7 +261,7 @@ export const legal: Record<Locale, PageCopy> = {
         title: "Un equipo aquí para ayudarlos a organizar el proceso.",
         paragraphs: [
           "Planificar un matrimonio civil en otro país involucra documentos, exigencias locales y decisiones que necesitan suceder en el orden correcto.",
-          "El Brazil Wedding Legal conecta esas etapas: entender la situación de la pareja, organizar las gestiones documentales y acompañar el contacto con los profesionales y organismos involucrados.",
+          "El Brazil Legal Wedding conecta esas etapas: entender la situación de la pareja, organizar las gestiones documentales y acompañar el contacto con los profesionales y organismos involucrados.",
           "Ustedes reciben orientación sobre lo que necesita prepararse y qué puntos aún dependen de confirmación.",
         ],
       },
