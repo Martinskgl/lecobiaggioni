@@ -1,5 +1,15 @@
-import type { PageCopy } from "@/lib/pages-copy";
+import type { PageCopy, PageSection } from "@/lib/pages-copy";
+import { rio } from "@/lib/pages/rio";
 import type { Locale } from "@/lib/site";
+
+/** Exemplos de casamentos no Rio (mesmos cards da página Casamento no Rio, com o Cristo em primeiro). */
+function stories(locale: Locale): PageSection {
+  const section = rio[locale].sections.find(
+    (item) => item.type === "cards" && item.cards.some((card) => card.title.includes("Cristo Redentor")),
+  );
+  if (!section) throw new Error(`Seção de histórias não encontrada em rio.${locale}`);
+  return { ...section, id: "historias" };
+}
 
 /** Word 03_Destination_Wedding */
 export const destination: Record<Locale, PageCopy> = {
@@ -78,6 +88,7 @@ export const destination: Record<Locale, PageCopy> = {
         ],
         cta: { label: "Consultar nossa data", href: "#rsvp" },
       },
+      stories("pt"),
       {
         type: "faq",
         title: "Perguntas frequentes",
@@ -184,6 +195,7 @@ export const destination: Record<Locale, PageCopy> = {
         ],
         cta: { label: "Check our date", href: "#rsvp" },
       },
+      stories("en"),
       {
         type: "faq",
         title: "Frequently asked questions",
@@ -290,6 +302,7 @@ export const destination: Record<Locale, PageCopy> = {
         ],
         cta: { label: "Consultar nuestra fecha", href: "#rsvp" },
       },
+      stories("es"),
       {
         type: "faq",
         title: "Preguntas frecuentes",

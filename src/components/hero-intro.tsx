@@ -36,8 +36,13 @@ export function HeroIntro({
   cta,
   ctaHref = "#rsvp",
   secondary,
+  alt = "",
+  video,
 }: {
   src: string;
+  alt?: string;
+  /** Vídeo de fundo opcional; a foto `src` vira a capa (poster). */
+  video?: string;
   kicker: string;
   name: string;
   subtitle?: string;
@@ -48,9 +53,12 @@ export function HeroIntro({
 }) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState(false);
+  const [motion, setMotion] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setMotion(!reduced);
+    if (reduced) {
       setOpen(true);
       setText(true);
       return;
@@ -64,13 +72,28 @@ export function HeroIntro({
   }, []);
 
   return (
-    <section className="relative h-[100svh] min-h-[640px] overflow-hidden bg-cream">
+    <section className="relative flex min-h-[max(100svh,640px)] flex-col justify-end overflow-hidden bg-cream">
       <div className={`hero-window ${open ? "is-open" : ""}`}>
-        <Photo src={src} alt="" fillParent kenburns quiet />
-        <div className="absolute inset-0 bg-gradient-to-t from-wine/35 via-wine/10 to-wine/20" />
+        <Photo src={src} alt={alt} fillParent kenburns={!video} quiet priority sizes="100vw" />
+        {video && motion ? (
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src={video}
+            poster={src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          />
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-wine/70 via-wine/20 to-wine/35" />
+        {/* Reforço atrás do texto (canto inferior esquerdo) para manter a leitura sobre fotos claras. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-wine/60 via-wine/15 to-transparent" />
       </div>
+      {/* Texto no fluxo (não absoluto): títulos longos empurram a altura em vez de invadir o menu. */}
       <div
-        className={`absolute inset-x-5 bottom-[14vh] z-10 text-cream md:inset-x-10 md:bottom-[12vh] ${
+        className={`relative z-10 px-5 pt-32 pb-[14vh] text-cream md:px-10 md:pb-[12vh] ${
           text ? "hero-copy-in" : "hero-copy-wait"
         }`}
       >

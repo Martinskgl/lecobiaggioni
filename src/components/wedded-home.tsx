@@ -15,21 +15,35 @@ import { SaveSince } from "@/components/save-since";
 import { TravelIcons } from "@/components/travel-icons";
 import type { Dictionary } from "@/lib/dictionaries";
 import { homeCopy } from "@/lib/home-copy";
-import { chapterPhotos, photos } from "@/lib/photos";
-import { brand, pagePath, type Locale } from "@/lib/site";
+import { altBySrc, foto, homeHeroVideo, photoAlt, realPhotos } from "@/lib/photos";
+import { brand, pagePath, type Locale, type PageKey } from "@/lib/site";
 
-const contactMosaic = [photos.vows, photos.kiss, photos.flowers, photos.rio] as const;
+/** Mosaico do contato: vertical grande, dois pequenos e um horizontal embaixo. */
+const contactMosaic = ["atrio", "casalPb", "altarFlores", "entradaNoite"] as const;
+
+/** Fotos dos cartões de serviço, pela página de destino de cada um. */
+const SERVICE_PHOTOS: Partial<Record<PageKey, string>> = {
+  elopement: foto("praia-casal-retrato"),
+  sameSex: foto("homoafetivo-niteroi-beijo-pao"),
+  destination: foto("cristo-casal-comemora"),
+  legal: foto("homoafetivo-cerimonia-civil"),
+};
+
+const HERO_PHOTO = foto("cristo-casal-por-do-sol");
 
 const SERVICE_ICONS: ServiceIcon[] = ["flower", "heart", "plane", "document"];
 
 export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const copy = homeCopy[locale];
+  const alt = photoAlt[locale];
 
   return (
     <div className="bg-white text-wine">
       {/* Hero */}
       <HeroIntro
-        src={photos.hero}
+        src={HERO_PHOTO}
+        alt={altBySrc[HERO_PHOTO][locale]}
+        video={homeHeroVideo}
         kicker={copy.hero.kicker}
         name={copy.hero.title}
         lead={copy.hero.paragraphs}
@@ -61,7 +75,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         {/* Serviços (#story) */}
         <PolaroidStack
           items={copy.services.map((service, index) => ({
-            src: chapterPhotos[index],
+            src: SERVICE_PHOTOS[service.page] ?? realPhotos.santaTeresa,
             name: service.name,
             icon: SERVICE_ICONS[index],
             eyebrow: service.eyebrow,
@@ -81,13 +95,23 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
           cta={{ label: copy.destination.cta, href: pagePath(locale, "rio") }}
         />
 
-        <PhotoCarousel photos={[photos.rio, photos.christ, photos.garden, photos.terrace]} />
+        <PhotoCarousel
+          photos={[
+            foto("cristo-casal-beijo"),
+            foto("homoafetivo-niteroi-silhueta"),
+            foto("jardim-casal-padrinhos"),
+            foto("homoafetivo-niteroi-saida"),
+          ]}
+        />
 
         {/* Planejamento internacional */}
         <TravelIcons title={copy.planning.title} items={copy.planning.items} />
 
         {/* Galeria: três cartões */}
-        <MemoryCards id="formas" title={copy.ways.title} cards={copy.ways.cards.map((card) => ({ ...card, href: "#rsvp" }))} />
+        <MemoryCards
+          id="formas"
+          title={copy.ways.title}
+          photos={[realPhotos.casalPb, realPhotos.homoafetivo, realPhotos.santaTeresa]} cards={copy.ways.cards.map((card) => ({ ...card, href: "#rsvp" }))} />
 
         {/* Sobre o Leco */}
         <section id="about" className="scroll-mt-24">
@@ -95,7 +119,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
             kicker={copy.about.kicker}
             title={copy.about.title}
             body={copy.about.paragraphs}
-            photo={photos.portrait}
+            photo={foto("equipe-ajusta-veu")}
             cta={{ label: copy.about.cta, href: pagePath(locale, "about") }}
           />
         </section>
@@ -104,11 +128,15 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         <MethodTimeline
           title={copy.method.title}
           steps={copy.method.steps}
-          photos={[photos.vows, photos.table, photos.flowers]}
+          photos={[foto("casal-pb-sorrindo"), foto("detalhe-torre-champanhe"), foto("festa-saida-estrelinhas")]}
         />
 
         {/* Faixa de destaque */}
-        <HighlightBand title={copy.emotional.title} paragraphs={copy.emotional.paragraphs} />
+        <HighlightBand
+          title={copy.emotional.title}
+          paragraphs={copy.emotional.paragraphs}
+          photo={foto("casal-entrada-flores-noite")}
+        />
 
         {/* Brazil Wedding Legal: duas possibilidades */}
         <section id="details" className="scroll-mt-24">
@@ -129,13 +157,13 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         <section id="rsvp" className="scroll-mt-24 grid md:grid-cols-2">
           {/* Mosaico de fotos */}
           <div className="grid min-h-[70vh] grid-cols-2 grid-rows-3 gap-1.5">
-            {contactMosaic.map((src, index) => (
+            {contactMosaic.map((key, index) => (
               <Photo
-                key={`${src}-${index}`}
-                src={src}
-                alt=""
+                key={key}
+                src={realPhotos[key]}
+                alt={alt[key]}
                 className={`!min-h-0 ${index === 0 ? "row-span-2" : ""} ${index === 3 ? "col-span-2" : ""}`}
-                sizes="25vw"
+                sizes={index === 3 ? "50vw" : "25vw"}
               />
             ))}
           </div>

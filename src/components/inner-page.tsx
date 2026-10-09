@@ -9,7 +9,8 @@ import { MethodTimeline } from "@/components/method-timeline";
 import { SaveSince } from "@/components/save-since";
 import { TravelIcons } from "@/components/travel-icons";
 import type { Cta, PageCopy, PageSection } from "@/lib/pages-copy";
-import { photos } from "@/lib/photos";
+import { pageMedia, type PageMedia } from "@/lib/page-media";
+import { altBySrc, photoAlt, photos, realPhotos } from "@/lib/photos";
 import { localizedPath, pagePath, pages, type Locale, type PageKey } from "@/lib/site";
 
 const STEP_PHOTOS = [photos.vows, photos.table, photos.flowers, photos.rio, photos.kiss] as const;
@@ -40,7 +41,18 @@ function Anchor({ id, children }: { id?: string; children: React.ReactNode }) {
   );
 }
 
-function Section({ locale, section }: { locale: Locale; section: PageSection }) {
+function Section({
+  locale,
+  section,
+  media,
+  nth,
+}: {
+  locale: Locale;
+  section: PageSection;
+  media: PageMedia;
+  /** Posição desta seção entre as seções do mesmo tipo na página. */
+  nth: number;
+}) {
   switch (section.type) {
     case "presentation":
       return (
@@ -75,6 +87,7 @@ function Section({ locale, section }: { locale: Locale; section: PageSection }) 
           id={section.id}
           title={section.title}
           cards={section.cards.map((card) => ({ ...card, href: card.href && resolveHref(locale, card.href) }))}
+          photos={media.cards?.[nth] ?? section.photos}
           paragraph={section.paragraph}
           cta={link(locale, section.cta)}
         />
@@ -87,7 +100,7 @@ function Section({ locale, section }: { locale: Locale; section: PageSection }) 
             title={section.title}
             body={section.paragraphs}
             list={section.list}
-            photo={photos.portrait}
+            photo={media.split?.[nth] ?? photos.portrait}
             cta={link(locale, section.cta)}
           />
         </Anchor>
@@ -95,12 +108,18 @@ function Section({ locale, section }: { locale: Locale; section: PageSection }) 
     case "steps":
       return (
         <Anchor id={section.id}>
-          <MethodTimeline title={section.title} steps={section.steps} photos={STEP_PHOTOS} />
+          <MethodTimeline title={section.title} steps={section.steps} photos={media.steps?.[nth] ?? STEP_PHOTOS} />
         </Anchor>
       );
     case "band":
       return (
-        <HighlightBand id={section.id} title={section.title} paragraphs={section.paragraphs} cta={link(locale, section.cta)} />
+        <HighlightBand
+          id={section.id}
+          title={section.title}
+          paragraphs={section.paragraphs}
+          cta={link(locale, section.cta)}
+          photo={media.band?.[nth]}
+        />
       );
     case "options":
       return (
@@ -121,11 +140,23 @@ function Section({ locale, section }: { locale: Locale; section: PageSection }) 
   }
 }
 
-export function InnerPage({ locale, copy }: { locale: Locale; copy: PageCopy }) {
+/** Alt da foto do topo: primeiro pelas fotos conhecidas, depois pelo mapa das 6 fotos iniciais. */
+function heroAlt(locale: Locale, src: string) {
+  const bySrc = altBySrc[src]?.[locale];
+  if (bySrc) return bySrc;
+  const key = (Object.keys(realPhotos) as (keyof typeof realPhotos)[]).find((item) => realPhotos[item] === src);
+  return key ? photoAlt[locale][key] : "";
+}
+
+export function InnerPage({ locale, copy, page }: { locale: Locale; copy: PageCopy; page: PageKey }) {
+  const media = pageMedia[page] ?? {};
+  const hero = media.hero;
+  const seen: Partial<Record<PageSection["type"], number>> = {};
   return (
     <div className="bg-white text-wine">
       <HeroIntro
-        src={photos.hero}
+        src={hero ?? photos.hero}
+        alt={hero ? heroAlt(locale, hero) : ""}
         kicker={copy.hero.kicker}
         name={copy.hero.title}
         subtitle={copy.hero.subtitle}
@@ -135,9 +166,11 @@ export function InnerPage({ locale, copy }: { locale: Locale; copy: PageCopy }) 
         secondary={link(locale, copy.hero.secondary)}
       />
       <div className="site-shell mx-auto bg-cream">
-        {copy.sections.map((section, index) => (
-          <Section key={`${section.type}-${index}`} locale={locale} section={section} />
-        ))}
+        {copy.sections.map((section, index) => {
+          const nth = seen[section.type] ?? 0;
+          seen[section.type] = nth + 1;
+          return <Section key={`${section.type}-${index}`} locale={locale} section={section} media={media} nth={nth} />;
+        })}
       </div>
     </div>
   );

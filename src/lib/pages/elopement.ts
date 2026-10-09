@@ -64,6 +64,8 @@ export const elopement: Record<Locale, PageCopy> = {
             text: "Mais tempo juntos, produção floral ampliada, música ao vivo e uma experiência gastronômica para continuar a celebração.",
           },
         ],
+        paragraph:
+          "Não encontrou o formato ideal? Também criamos experiências personalizadas, sob medida para a história de vocês.",
         cta: { label: "Descobrir qual experiência combina conosco", href: "page:packages" },
       },
       {
@@ -168,6 +170,8 @@ export const elopement: Record<Locale, PageCopy> = {
             text: "More time together, expanded floral production, live music and a gastronomic experience to continue the celebration.",
           },
         ],
+        paragraph:
+          "Didn't find the right fit? We also create personalized experiences, tailored to your story.",
         cta: { label: "Discover which experience suits us", href: "page:packages" },
       },
       {
@@ -272,6 +276,8 @@ export const elopement: Record<Locale, PageCopy> = {
             text: "Más tiempo juntos, producción floral ampliada, música en vivo y una experiencia gastronómica para continuar la celebración.",
           },
         ],
+        paragraph:
+          "¿No encontraron el formato ideal? También creamos experiencias personalizadas, a la medida de su historia.",
         cta: { label: "Descubrir qué experiencia combina con nosotros", href: "page:packages" },
       },
       {

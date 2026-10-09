@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { photoPositions } from "@/lib/photos";
+
 const TONES = [
   ["#6b3844", "#3d1c22"],
   ["#8a5a62", "#54272e"],
@@ -15,14 +18,18 @@ function tone(src: string) {
   return TONES[hash % TONES.length];
 }
 
+/** Fotos locais (public/) são reais; as demais continuam como placeholder. */
+const isReal = (src: string) => src.startsWith("/");
+
 export function Photo({
   src,
   alt,
   className = "",
-  sizes: _sizes = "100vw",
-  priority: _priority,
+  sizes = "100vw",
+  priority,
   zoom,
   kenburns,
+  position,
   fillParent,
   quiet,
 }: {
@@ -38,13 +45,27 @@ export function Photo({
   quiet?: boolean;
 }) {
   const [from, to] = tone(src);
+  const wrapper = `${fillParent ? "absolute inset-0" : "relative min-h-[12rem]"} overflow-hidden ${zoom ? "photo-zoom" : ""} ${kenburns ? "kenburns" : ""} ${className}`;
+
+  if (isReal(src)) {
+    return (
+      <div className={wrapper}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          preload={priority}
+          loading={priority ? undefined : "lazy"}
+          className="object-cover"
+          style={{ objectPosition: position ?? photoPositions[src] ?? "50% 50%" }}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div
-      className={`${fillParent ? "absolute inset-0" : "relative min-h-[12rem]"} overflow-hidden ${zoom ? "photo-zoom" : ""} ${kenburns ? "kenburns" : ""} ${className}`}
-      role="img"
-      aria-label={alt || "Placeholder"}
-    >
+    <div className={wrapper} role="img" aria-label={alt || "Placeholder"}>
       <div
         className="placeholder-fill absolute inset-0"
         style={{

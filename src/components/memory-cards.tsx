@@ -11,7 +11,7 @@ export function MemoryCards({
   id,
   title,
   cards,
-  photos = DEFAULT_PHOTOS,
+  photos: photosProp,
   paragraph,
   cta,
 }: {
@@ -22,6 +22,7 @@ export function MemoryCards({
   paragraph?: string;
   cta?: { label: string; href: string };
 }) {
+  const photos = photosProp?.length ? photosProp : DEFAULT_PHOTOS;
   return (
     <section id={id} className={`${id ? "scroll-mt-24 " : ""}bg-cream px-6 py-16 md:px-10 md:py-20`}>
       <div className="page-frame mx-auto max-w-[1100px]">

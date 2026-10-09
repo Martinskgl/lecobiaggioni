@@ -32,6 +32,8 @@ export type PageSection =
       id?: string;
       title: string;
       cards: { title: string; text: string; action?: string; href?: string }[];
+      /** Fotos dos cards (na ordem). Sem isso, usa os placeholders padrão. */
+      photos?: string[];
       paragraph?: string;
       cta?: Cta;
     }
