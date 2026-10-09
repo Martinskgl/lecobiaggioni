@@ -38,11 +38,14 @@ export function HeroIntro({
   secondary,
   alt = "",
   video,
+  videoMobile,
 }: {
   src: string;
   alt?: string;
   /** Vídeo de fundo opcional; a foto `src` vira a capa (poster). */
   video?: string;
+  /** Versão mais leve do vídeo para telas até 767px. */
+  videoMobile?: string;
   kicker: string;
   name: string;
   subtitle?: string;
@@ -78,14 +81,16 @@ export function HeroIntro({
         {video && motion ? (
           <video
             className="absolute inset-0 h-full w-full object-cover"
-            src={video}
             poster={src}
             autoPlay
             muted
             loop
             playsInline
             aria-hidden="true"
-          />
+          >
+            {videoMobile ? <source src={videoMobile} type="video/mp4" media="(max-width: 767px)" /> : null}
+            <source src={video} type="video/mp4" />
+          </video>
         ) : null}
         <div className="absolute inset-0 bg-gradient-to-t from-wine/70 via-wine/20 to-wine/35" />
         {/* Reforço atrás do texto (canto inferior esquerdo) para manter a leitura sobre fotos claras. */}

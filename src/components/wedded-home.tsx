@@ -15,7 +15,7 @@ import { SaveSince } from "@/components/save-since";
 import { TravelIcons } from "@/components/travel-icons";
 import type { Dictionary } from "@/lib/dictionaries";
 import { homeCopy } from "@/lib/home-copy";
-import { altBySrc, foto, homeHeroVideo, photoAlt, realPhotos } from "@/lib/photos";
+import { altBySrc, foto, homeHeroVideo, homeHeroVideoMobile, photoAlt, realPhotos } from "@/lib/photos";
 import { brand, pagePath, type Locale, type PageKey } from "@/lib/site";
 
 /** Mosaico do contato: vertical grande, dois pequenos e um horizontal embaixo. */
@@ -44,6 +44,7 @@ export function WeddedHome({ locale, dict }: { locale: Locale; dict: Dictionary 
         src={HERO_PHOTO}
         alt={altBySrc[HERO_PHOTO][locale]}
         video={homeHeroVideo}
+        videoMobile={homeHeroVideoMobile}
         kicker={copy.hero.kicker}
         name={copy.hero.title}
         lead={copy.hero.paragraphs}

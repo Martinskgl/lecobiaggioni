@@ -85,8 +85,10 @@ export const photoPositions: Record<string, string> = {
   [foto("casal-pb-sorrindo")]: "50% 35%",
 };
 
-/** Vídeo de fundo da Home. Quando o arquivo chegar, salvar em public/media/home-hero.mp4 e trocar para "/media/home-hero.mp4". */
-export const homeHeroVideo: string | undefined = undefined;
+/** Vídeo de fundo da Home ("VÍDEO PARA O SITE - LECO.mp4", comprimido e sem áudio). */
+export const homeHeroVideo: string | undefined = "/media/home-hero.mp4";
+/** Versão mais leve do mesmo vídeo para telas até 767px. */
+export const homeHeroVideoMobile: string | undefined = "/media/home-hero-mobile.mp4";
 
 type RealPhoto = keyof typeof realPhotos;
 type AltLocale = "pt" | "en" | "es";
