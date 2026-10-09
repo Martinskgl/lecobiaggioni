@@ -103,7 +103,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   pt: {
     nav: {
       items: [
-        { page: "sameSex", label: "Casamento Homoafetivo" },
+        { page: "sameSex", label: "Casamento Homoafetivo 🌈" },
         { page: "legal", label: "Brazil Legal Wedding 🌈" },
         { page: "elopement", label: "Elopement Wedding" },
         { page: "destination", label: "Destination Wedding" },
@@ -145,7 +145,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       {
         page: "sameSex",
-        name: "Casamento Homoafetivo",
+        name: "Casamento Homoafetivo 🌈",
         eyebrow: "LIBERDADE PARA CELEBRAR QUEM VOCÊS SÃO",
         title: "Um casamento em que vocês possam ser inteiramente vocês.",
         paragraphs: [
@@ -346,7 +346,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   en: {
     nav: {
       items: [
-        { page: "sameSex", label: "Same-Sex Wedding" },
+        { page: "sameSex", label: "Same-Sex Wedding 🌈" },
         { page: "legal", label: "Brazil Legal Wedding 🌈" },
         { page: "elopement", label: "Elopement Wedding" },
         { page: "destination", label: "Destination Wedding" },
@@ -388,7 +388,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       {
         page: "sameSex",
-        name: "Same-Sex Wedding",
+        name: "Same-Sex Wedding 🌈",
         eyebrow: "FREEDOM TO CELEBRATE WHO YOU ARE",
         title: "A wedding in which you can be entirely yourselves.",
         paragraphs: [
@@ -589,7 +589,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   es: {
     nav: {
       items: [
-        { page: "sameSex", label: "Boda Homoafectiva" },
+        { page: "sameSex", label: "Boda Homoafectiva 🌈" },
         { page: "legal", label: "Brazil Legal Wedding 🌈" },
         { page: "elopement", label: "Elopement Wedding" },
         { page: "destination", label: "Destination Wedding" },
@@ -631,7 +631,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       {
         page: "sameSex",
-        name: "Boda Homoafectiva",
+        name: "Boda Homoafectiva 🌈",
         eyebrow: "LIBERTAD PARA CELEBRAR QUIENES USTEDES SON",
         title: "Una boda en la que ustedes puedan ser enteramente ustedes.",
         paragraphs: [

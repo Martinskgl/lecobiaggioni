@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/site";
 export const sameSex: Record<Locale, PageCopy> = {
   pt: {
     hero: {
-      kicker: "CASAMENTO HOMOAFETIVO NO RIO DE JANEIRO",
+      kicker: "CASAMENTO HOMOAFETIVO NO RIO DE JANEIRO 🌈",
       title: "A liberdade de celebrar. A tranquilidade de se sentir acolhidos.",
       paragraphs: [
         "Um casamento em que vocês se reconheçam nos votos, nas escolhas e nas pessoas que estão ao redor.",
@@ -101,7 +101,7 @@ export const sameSex: Record<Locale, PageCopy> = {
 
   en: {
     hero: {
-      kicker: "SAME-SEX WEDDING IN RIO DE JANEIRO",
+      kicker: "SAME-SEX WEDDING IN RIO DE JANEIRO 🌈",
       title: "The freedom to celebrate. The peace of feeling welcomed.",
       paragraphs: [
         "A wedding in which you recognize yourselves in the vows, in the choices and in the people around you.",
@@ -197,7 +197,7 @@ export const sameSex: Record<Locale, PageCopy> = {
 
   es: {
     hero: {
-      kicker: "BODA HOMOAFECTIVA EN RÍO DE JANEIRO",
+      kicker: "BODA HOMOAFECTIVA EN RÍO DE JANEIRO 🌈",
       title: "La libertad de celebrar. La tranquilidad de sentirse acogidos.",
       paragraphs: [
         "Una boda en la que ustedes se reconozcan en los votos, en las elecciones y en las personas que están alrededor.",
